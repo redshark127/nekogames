@@ -11,8 +11,6 @@ const fullscreenBtn = document.getElementById('fullscreen-btn');
 const reloadBtn = document.getElementById('reload-btn');
 const openBtn = document.getElementById('open-btn');
 const downloadBtn = document.getElementById('download-btn');
-const retryBtn = document.getElementById('retry-btn');
-const frameError = document.getElementById('frame-error');
 
 let games = [];
 let currentGame = null;
@@ -50,7 +48,6 @@ function openGame(game) {
   currentGame = game;
   autoRetried = false;
   modalTitle.textContent = game.name;
-  frameError.classList.add('hidden');
   gameFrame.src = game.url;
   overlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
@@ -65,7 +62,6 @@ function closeGame() {
 
 function reloadGame() {
   if (!currentGame) return;
-  frameError.classList.add('hidden');
   gameFrame.src = '';
   setTimeout(() => { gameFrame.src = currentGame.url; }, 100);
 }
@@ -110,13 +106,6 @@ downloadBtn.addEventListener('click', async () => {
     window.open(currentGame.url, '_blank');
   }
   downloadBtn.textContent = '⬇';
-});
-retryBtn.addEventListener('click', reloadGame);
-gameFrame.addEventListener('error', () => {
-  frameError.classList.remove('hidden');
-});
-gameFrame.addEventListener('load', () => {
-  frameError.classList.add('hidden');
 });
 // Auto-retry once per open if iframe is empty (cross-origin fails)
 let autoRetryTimer;
