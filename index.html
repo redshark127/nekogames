@@ -26,11 +26,19 @@
       <div id="modal-header">
         <h2 id="modal-title"></h2>
         <div class="modal-actions">
+          <button id="reload-btn" title="Reload">↻</button>
           <button id="fullscreen-btn" title="Fullscreen">⛶</button>
+          <button id="open-btn" title="Open in new tab">↗</button>
           <button id="close-btn">&times;</button>
         </div>
       </div>
-      <iframe id="game-frame" allowfullscreen></iframe>
+      <div id="frame-wrap">
+        <iframe id="game-frame" allowfullscreen></iframe>
+        <div id="frame-error" class="hidden">
+          <p>Failed to load game.</p>
+          <button id="retry-btn">Retry</button>
+        </div>
+      </div>
     </div>
   </div>
 
