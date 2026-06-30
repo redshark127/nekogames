@@ -134,6 +134,14 @@ header h1 {
   overflow: hidden;
 }
 
+#game-modal:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  border-radius: 0;
+  border: none;
+}
+
 #modal-header {
   display: flex;
   align-items: center;

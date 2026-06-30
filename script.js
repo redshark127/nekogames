@@ -11,6 +11,7 @@ const fullscreenBtn = document.getElementById('fullscreen-btn');
 const reloadBtn = document.getElementById('reload-btn');
 const openBtn = document.getElementById('open-btn');
 const downloadBtn = document.getElementById('download-btn');
+const gameModal = document.getElementById('game-modal');
 
 let games = [];
 let currentGame = null;
@@ -84,7 +85,7 @@ fullscreenBtn.addEventListener('click', () => {
   if (document.fullscreenElement) {
     document.exitFullscreen();
   } else {
-    gameFrame.requestFullscreen();
+    gameModal.requestFullscreen();
   }
 });
 openBtn.addEventListener('click', () => {
@@ -126,7 +127,13 @@ overlay.addEventListener('click', e => {
   if (e.target === overlay) closeGame();
 });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeGame();
+  if (e.key === 'Escape') {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      closeGame();
+    }
+  }
 });
 
 fetch(GAMES_JSON)
