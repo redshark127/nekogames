@@ -12,6 +12,10 @@ const reloadBtn = document.getElementById('reload-btn');
 const openBtn = document.getElementById('open-btn');
 const downloadBtn = document.getElementById('download-btn');
 const gameModal = document.getElementById('game-modal');
+const panicOverlay = document.getElementById('panic-overlay');
+
+const CLOAK_TITLE = 'Google Docs';
+let origTitle = document.title;
 
 let games = [];
 let currentGame = null;
@@ -134,7 +138,18 @@ document.addEventListener('keydown', e => {
       closeGame();
     }
   }
+  if (e.key === '`') {
+    e.preventDefault();
+    panicOverlay.classList.toggle('hidden');
+  }
 });
+
+// Tab cloaking – change title when tab loses focus
+document.addEventListener('visibilitychange', () => {
+  document.title = document.hidden ? 'Google Docs - Home' : CLOAK_TITLE;
+});
+// Keep title cloaked always after a brief moment
+setTimeout(() => { document.title = CLOAK_TITLE; }, 100);
 
 fetch(GAMES_JSON)
   .then(r => r.json())
