@@ -134,13 +134,19 @@ downloadBtn.addEventListener('click', async () => {
   }
   downloadBtn.textContent = '⬇';
 });
-abBtn.addEventListener('click', () => {
-  closeGame();
-  const base = document.querySelector('base');
-  if (base) {
-    location.href = base.href;
-  } else {
-    location.reload();
+abBtn.addEventListener('click', async () => {
+  try {
+    const res = await fetch(window.location.href);
+    let html = await res.text();
+    html = html.replace('<head>', '<head><base href="' + window.location.href.replace(/\/?$/, '/') + '">');
+    var w = window.open('about:blank');
+    if (w) {
+      w.document.write(html);
+      w.document.close();
+      window.open('', '_self').close();
+    }
+  } catch(e) {
+    alert('Could not open about:blank.');
   }
 });
 // Auto-retry once per open if iframe is empty (cross-origin fails) — direct mode only
