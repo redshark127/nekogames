@@ -7,6 +7,7 @@ const overlay = document.getElementById('overlay');
 const gameFrame = document.getElementById('game-frame');
 const modalTitle = document.getElementById('modal-title');
 const closeBtn = document.getElementById('close-btn');
+const fullscreenBtn = document.getElementById('fullscreen-btn');
 
 let games = [];
 
@@ -80,6 +81,13 @@ function populateCategories() {
 searchInput.addEventListener('input', filterGames);
 categoryFilter.addEventListener('change', filterGames);
 closeBtn.addEventListener('click', closeGame);
+fullscreenBtn.addEventListener('click', () => {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else {
+    gameFrame.requestFullscreen();
+  }
+});
 overlay.addEventListener('click', e => {
   if (e.target === overlay) closeGame();
 });
