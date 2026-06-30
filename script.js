@@ -62,7 +62,7 @@ async function openGame(game) {
   modalTitle.textContent = game.name;
   overlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
-  gameFrame.srcdoc = '';
+  gameFrame.removeAttribute('srcdoc');
   gameFrame.src = '';
   try {
     if (isCDNUrl(game.url)) {
@@ -82,8 +82,8 @@ async function openGame(game) {
 
 function closeGame() {
   overlay.classList.add('hidden');
+  gameFrame.removeAttribute('srcdoc');
   gameFrame.src = '';
-  gameFrame.srcdoc = '';
   currentGame = null;
   document.body.style.overflow = '';
 }
@@ -94,6 +94,7 @@ function reloadGame() {
     gameFrame.srcdoc = '';
     fetch(currentGame.url).then(r => r.text()).then(html => { gameFrame.srcdoc = html; });
   } else {
+    gameFrame.removeAttribute('srcdoc');
     gameFrame.src = '';
     setTimeout(() => { gameFrame.src = currentGame.url; }, 100);
   }
@@ -151,6 +152,7 @@ abBtn.addEventListener('click', async () => {
       return;
     }
     try {
+      w.document.open();
       w.document.write(html);
       w.document.close();
     } catch (e) {
