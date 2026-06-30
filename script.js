@@ -119,13 +119,11 @@ abBtn.addEventListener('click', async () => {
     let html = await res.text();
     const base = '<base href="' + window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + '">';
     html = html.replace('<head>', '<head>' + base);
-    const w = window.open('about:blank');
-    w.document.open();
-    w.document.write(html);
-    w.document.close();
-    location.replace('about:blank');
+    window.open('about:blank', '_self');
+    document.write(html);
+    document.close();
   } catch {
-    alert('Could not open about:blank – try allowing popups.');
+    alert('Could not open about:blank.');
   }
 });
 // Auto-retry once per open if iframe is empty (cross-origin fails)
