@@ -20,6 +20,7 @@ let origTitle = document.title;
 
 let games = [];
 let currentGame = null;
+let currentMode = 'direct';
 let autoRetried = false;
 
 function renderGames(filtered) {
@@ -50,26 +51,46 @@ function filterGames() {
   renderGames(filtered);
 }
 
-function openGame(game) {
+function isCDNUrl(url) {
+  return url.includes('jsdelivr.net');
+}
+
+async function openGame(game) {
   currentGame = game;
   autoRetried = false;
   modalTitle.textContent = game.name;
-  gameFrame.src = game.url;
   overlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
+  if (isCDNUrl(game.url)) {
+    currentMode = 'srcdoc';
+    gameFrame.srcdoc = '';
+    gameFrame.src = '';
+    const resp = await fetch(game.url);
+    gameFrame.srcdoc = await resp.text();
+  } else {
+    currentMode = 'direct';
+    gameFrame.srcdoc = '';
+    gameFrame.src = game.url;
+  }
 }
 
 function closeGame() {
   overlay.classList.add('hidden');
   gameFrame.src = '';
+  gameFrame.srcdoc = '';
   currentGame = null;
   document.body.style.overflow = '';
 }
 
 function reloadGame() {
   if (!currentGame) return;
-  gameFrame.src = '';
-  setTimeout(() => { gameFrame.src = currentGame.url; }, 100);
+  if (currentMode === 'srcdoc') {
+    gameFrame.srcdoc = '';
+    fetch(currentGame.url).then(r => r.text()).then(html => { gameFrame.srcdoc = html; });
+  } else {
+    gameFrame.src = '';
+    setTimeout(() => { gameFrame.src = currentGame.url; }, 100);
+  }
 }
 
 function populateCategories() {
@@ -113,22 +134,19 @@ downloadBtn.addEventListener('click', async () => {
   }
   downloadBtn.textContent = '⬇';
 });
-abBtn.addEventListener('click', async () => {
-  try {
-    const res = await fetch(window.location.href);
-    let html = await res.text();
-    const base = '<base href="' + window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + '">';
-    html = html.replace('<head>', '<head>' + base);
-    window.open('about:blank', '_self');
-    document.write(html);
-    document.close();
-  } catch {
-    alert('Could not open about:blank.');
+abBtn.addEventListener('click', () => {
+  closeGame();
+  const base = document.querySelector('base');
+  if (base) {
+    location.href = base.href;
+  } else {
+    location.reload();
   }
 });
-// Auto-retry once per open if iframe is empty (cross-origin fails)
+// Auto-retry once per open if iframe is empty (cross-origin fails) — direct mode only
 let autoRetryTimer;
 gameFrame.addEventListener('load', () => {
+  if (currentMode !== 'direct') return;
   clearTimeout(autoRetryTimer);
   autoRetryTimer = setTimeout(() => {
     if (autoRetried) return;
