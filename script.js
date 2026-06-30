@@ -118,12 +118,12 @@ abBtn.addEventListener('click', async () => {
     const res = await fetch(window.location.href);
     let html = await res.text();
     const base = '<base href="' + window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + '">';
-    html = html.replace('</head>', base + '</head>');
+    html = html.replace('<head>', '<head>' + base);
     const w = window.open('about:blank');
     w.document.open();
     w.document.write(html);
     w.document.close();
-    window.close();
+    location.replace('about:blank');
   } catch {
     alert('Could not open about:blank – try allowing popups.');
   }
