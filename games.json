@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Tetris",
+    "url": "https://tetris.com/play-tetris",
+    "category": "Classic"
+  },
+  {
+    "id": 2,
+    "name": "Slope",
+    "url": "https://slope-game.com",
+    "category": "Arcade"
+  },
+  {
+    "id": 3,
+    "name": "Run 3",
+    "url": "https://run3.io",
+    "category": "Arcade"
+  },
+  {
+    "id": 4,
+    "name": "Cookie Clicker",
+    "url": "https://cookieclicker.com",
+    "category": "Idle"
+  },
+  {
+    "id": 5,
+    "name": "Agar.io",
+    "url": "https://agar.io",
+    "category": "Multiplayer"
+  },
+  {
+    "id": 6,
+    "name": "Snake",
+    "url": "https://snake.io",
+    "category": "Classic"
+  },
+  {
+    "id": 7,
+    "name": "Chess",
+    "url": "https://chess.com/play/computer",
+    "category": "Board"
+  },
+  {
+    "id": 8,
+    "name": "Sudoku",
+    "url": "https://sudoku.com",
+    "category": "Puzzle"
+  },
+  {
+    "id": 9,
+    "name": "2048",
+    "url": "https://play2048.co",
+    "category": "Puzzle"
+  },
+  {
+    "id": 10,
+    "name": "Paper.io",
+    "url": "https://paper-io.com",
+    "category": "Multiplayer"
+  }
+]
