@@ -62,7 +62,7 @@ header h1 {
 
 #game-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
   padding: 30px;
   max-width: 1200px;
@@ -73,10 +73,10 @@ header h1 {
   background: #1a1a2e;
   border: 1px solid #2a2a4a;
   border-radius: 12px;
-  padding: 24px 16px;
   text-align: center;
   cursor: pointer;
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  overflow: hidden;
 }
 
 .game-card:hover {
@@ -85,21 +85,25 @@ header h1 {
   box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
 }
 
-.game-card .icon {
-  font-size: 40px;
-  margin-bottom: 10px;
+.game-card .thumb {
+  width: 100%;
+  height: 120px;
+  background: #16213e;
+  background-size: cover;
+  background-position: center;
 }
 
 .game-card .name {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
-  margin-bottom: 4px;
+  padding: 10px 10px 2px;
 }
 
 .game-card .category {
-  font-size: 12px;
+  font-size: 11px;
   color: #667eea;
   opacity: 0.8;
+  padding: 0 10px 10px;
 }
 
 /* Overlay / Modal */

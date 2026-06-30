@@ -11,29 +11,13 @@ const fullscreenBtn = document.getElementById('fullscreen-btn');
 
 let games = [];
 
-function getIcon(name) {
-  const icons = {
-    'Tetris': '🧱',
-    'Slope': '🏎️',
-    'Run 3': '🏃',
-    'Cookie Clicker': '🍪',
-    'Agar.io': '🟠',
-    'Snake': '🐍',
-    'Chess': '♟️',
-    'Sudoku': '🔢',
-    '2048': '🔢',
-    'Paper.io': '📄',
-  };
-  return icons[name] || '🎮';
-}
-
 function renderGames(filtered) {
   gameGrid.innerHTML = '';
   filtered.forEach(game => {
     const card = document.createElement('div');
     card.className = 'game-card';
     card.innerHTML = `
-      <div class="icon">${getIcon(game.name)}</div>
+      <div class="thumb" ${game.image ? `style="background-image:url('${game.image}')"` : ''}></div>
       <div class="name">${game.name}</div>
       <div class="category">${game.category}</div>
     `;
