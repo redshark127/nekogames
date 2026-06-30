@@ -10,6 +10,7 @@ const closeBtn = document.getElementById('close-btn');
 const fullscreenBtn = document.getElementById('fullscreen-btn');
 const reloadBtn = document.getElementById('reload-btn');
 const openBtn = document.getElementById('open-btn');
+const downloadBtn = document.getElementById('download-btn');
 const retryBtn = document.getElementById('retry-btn');
 const frameError = document.getElementById('frame-error');
 
@@ -92,6 +93,23 @@ fullscreenBtn.addEventListener('click', () => {
 });
 openBtn.addEventListener('click', () => {
   if (currentGame) window.open(currentGame.url, '_blank');
+});
+downloadBtn.addEventListener('click', async () => {
+  if (!currentGame) return;
+  downloadBtn.textContent = '⏳';
+  try {
+    const res = await fetch(currentGame.url);
+    const html = await res.text();
+    const blob = new Blob([html], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (currentGame.name || 'game').replace(/[^a-z0-9]/gi, '_') + '.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  } catch {
+    window.open(currentGame.url, '_blank');
+  }
+  downloadBtn.textContent = '⬇';
 });
 retryBtn.addEventListener('click', reloadGame);
 gameFrame.addEventListener('error', () => {

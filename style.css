@@ -164,7 +164,8 @@ header h1 {
 
 #fullscreen-btn,
 #reload-btn,
-#open-btn {
+#open-btn,
+#download-btn {
   background: none;
   border: none;
   color: #e0e0e0;
@@ -178,7 +179,8 @@ header h1 {
 
 #fullscreen-btn:hover,
 #reload-btn:hover,
-#open-btn:hover {
+#open-btn:hover,
+#download-btn:hover {
   opacity: 1;
 }
 
