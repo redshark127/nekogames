@@ -13,6 +13,7 @@ const openBtn = document.getElementById('open-btn');
 const downloadBtn = document.getElementById('download-btn');
 const gameModal = document.getElementById('game-modal');
 const panicOverlay = document.getElementById('panic-overlay');
+const abBtn = document.getElementById('ab-btn');
 
 const CLOAK_TITLE = 'Google Docs';
 let origTitle = document.title;
@@ -111,6 +112,21 @@ downloadBtn.addEventListener('click', async () => {
     window.open(currentGame.url, '_blank');
   }
   downloadBtn.textContent = '⬇';
+});
+abBtn.addEventListener('click', async () => {
+  try {
+    const res = await fetch(window.location.href);
+    let html = await res.text();
+    const base = '<base href="' + window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + '">';
+    html = html.replace('</head>', base + '</head>');
+    const w = window.open('about:blank');
+    w.document.open();
+    w.document.write(html);
+    w.document.close();
+    window.close();
+  } catch {
+    alert('Could not open about:blank – try allowing popups.');
+  }
 });
 // Auto-retry once per open if iframe is empty (cross-origin fails)
 let autoRetryTimer;

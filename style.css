@@ -60,6 +60,21 @@ header h1 {
   cursor: pointer;
 }
 
+#ab-btn {
+  padding: 10px 16px;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  background: #16213e;
+  color: #667eea;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+#ab-btn:hover {
+  border-color: #667eea;
+}
+
 #game-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
