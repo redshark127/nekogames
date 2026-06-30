@@ -56,21 +56,27 @@ function isCDNUrl(url) {
 }
 
 async function openGame(game) {
+  clearTimeout(autoRetryTimer);
   currentGame = game;
   autoRetried = false;
   modalTitle.textContent = game.name;
   overlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
-  if (isCDNUrl(game.url)) {
-    currentMode = 'srcdoc';
-    gameFrame.srcdoc = '';
-    gameFrame.src = '';
-    const resp = await fetch(game.url);
-    gameFrame.srcdoc = await resp.text();
-  } else {
-    currentMode = 'direct';
-    gameFrame.srcdoc = '';
-    gameFrame.src = game.url;
+  gameFrame.srcdoc = '';
+  gameFrame.src = '';
+  try {
+    if (isCDNUrl(game.url)) {
+      currentMode = 'srcdoc';
+      const resp = await fetch(game.url);
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      gameFrame.srcdoc = await resp.text();
+    } else {
+      currentMode = 'direct';
+      gameFrame.src = game.url;
+    }
+  } catch (e) {
+    alert('Failed to load game: ' + game.name + '\n' + e.message);
+    closeGame();
   }
 }
 
@@ -140,13 +146,19 @@ abBtn.addEventListener('click', async () => {
     let html = await res.text();
     html = html.replace('<head>', '<head><base href="' + window.location.href.replace(/\/?$/, '/') + '">');
     var w = window.open('about:blank');
-    if (w) {
+    if (!w) {
+      alert('Popup blocked. Allow popups for this site and try again.');
+      return;
+    }
+    try {
       w.document.write(html);
       w.document.close();
-      window.open('', '_self').close();
+    } catch (e) {
+      alert('Failed to write to about:blank: ' + e.message);
+      return;
     }
   } catch(e) {
-    alert('Could not open about:blank.');
+    alert('Could not open about:blank: ' + e.message);
   }
 });
 // Auto-retry once per open if iframe is empty (cross-origin fails) — direct mode only
