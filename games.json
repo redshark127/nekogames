@@ -5342,7 +5342,7 @@
   },
   {
     "id": 771,
-    "name": "Friday Night Funkin\u2019 Soft",
+    "name": "Friday Night Funkin’ Soft",
     "url": "https://genizymath.github.io/iframe/509.html",
     "category": "Rhythm",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/509.png"
@@ -5895,14 +5895,14 @@
   },
   {
     "id": 850,
-    "name": "Friday Night Funkin\u2019 Wednesday's Infidelity",
+    "name": "Friday Night Funkin’ Wednesday's Infidelity",
     "url": "https://genizymath.github.io/iframe/616.html",
     "category": "Rhythm",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/616.png"
   },
   {
     "id": 851,
-    "name": "FNF vs Bob v2.0 (Bob\u2019s Onslaught)",
+    "name": "FNF vs Bob v2.0 (Bob’s Onslaught)",
     "url": "https://genizymath.github.io/iframe/618.html",
     "category": "Rhythm",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/618.png"
@@ -6420,7 +6420,7 @@
   },
   {
     "id": 925,
-    "name": "Saihate Station (\u3055\u3044\u306f\u3066\u99c5)",
+    "name": "Saihate Station (さいはて駅)",
     "url": "https://genizymath.github.io/iframe/737.html",
     "category": "Action",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/737.png"
@@ -6784,7 +6784,7 @@
   },
   {
     "id": 977,
-    "name": "t\u00b3 (T cubed)",
+    "name": "t³ (T cubed)",
     "url": "https://genizymath.github.io/iframe/818.html",
     "category": "Action",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/818.png"
@@ -6991,5 +6991,12 @@
     "url": "https://html-classic.itch.zone/html/11693468/index.html",
     "category": "Simulation",
     "image": "https://img.itch.zone/aW1nLzE4MDc3NjY2LnBuZw==/original/3l605M.png"
+  },
+  {
+    "id": 1007,
+    "name": "Scale the Depths",
+    "url": "https://html-classic.itch.zone/html/11252461/index.html",
+    "category": "Simulation",
+    "image": "https://img.itch.zone/aW1nLzE3NDE5MDI1LnBuZw==/original/dnG88C.png"
   }
 ]
