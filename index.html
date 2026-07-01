@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google Docs</title>
   <link rel="icon" href="https://www.google.com/favicon.ico">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,13 +18,13 @@
       <div class="logo">
         <img class="logo-img" src="https://photos.fife.usercontent.google.com/pw/AP1GczNsU2C0Kc1hle-pP2TZhoJ3xVkm6sHIX2JSR-oGmb0CoqKjD_nUP1nl=w1668-h919-s-no?authuser=0" alt="Nekogames">
       </div>
-      <div class="controls">
-        <input type="text" id="search" placeholder="Search games..." autocomplete="off">
+      <form class="controls" autocomplete="off">
+        <input type="text" id="search" placeholder="Search games..." autocomplete="off" name="search">
         <select id="category-filter">
           <option value="all">All Categories</option>
         </select>
         <button id="ab-btn" style="display:none">about:blank</button>
-      </div>
+      </form>
       <a id="request-btn" href="https://forms.gle/4TP4J3fqpZbanuuQ9" target="_blank" rel="noopener" title="Request a Game">
         <span>&#x1F4DD;</span>
         <span>Request</span>
