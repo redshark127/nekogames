@@ -2,6 +2,12 @@ const GAMES_JSON = 'games.json';
 const REQUEST_FORM_URL = 'https://forms.gle/4TP4J3fqpZbanuuQ9';
 const SETTINGS_KEY = 'nekogames_settings';
 
+const baseHref = window.location.pathname.replace(/\/?$/, '/');
+const baseEl = document.createElement('base');
+baseEl.href = baseHref;
+document.head.prepend(baseEl);
+history.replaceState(null, '', '/');
+
 const gameGrid = document.getElementById('game-grid');
 const searchInput = document.getElementById('search');
 const categoryFilter = document.getElementById('category-filter');
@@ -705,9 +711,9 @@ downloadBtn.addEventListener('click', async () => {
 
 abBtn.addEventListener('click', async () => {
   try {
-    const res = await fetch(window.location.href);
+    const res = await fetch(baseHref);
     let html = await res.text();
-    html = html.replace('<head>', '<head><base href="' + window.location.href.replace(/\/?$/, '/') + '">');
+    html = html.replace('<head>', '<head><base href="' + baseHref + '">');
     var w = window.open('about:blank');
     if (!w) {
       alert('Popup blocked. Allow popups for this site and try again.');
