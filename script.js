@@ -59,6 +59,19 @@ function isCDNUrl(url) {
   return url.includes('jsdelivr.net') || url.includes('genizymath.github.io');
 }
 
+function isItchClassic(url) {
+  return url.includes('html-classic.itch.zone');
+}
+
+async function fetchItchClassic(url) {
+  const resp = await fetch(url);
+  let html = await resp.text();
+  html = html.replace(/<script[^>]*src="[^"]*htmlgame\.js"[^>]*><\/script>/gi, '');
+  const base = url.substring(0, url.lastIndexOf('/') + 1);
+  html = html.replace('<head>', '<head><base href="' + base + '">');
+  return html;
+}
+
 async function openGame(game) {
   clearTimeout(autoRetryTimer);
   currentGame = game;
@@ -74,6 +87,9 @@ async function openGame(game) {
       const resp = await fetch(game.url);
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       gameFrame.srcdoc = await resp.text();
+    } else if (isItchClassic(game.url)) {
+      currentMode = 'srcdoc';
+      gameFrame.srcdoc = await fetchItchClassic(game.url);
     } else {
       currentMode = 'direct';
       gameFrame.src = game.url;
