@@ -282,150 +282,7 @@ header {
   transform: rotate(60deg);
 }
 
-/* ── Account Button ── */
-#account-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 8px 14px;
-  border: 1px solid var(--border-input);
-  border-radius: 10px;
-  background: var(--bg-input);
-  color: var(--text);
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.25s;
-  flex-shrink: 0;
-  white-space: nowrap;
-  font-family: inherit;
-  line-height: 1;
-}
-#account-btn:hover {
-  border-color: var(--accent);
-  background: rgba(102,126,234,0.1);
-}
-.account-btn-label {
-  font-size: 12px;
-}
 
-/* ── Account Page ── */
-#account-page {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 32px 24px;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-}
-#account-page.hidden { display: none; }
-
-#account-page-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
-}
-#account-page-header h2 {
-  font-size: 22px;
-  font-weight: 700;
-}
-
-#account-back-btn {
-  background: none;
-  border: 1px solid var(--border-input);
-  border-radius: 8px;
-  color: var(--accent);
-  font-size: 13px;
-  cursor: pointer;
-  padding: 8px 14px;
-  transition: all 0.2s;
-  font-family: inherit;
-  white-space: nowrap;
-}
-#account-back-btn:hover {
-  border-color: var(--accent);
-  background: rgba(102,126,234,0.1);
-}
-
-#account-page-body {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.account-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 20px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  transition: background 0.4s, border-color 0.4s;
-}
-
-#account-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 14px;
-  background: var(--bg-input);
-  border-radius: 8px;
-  border: 1px solid var(--border-input);
-}
-.stat-label {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-.stat-value {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--cyan);
-}
-
-#saves-container {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.save-list-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  background: var(--bg-input);
-  border-radius: 8px;
-  border: 1px solid var(--border-input);
-  font-size: 13px;
-  transition: border-color 0.2s;
-}
-.save-list-item:hover {
-  border-color: var(--accent);
-}
-.save-list-game {
-  font-weight: 600;
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.save-list-note {
-  color: var(--text-muted);
-  max-width: 120px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.save-list-date {
-  color: var(--text-dim);
-  font-size: 11px;
-  flex-shrink: 0;
-}
 
 /* ── Settings panel ── */
 #settings-panel {
@@ -656,8 +513,6 @@ header {
 }
 
 /* ── Game Grid ── */
-#game-grid.hidden { display: none; }
-
 #game-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -846,97 +701,6 @@ header {
 
 #game-frame { flex: 1; width: 100%; border: none; display: block; background: #000; }
 
-/* ── Save Slots Bar ── */
-#save-slots-bar {
-  display: none;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  border-top: 1px solid var(--border);
-  background: var(--bg-modal-header);
-  flex-shrink: 0;
-  transition: background 0.4s, border-color 0.4s;
-}
-#save-slots-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: var(--text-muted);
-  flex-shrink: 0;
-  margin-right: 4px;
-}
-#save-slots {
-  display: flex;
-  gap: 8px;
-  flex: 1;
-}
-.save-slot {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 8px 10px;
-  border: 1px solid var(--border-input);
-  border-radius: 8px;
-  background: var(--bg-input);
-  min-width: 0;
-  transition: border-color 0.2s, background 0.4s;
-}
-.save-slot:hover {
-  border-color: var(--accent);
-}
-.save-slot-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-.save-slot-name {
-  font-size: 11px;
-  font-weight: 600;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.save-slot-status {
-  font-size: 10px;
-}
-.save-slot-status.empty {
-  color: var(--text-dim);
-}
-.save-slot-status.saved {
-  color: var(--cyan);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.save-slot-actions {
-  display: flex;
-  gap: 3px;
-}
-.save-slot-btn {
-  background: none;
-  border: 1px solid var(--border-input);
-  border-radius: 6px;
-  color: var(--text);
-  font-size: 13px;
-  cursor: pointer;
-  padding: 3px 7px;
-  line-height: 1;
-  transition: all 0.2s;
-}
-.save-slot-btn:hover {
-  border-color: var(--accent);
-  background: rgba(102,126,234,0.1);
-}
-.save-slot-btn.del-btn:hover {
-  border-color: #e74c3c;
-  color: #e74c3c;
-  background: rgba(231,76,60,0.08);
-}
-.save-slot-btn.hidden { display: none; }
-
 /* ── Panic Overlay ── */
 #panic-overlay {
   position: fixed; inset: 0; z-index: 2000;
@@ -1037,9 +801,7 @@ footer {
   #settings-drawer { width: 280px; }
   #save-slots { flex-direction: column; }
   #save-slots-bar { flex-direction: column; align-items: stretch; }
-  #account-page { padding: 24px 16px; }
-  #account-page-header h2 { font-size: 18px; }
-  .account-btn-label { display: none; }
+
 }
 @media (max-width: 450px) {
   #game-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px; }
