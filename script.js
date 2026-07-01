@@ -137,7 +137,13 @@ downloadBtn.addEventListener('click', async () => {
     a.click();
     URL.revokeObjectURL(a.href);
   } catch {
-    window.open(currentGame.url, '_blank');
+    const wrapper = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${currentGame.name}</title><style>body{margin:0;overflow:hidden}iframe{width:100vw;height:100vh;border:none}</style></head><body><iframe src="${currentGame.url}" allowfullscreen></iframe></body></html>`;
+    const blob = new Blob([wrapper], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (currentGame.name || 'game').replace(/[^a-z0-9]/gi, '_') + '.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
   }
   downloadBtn.textContent = '⬇';
 });
