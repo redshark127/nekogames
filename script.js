@@ -587,8 +587,21 @@ function stripInlineScripts(html) {
   return html.replace(/<script>(?!<\/script>)[\s\S]*?<\/script>/gi, '');
 }
 
+async function fetchWithRetry(url, retries = 2) {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      return resp;
+    } catch (e) {
+      if (i === retries) throw e;
+      await new Promise(r => setTimeout(r, 1000 * (i + 1)));
+    }
+  }
+}
+
 async function fetchItchClassic(url) {
-  const resp = await fetch(url);
+  const resp = await fetchWithRetry(url);
   let html = await resp.text();
   html = html.replace(/<script[^>]*src="[^"]*htmlgame\.js"[^>]*><\/script>/gi, '');
   html = html.replace(/<meta[^>]*Content-Security-Policy[^>]*>/gi, '');
@@ -598,7 +611,7 @@ async function fetchItchClassic(url) {
 }
 
 async function fetchNoahstutoring(url) {
-  const resp = await fetch(url);
+  const resp = await fetchWithRetry(url);
   let html = await resp.text();
   html = stripInlineScripts(html);
   return html;
@@ -616,8 +629,7 @@ async function openGame(game) {
   try {
     if (isCDNUrl(game.url)) {
       currentMode = 'srcdoc';
-      const resp = await fetch(game.url);
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      const resp = await fetchWithRetry(game.url);
       gameFrame.srcdoc = await resp.text();
     } else if (isItchClassic(game.url)) {
       currentMode = 'srcdoc';
@@ -630,8 +642,8 @@ async function openGame(game) {
       gameFrame.src = game.url;
     }
   } catch (e) {
-    alert('Failed to load game: ' + game.name + '\n' + e.message);
-    closeGame();
+    currentMode = 'direct';
+    gameFrame.src = game.url;
   }
 }
 
@@ -647,9 +659,12 @@ function reloadGame() {
   if (!currentGame) return;
   if (currentMode === 'srcdoc') {
     gameFrame.srcdoc = '';
-    fetch(currentGame.url).then(r => r.text()).then(html => {
+    fetchWithRetry(currentGame.url).then(r => r.text()).then(html => {
       if (isNoahstutoringUrl(currentGame.url)) html = stripInlineScripts(html);
       gameFrame.srcdoc = html;
+    }).catch(() => {
+      currentMode = 'direct';
+      gameFrame.src = currentGame.url;
     });
   } else {
     gameFrame.removeAttribute('srcdoc');
