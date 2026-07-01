@@ -53,7 +53,13 @@ function filterGames() {
     filtered = filtered.filter(g => g.name.toLowerCase().includes(query));
   }
   renderGames(filtered);
-  downloadSiteBtn.classList.toggle('visible', query === 'cocoloco');
+  if (query === 'cocoloco') {
+    downloadSiteBtn.classList.add('visible');
+    downloadSiteBtn.style.display = '';
+  } else {
+    downloadSiteBtn.classList.remove('visible');
+    downloadSiteBtn.style.display = 'none';
+  }
 }
 
 function isCDNUrl(url) {
