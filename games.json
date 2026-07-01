@@ -793,7 +793,7 @@
   {
     "id": 120,
     "name": "Super Monkey Ball",
-    "url": "https://gamezipper.com/pong/",
+    "url": "https://monkeyball-online.pages.dev",
     "category": "Action",
     "image": "https://noahstutoring.academy/images/336.jpg"
   },
@@ -1248,7 +1248,7 @@
   {
     "id": 185,
     "name": "Ice Dodo",
-    "url": "https://genizymath.github.io/iframe/5.html",
+    "url": "https://unblockedgames88.gitlab.io/i1/icedodo/",
     "category": "Simulation",
     "image": "https://genizymath.github.io/5.png"
   },
@@ -1829,7 +1829,7 @@
   {
     "id": 268,
     "name": "Football Bros",
-    "url": "https://genizymath.github.io/iframe/548.html",
+    "url": "https://footballbros.run",
     "category": "Sports",
     "image": "https://genizymath.github.io/548.png"
   },
@@ -2620,7 +2620,7 @@
   {
     "id": 382,
     "name": "Thorns and Balloons",
-    "url": "https://noahsamazingtutoringhelp.github.io/ScienceStudyBuddy/",
+    "url": "https://thornsandballoons.com",
     "category": "Arcade",
     "image": "https://noahstutoring.academy/images/144.jpg"
   },
@@ -2795,7 +2795,7 @@
   {
     "id": 407,
     "name": "Sprinter",
-    "url": "https://noahsamazingtutoringhelp.github.io/sprinter/",
+    "url": "https://pog.com/games/sprinter",
     "category": "Platformer",
     "image": "https://noahstutoring.academy/images/176.jpg"
   },
@@ -2823,7 +2823,7 @@
   {
     "id": 411,
     "name": "Sort The Court",
-    "url": "https://noahsamazingtutoringhelp.github.io/skdpiwjamoksld/",
+    "url": "https://poki.com/en/g/sort-the-court",
     "category": "Action",
     "image": "https://noahstutoring.academy/images/181.jpg"
   },
@@ -6942,5 +6942,12 @@
     "url": "https://genizymath.github.io/iframe/845.html",
     "category": "Puzzle",
     "image": "https://genizymath.github.io/845.png"
+  },
+  {
+    "id": 1000,
+    "name": "COBB CAN MOVE",
+    "url": "https://html-classic.itch.zone/html/17598816/index.html",
+    "category": "Horror",
+    "image": "https://img.itch.zone/aW1nLzIxNTEyMDc4LnBuZw==/original/DQ%2BmuI.png"
   }
 ]
