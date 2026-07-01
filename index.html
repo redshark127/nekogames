@@ -20,19 +20,26 @@
     </div>
   </header>
 
+  <div class="game-count" id="game-count"></div>
+
   <main>
     <div id="game-grid"></div>
   </main>
+
+  <footer>
+    <button id="download-site-btn">&#x2193; Download Site</button>
+    <p><a href="https://github.com/redshark127/nekogames" target="_blank" rel="noopener">nekogames</a> &middot; <span id="footer-count"></span></p>
+  </footer>
 
   <div id="overlay" class="hidden">
     <div id="game-modal">
       <div id="modal-header">
         <h2 id="modal-title"></h2>
         <div class="modal-actions">
-          <button id="reload-btn" title="Reload">↻</button>
-          <button id="fullscreen-btn" title="Fullscreen">⛶</button>
-          <button id="download-btn" title="Download HTML">⬇</button>
-          <button id="open-btn" title="Open in new tab">↗</button>
+          <button id="reload-btn" title="Reload">&#x21bb;</button>
+          <button id="fullscreen-btn" title="Fullscreen">&#x26F6;</button>
+          <button id="download-btn" title="Download Game">&#x2B07;</button>
+          <button id="open-btn" title="Open in new tab">&#x2197;</button>
           <button id="close-btn">&times;</button>
         </div>
       </div>
@@ -55,6 +62,8 @@
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

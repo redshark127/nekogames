@@ -14,6 +14,9 @@ const downloadBtn = document.getElementById('download-btn');
 const gameModal = document.getElementById('game-modal');
 const panicOverlay = document.getElementById('panic-overlay');
 const abBtn = document.getElementById('ab-btn');
+const downloadSiteBtn = document.getElementById('download-site-btn');
+const gameCount = document.getElementById('game-count');
+const footerCount = document.getElementById('footer-count');
 
 const CLOAK_TITLE = 'Google Docs';
 let origTitle = document.title;
@@ -28,8 +31,9 @@ function renderGames(filtered) {
   filtered.forEach(game => {
     const card = document.createElement('div');
     card.className = 'game-card';
+    const thumbStyle = game.image ? `style="background-image:url('${game.image}')"` : '';
     card.innerHTML = `
-      <div class="thumb" ${game.image ? `style="background-image:url('${game.image}')"` : ''}></div>
+      <div class="thumb" ${thumbStyle}></div>
       <div class="name">${game.name}</div>
       <div class="category">${game.category}</div>
     `;
@@ -110,8 +114,58 @@ function populateCategories() {
   });
 }
 
-searchInput.addEventListener('input', filterGames);
-categoryFilter.addEventListener('change', filterGames);
+function updateCounts() {
+  const total = games.length;
+  const displayed = gameGrid.children.length;
+  if (displayed === total) {
+    gameCount.textContent = `${total} games`;
+    footerCount.textContent = `${total} games`;
+  } else {
+    gameCount.textContent = `Showing ${displayed} of ${total} games`;
+    footerCount.textContent = `${total} games`;
+  }
+}
+
+async function downloadSite() {
+  const btn = downloadSiteBtn;
+  const origText = btn.innerHTML;
+  btn.innerHTML = '&#x23F3; Preparing...';
+  btn.disabled = true;
+
+  try {
+    const zip = new JSZip();
+
+    const files = [
+      { name: 'index.html', path: '/' },
+      { name: 'style.css', path: '/' },
+      { name: 'script.js', path: '/' },
+      { name: 'games.json', path: '/' },
+    ];
+
+    for (const file of files) {
+      const resp = await fetch(file.path + file.name);
+      zip.file(file.name, await resp.text());
+    }
+
+    const blob = await zip.generateAsync({ type: 'blob' });
+    saveAs(blob, 'nekogames.zip');
+    btn.innerHTML = '&#x2713; Downloaded!';
+    setTimeout(() => {
+      btn.innerHTML = origText;
+      btn.disabled = false;
+    }, 2000);
+  } catch (e) {
+    btn.innerHTML = '&#x2717; Failed';
+    console.error('Download failed:', e);
+    setTimeout(() => {
+      btn.innerHTML = origText;
+      btn.disabled = false;
+    }, 3000);
+  }
+}
+
+searchInput.addEventListener('input', () => { filterGames(); updateCounts(); });
+categoryFilter.addEventListener('change', () => { filterGames(); updateCounts(); });
 closeBtn.addEventListener('click', closeGame);
 reloadBtn.addEventListener('click', reloadGame);
 fullscreenBtn.addEventListener('click', () => {
@@ -159,6 +213,11 @@ downloadBtn.addEventListener('click', async () => {
   }
   downloadBtn.textContent = '⬇';
 });
+
+if (downloadSiteBtn) {
+  downloadSiteBtn.addEventListener('click', downloadSite);
+}
+
 abBtn.addEventListener('click', async () => {
   try {
     const res = await fetch(window.location.href);
@@ -181,7 +240,7 @@ abBtn.addEventListener('click', async () => {
     alert('Could not open about:blank: ' + e.message);
   }
 });
-// Auto-retry once per open if iframe is empty (cross-origin fails) — direct mode only
+
 let autoRetryTimer;
 gameFrame.addEventListener('load', () => {
   if (currentMode !== 'direct') return;
@@ -197,9 +256,11 @@ gameFrame.addEventListener('load', () => {
     }
   }, 8000);
 });
+
 overlay.addEventListener('click', e => {
   if (e.target === overlay) closeGame();
 });
+
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     if (document.fullscreenElement) {
@@ -214,11 +275,9 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// Tab cloaking – change title when tab loses focus
 document.addEventListener('visibilitychange', () => {
   document.title = document.hidden ? 'Google Docs - Home' : CLOAK_TITLE;
 });
-// Keep title cloaked always after a brief moment
 setTimeout(() => { document.title = CLOAK_TITLE; }, 100);
 
 fetch(GAMES_JSON)
@@ -227,6 +286,7 @@ fetch(GAMES_JSON)
     games = data;
     populateCategories();
     renderGames(games);
+    updateCounts();
   })
   .catch(err => {
     gameGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#888;">Failed to load games.</p>';
