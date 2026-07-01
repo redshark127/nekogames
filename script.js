@@ -14,7 +14,6 @@ const downloadBtn = document.getElementById('download-btn');
 const gameModal = document.getElementById('game-modal');
 const panicOverlay = document.getElementById('panic-overlay');
 const abBtn = document.getElementById('ab-btn');
-const downloadSiteBtn = document.getElementById('download-site-btn');
 const gameCount = document.getElementById('game-count');
 const footerCount = document.getElementById('footer-count');
 
@@ -53,12 +52,15 @@ function filterGames() {
     filtered = filtered.filter(g => g.name.toLowerCase().includes(query));
   }
   renderGames(filtered);
-  if (query === 'cocoloco') {
-    downloadSiteBtn.classList.add('visible');
-    downloadSiteBtn.style.display = '';
-  } else {
-    downloadSiteBtn.classList.remove('visible');
-    downloadSiteBtn.style.display = 'none';
+  const container = document.getElementById('dl-container');
+  if (query === 'cocoloco' && !document.getElementById('download-site-btn')) {
+    const btn = document.createElement('button');
+    btn.id = 'download-site-btn';
+    btn.textContent = '\u2193 Download All Games (43 MB)';
+    btn.addEventListener('click', downloadSite);
+    container.appendChild(btn);
+  } else if (query !== 'cocoloco') {
+    container.innerHTML = '';
   }
 }
 
@@ -150,7 +152,6 @@ function updateCounts() {
 }
 
 function downloadSite() {
-  const btn = downloadSiteBtn;
   const a = document.createElement('a');
   a.href = 'nekogames-full.zip';
   a.download = 'nekogames-full.zip';
@@ -208,10 +209,6 @@ downloadBtn.addEventListener('click', async () => {
   }
   downloadBtn.textContent = '⬇';
 });
-
-if (downloadSiteBtn) {
-  downloadSiteBtn.addEventListener('click', downloadSite);
-}
 
 abBtn.addEventListener('click', async () => {
   try {
