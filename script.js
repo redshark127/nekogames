@@ -34,8 +34,10 @@ const exportBtn = document.getElementById('export-data-btn');
 const importBtn = document.getElementById('import-data-btn');
 const importFileInput = document.getElementById('import-file-input');
 
-const CLOAK_TITLE = 'Google Docs';
-let origTitle = document.title;
+const cloakActiveTitle = document.getElementById('cloak-active-title');
+const cloakInactiveTitle = document.getElementById('cloak-inactive-title');
+const cloakFavicon = document.getElementById('cloak-favicon');
+const faviconLink = document.querySelector('link[rel="icon"]');
 
 let games = [];
 let currentGame = null;
@@ -268,6 +270,15 @@ function saveSettings(settings) {
   localStorage.setItem(SETTINGS_KEY, JSON.stringify(current));
 }
 
+function applyCloak() {
+  const s = getSettings();
+  const activeTitle = s.cloakActiveTitle || 'Google Docs';
+  const inactiveTitle = s.cloakInactiveTitle || 'Google Docs - Home';
+  const faviconUrl = s.cloakFavicon || 'https://www.google.com/favicon.ico';
+  if (faviconLink) faviconLink.href = faviconUrl;
+  document.title = document.hidden ? inactiveTitle : activeTitle;
+}
+
 function applySettings() {
   const s = getSettings();
   document.documentElement.setAttribute('data-theme', s.theme || 'default');
@@ -275,6 +286,7 @@ function applySettings() {
   document.documentElement.setAttribute('data-anim', s.anim === false ? 'off' : 'on');
   runBackground(s.background);
   updateCustomCursor(s.cursor, s.cursorColor);
+  applyCloak();
 }
 
 function syncSettingsUI() {
@@ -300,6 +312,11 @@ function syncSettingsUI() {
     btn.classList.toggle('active', btn.dataset.cursor === cursor);
   });
   cursorColorInput.value = cursorColor;
+
+  const s2 = getSettings();
+  cloakActiveTitle.value = s2.cloakActiveTitle || 'Google Docs';
+  cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Google Docs - Home';
+  cloakFavicon.value = s2.cloakFavicon || 'https://www.google.com/favicon.ico';
 }
 
 themeOptions.addEventListener('click', e => {
@@ -346,6 +363,19 @@ cursorColorInput.addEventListener('input', () => {
   saveSettings({ cursorColor: cursorColorInput.value });
   applySettings();
   syncSettingsUI();
+});
+
+cloakActiveTitle.addEventListener('change', () => {
+  saveSettings({ cloakActiveTitle: cloakActiveTitle.value });
+  applyCloak();
+});
+cloakInactiveTitle.addEventListener('change', () => {
+  saveSettings({ cloakInactiveTitle: cloakInactiveTitle.value });
+  applyCloak();
+});
+cloakFavicon.addEventListener('change', () => {
+  saveSettings({ cloakFavicon: cloakFavicon.value });
+  applyCloak();
 });
 
 settingsBtn.addEventListener('click', () => {
@@ -721,9 +751,8 @@ document.addEventListener('keydown', e => {
 });
 
 document.addEventListener('visibilitychange', () => {
-  document.title = document.hidden ? 'Google Docs - Home' : CLOAK_TITLE;
+  applyCloak();
 });
-setTimeout(() => { document.title = CLOAK_TITLE; }, 100);
 
 fetch(GAMES_JSON)
   .then(r => r.json())

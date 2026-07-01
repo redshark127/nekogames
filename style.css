@@ -441,6 +441,38 @@ header {
 #cursor-color::-webkit-color-swatch-wrapper { padding: 0; }
 #cursor-color::-webkit-color-swatch { border: none; border-radius: 5px; }
 
+/* Cloaking inputs */
+.cloak-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cloak-field {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cloak-field-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.setting-text-input {
+  padding: 8px 10px;
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  background: var(--bg-input);
+  color: var(--text);
+  font-size: 12px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.25s;
+}
+.setting-text-input:focus {
+  border-color: var(--accent);
+}
+
 /* Toggle switch */
 .setting-toggle {
   display: flex;
