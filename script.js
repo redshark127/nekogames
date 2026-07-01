@@ -293,6 +293,13 @@ function applySettings() {
   runBackground(s.background);
   updateCustomCursor(s.cursor, s.cursorColor);
   applyCloak();
+  if (s.cursorColor) {
+    document.documentElement.style.setProperty('--accent', s.cursorColor);
+    document.documentElement.style.setProperty('--cyan', s.cursorColor);
+  } else {
+    document.documentElement.style.removeProperty('--accent');
+    document.documentElement.style.removeProperty('--cyan');
+  }
 }
 
 function syncSettingsUI() {
