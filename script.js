@@ -128,8 +128,10 @@ downloadBtn.addEventListener('click', async () => {
   if (!currentGame) return;
   downloadBtn.textContent = '⏳';
   const name = (currentGame.name || 'game').replace(/[^a-z0-9]/gi, '_');
+  const fsScript = `<script>function fs(){document.documentElement.requestFullscreen?.()||document.body.requestFullscreen?.()}fs();document.addEventListener('click',fs);<\/script>`;
   if (currentMode === 'srcdoc' && gameFrame.srcdoc) {
-    const blob = new Blob([gameFrame.srcdoc], { type: 'text/html' });
+    const html = gameFrame.srcdoc.replace('</head>', fsScript + '</head>');
+    const blob = new Blob([html], { type: 'text/html' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = name + '.html';
@@ -138,7 +140,7 @@ downloadBtn.addEventListener('click', async () => {
   } else {
     try {
       const res = await fetch(currentGame.url);
-      const html = await res.text();
+      const html = (await res.text()).replace('</head>', fsScript + '</head>');
       const blob = new Blob([html], { type: 'text/html' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
@@ -146,7 +148,7 @@ downloadBtn.addEventListener('click', async () => {
       a.click();
       URL.revokeObjectURL(a.href);
     } catch {
-      const wrapper = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${currentGame.name}</title><style>body{margin:0;overflow:hidden}iframe{width:100vw;height:100vh;border:none}</style></head><body><iframe src="${currentGame.url}" allowfullscreen></iframe></body></html>`;
+      const wrapper = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${currentGame.name}</title><style>body{margin:0;overflow:hidden}iframe{width:100vw;height:100vh;border:none}</style>${fsScript}</head><body><iframe src="${currentGame.url}" allowfullscreen></iframe></body></html>`;
       const blob = new Blob([wrapper], { type: 'text/html' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
