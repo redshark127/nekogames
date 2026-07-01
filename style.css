@@ -350,7 +350,9 @@ footer {
   margin-top: 10px;
 }
 
-#download-site-btn {
+#download-site-btn { display: none; }
+
+#download-site-btn.visible {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -366,9 +368,7 @@ footer {
   font-family: inherit;
 }
 
-#download-site-btn.hidden { display: none; }
-
-#download-site-btn:hover {
+#download-site-btn.visible:hover {
   border-color: rgba(102, 126, 234, 0.6);
   background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(168,85,247,0.14));
   color: #fff;
