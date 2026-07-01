@@ -35,6 +35,8 @@ const animToggle = document.getElementById('anim-toggle');
 const bgOptions = document.getElementById('bg-options');
 const cursorOptions = document.getElementById('cursor-options');
 const cursorColorInput = document.getElementById('cursor-color');
+const bgColorInput = document.getElementById('bg-color');
+const accentColorInput = document.getElementById('accent-color');
 
 const exportBtn = document.getElementById('export-data-btn');
 const importBtn = document.getElementById('import-data-btn');
@@ -293,9 +295,14 @@ function applySettings() {
   runBackground(s.background);
   updateCustomCursor(s.cursor, s.cursorColor);
   applyCloak();
-  if (s.cursorColor) {
-    document.documentElement.style.setProperty('--accent', s.cursorColor);
-    document.documentElement.style.setProperty('--cyan', s.cursorColor);
+  if (s.bgColor) {
+    document.body.style.background = s.bgColor;
+  } else {
+    document.body.style.background = '';
+  }
+  if (s.accentColor) {
+    document.documentElement.style.setProperty('--accent', s.accentColor);
+    document.documentElement.style.setProperty('--cyan', s.accentColor);
   } else {
     document.documentElement.style.removeProperty('--accent');
     document.documentElement.style.removeProperty('--cyan');
@@ -309,6 +316,8 @@ function syncSettingsUI() {
   const anim = s.anim !== false;
   const bg = s.background || 'none';
   const cursor = s.cursor || 'default';
+  const bgColor = s.bgColor || '';
+  const accentColor = s.accentColor || '';
   const cursorColor = s.cursorColor || '#00f0ff';
 
   themeOptions.querySelectorAll('.setting-option').forEach(btn => {
@@ -324,6 +333,8 @@ function syncSettingsUI() {
   cursorOptions.querySelectorAll('.setting-option').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.cursor === cursor);
   });
+  bgColorInput.value = bgColor || '#07070f';
+  accentColorInput.value = accentColor || '#667eea';
   cursorColorInput.value = cursorColor;
 
   const s2 = getSettings();
@@ -368,6 +379,18 @@ cursorOptions.addEventListener('click', e => {
   const btn = e.target.closest('.setting-option');
   if (!btn || !btn.dataset.cursor) return;
   saveSettings({ cursor: btn.dataset.cursor });
+  applySettings();
+  syncSettingsUI();
+});
+
+bgColorInput.addEventListener('input', () => {
+  saveSettings({ bgColor: bgColorInput.value });
+  applySettings();
+  syncSettingsUI();
+});
+
+accentColorInput.addEventListener('input', () => {
+  saveSettings({ accentColor: accentColorInput.value });
   applySettings();
   syncSettingsUI();
 });
