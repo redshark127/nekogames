@@ -128,36 +128,32 @@
     </div>
   </div>
 
-  <div id="account-panel" class="hidden">
-    <div id="account-backdrop"></div>
-    <div id="account-drawer">
-      <div id="account-header">
+  <main>
+    <div id="game-grid"></div>
+    <div id="account-page" class="hidden">
+      <div id="account-page-header">
+        <button id="account-back-btn">&#x2190; Back to Games</button>
         <h2>Account</h2>
-        <button id="account-close">&times;</button>
       </div>
-      <div id="account-body">
-        <div class="setting-group">
+      <div id="account-page-body">
+        <div class="account-card">
           <label class="setting-label">Username</label>
           <input type="text" id="account-username" class="setting-text-input" placeholder="Enter your username" maxlength="24">
         </div>
-        <div class="setting-group">
+        <div class="account-card">
           <label class="setting-label">Stats</label>
           <div id="account-stats">
             <div class="stat-row"><span class="stat-label">Games played</span><span class="stat-value" id="stat-played">0</span></div>
             <div class="stat-row"><span class="stat-label">Total saves</span><span class="stat-value" id="stat-saves">0</span></div>
           </div>
         </div>
-        <div class="setting-group" id="account-saves-list">
+        <div class="account-card">
           <label class="setting-label">Your Saves</label>
           <p class="setting-hint">Saves are stored on this device. Export your data in Settings to back them up.</p>
           <div id="saves-container"></div>
         </div>
       </div>
     </div>
-  </div>
-
-  <main>
-    <div id="game-grid"></div>
   </main>
 
   <footer>

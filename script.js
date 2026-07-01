@@ -42,9 +42,8 @@ const cloakFavicon = document.getElementById('cloak-favicon');
 const faviconLink = document.querySelector('link[rel="icon"]');
 
 const accountBtn = document.getElementById('account-btn');
-const accountPanel = document.getElementById('account-panel');
-const accountBackdrop = document.getElementById('account-backdrop');
-const accountClose = document.getElementById('account-close');
+const accountPage = document.getElementById('account-page');
+const accountBackBtn = document.getElementById('account-back-btn');
 const accountUsername = document.getElementById('account-username');
 const statPlayed = document.getElementById('stat-played');
 const statSaves = document.getElementById('stat-saves');
@@ -560,18 +559,19 @@ function syncAccountUI() {
   refreshSavesList();
 }
 
-accountBtn.addEventListener('click', () => {
-  accountPanel.classList.remove('hidden');
+function showAccountPage() {
+  gameGrid.classList.add('hidden');
+  accountPage.classList.remove('hidden');
   syncAccountUI();
-});
+}
 
-accountClose.addEventListener('click', () => {
-  accountPanel.classList.add('hidden');
-});
+function hideAccountPage() {
+  accountPage.classList.add('hidden');
+  gameGrid.classList.remove('hidden');
+}
 
-accountBackdrop.addEventListener('click', () => {
-  accountPanel.classList.add('hidden');
-});
+accountBtn.addEventListener('click', showAccountPage);
+accountBackBtn.addEventListener('click', hideAccountPage);
 
 accountUsername.addEventListener('change', () => {
   saveAccount({ username: accountUsername.value.trim() });
@@ -628,7 +628,7 @@ function saveToSlot(slotIdx) {
   }
   persistSaves(saves);
   syncSaveSlots();
-  if (!accountPanel.classList.contains('hidden')) syncAccountUI();
+  if (!accountPage.classList.contains('hidden')) syncAccountUI();
 }
 
 function loadFromSlot(slotIdx) {
@@ -650,7 +650,7 @@ function deleteSlot(slotIdx) {
   }
   persistSaves(saves);
   syncSaveSlots();
-  if (!accountPanel.classList.contains('hidden')) syncAccountUI();
+  if (!accountPage.classList.contains('hidden')) syncAccountUI();
 }
 
 saveSlotsContainer.addEventListener('click', e => {
@@ -928,8 +928,8 @@ document.addEventListener('keydown', e => {
       settingsPanel.classList.add('hidden');
       return;
     }
-    if (!accountPanel.classList.contains('hidden')) {
-      accountPanel.classList.add('hidden');
+    if (!accountPage.classList.contains('hidden')) {
+      hideAccountPage();
       return;
     }
     if (document.fullscreenElement) {

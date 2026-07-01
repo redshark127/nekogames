@@ -308,61 +308,60 @@ header {
   font-size: 12px;
 }
 
-/* ── Account Panel ── */
-#account-panel {
-  position: fixed;
-  inset: 0;
-  z-index: 500;
+/* ── Account Page ── */
+#account-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
-#account-panel.hidden { display: none; }
+#account-page.hidden { display: none; }
 
-#account-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  animation: fadeIn 0.2s ease;
-}
-
-#account-drawer {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 340px;
-  max-width: 90vw;
-  background: var(--bg-settings);
-  border-left: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transition: background 0.4s, border-color 0.4s;
-  box-shadow: -8px 0 40px rgba(0,0,0,0.3);
-}
-
-#account-header {
+#account-page-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 18px 20px;
-  border-bottom: 1px solid var(--border);
+  gap: 16px;
+  margin-bottom: 28px;
 }
-#account-header h2 { font-size: 17px; font-weight: 600; }
-
-#account-close {
-  background: none; border: none;
-  color: var(--text); font-size: 28px;
-  cursor: pointer; opacity: 0.5;
-  transition: opacity 0.2s; line-height: 1; padding: 0 4px;
+#account-page-header h2 {
+  font-size: 22px;
+  font-weight: 700;
 }
-#account-close:hover { opacity: 1; }
 
-#account-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px;
+#account-back-btn {
+  background: none;
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  color: var(--accent);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 8px 14px;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+#account-back-btn:hover {
+  border-color: var(--accent);
+  background: rgba(102,126,234,0.1);
+}
+
+#account-page-body {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
+}
+
+.account-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: background 0.4s, border-color 0.4s;
 }
 
 #account-stats {
@@ -374,7 +373,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 12px;
+  padding: 10px 14px;
   background: var(--bg-input);
   border-radius: 8px;
   border: 1px solid var(--border-input);
@@ -393,18 +392,20 @@ header {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  max-height: 240px;
-  overflow-y: auto;
 }
 .save-list-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 10px;
+  padding: 10px 12px;
   background: var(--bg-input);
   border-radius: 8px;
   border: 1px solid var(--border-input);
-  font-size: 12px;
+  font-size: 13px;
+  transition: border-color 0.2s;
+}
+.save-list-item:hover {
+  border-color: var(--accent);
 }
 .save-list-game {
   font-weight: 600;
@@ -415,7 +416,7 @@ header {
 }
 .save-list-note {
   color: var(--text-muted);
-  max-width: 100px;
+  max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -655,6 +656,8 @@ header {
 }
 
 /* ── Game Grid ── */
+#game-grid.hidden { display: none; }
+
 #game-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -1034,7 +1037,8 @@ footer {
   #settings-drawer { width: 280px; }
   #save-slots { flex-direction: column; }
   #save-slots-bar { flex-direction: column; align-items: stretch; }
-  #account-drawer { width: 280px; }
+  #account-page { padding: 24px 16px; }
+  #account-page-header h2 { font-size: 18px; }
   .account-btn-label { display: none; }
 }
 @media (max-width: 450px) {
