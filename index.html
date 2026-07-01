@@ -5,30 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google Docs</title>
   <link rel="icon" href="https://www.google.com/favicon.ico">
-  <script></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Unblocked Games</h1>
-    <div class="controls">
-      <input type="text" id="search" placeholder="Search games..." autocomplete="off">
-      <select id="category-filter">
-        <option value="all">All Categories</option>
-      </select>
-      <button id="ab-btn" style="display:none">about:blank</button>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">&#x25B6;</span>
+        <h1>nekogames</h1>
+      </div>
+      <div class="controls">
+        <input type="text" id="search" placeholder="Search games..." autocomplete="off">
+        <select id="category-filter">
+          <option value="all">All Categories</option>
+        </select>
+        <button id="ab-btn" style="display:none">about:blank</button>
+      </div>
+      <div class="header-badge" id="game-count"></div>
     </div>
   </header>
-
-  <div class="game-count" id="game-count"></div>
 
   <main>
     <div id="game-grid"></div>
   </main>
 
   <footer>
-    <p><a href="https://github.com/redshark127/nekogames" target="_blank" rel="noopener">nekogames</a> &middot; <span id="footer-count"></span></p>
-    <div id="dl-container"></div>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://github.com/redshark127/nekogames" target="_blank" rel="noopener">GitHub</a>
+        <span class="footer-sep">&middot;</span>
+        <span id="footer-count"></span>
+      </div>
+      <div id="dl-container"></div>
+      <a id="request-btn" href="#" target="_blank" rel="noopener" class="request-btn">
+        <span class="request-icon">&#x1F4DD;</span>
+        <span>Request a Game</span>
+        <span class="request-sub">Don't see your game? Request it here.</span>
+      </a>
+    </div>
   </footer>
 
   <div id="overlay" class="hidden">

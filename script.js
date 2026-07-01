@@ -1,4 +1,5 @@
 const GAMES_JSON = 'games.json';
+const REQUEST_FORM_URL = '#'; // TODO: Replace with your Google Form URL
 
 const gameGrid = document.getElementById('game-grid');
 const searchInput = document.getElementById('search');
