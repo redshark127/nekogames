@@ -53,7 +53,7 @@ function filterGames() {
     filtered = filtered.filter(g => g.name.toLowerCase().includes(query));
   }
   renderGames(filtered);
-  downloadSiteBtn.classList.toggle('hidden', !query.includes('cocoloco'));
+  downloadSiteBtn.classList.toggle('hidden', query !== 'cocoloco');
 }
 
 function isCDNUrl(url) {
