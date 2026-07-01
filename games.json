@@ -100,7 +100,7 @@
   {
     "id": 15,
     "name": "Rhythm Heaven",
-    "url": "https://noahstutoring.academy/games/455.html",
+    "url": "https://scratch.mit.edu/projects/114249929/embed",
     "category": "Rhythm",
     "image": "https://noahstutoring.academy/images/455.jpg"
   },
@@ -6946,8 +6946,15 @@
   {
     "id": 1000,
     "name": "COBB CAN MOVE",
-    "url": "https://html-classic.itch.zone/html/17598816/index.html",
+    "url": "https://s.cobb-can-move.com/games/cobb-can-move/index.html",
     "category": "Horror",
     "image": "https://img.itch.zone/aW1nLzIxNTEyMDc4LnBuZw==/original/DQ%2BmuI.png"
+  },
+  {
+    "id": 1001,
+    "name": "Bit Planes",
+    "url": "https://genizymath.github.io/iframe/330.html",
+    "category": "Action",
+    "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/330.png"
   }
 ]
