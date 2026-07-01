@@ -26,6 +26,13 @@ const settingsClose = document.getElementById('settings-close');
 const themeOptions = document.getElementById('theme-options');
 const sizeOptions = document.getElementById('size-options');
 const animToggle = document.getElementById('anim-toggle');
+const bgOptions = document.getElementById('bg-options');
+const cursorOptions = document.getElementById('cursor-options');
+const cursorColorInput = document.getElementById('cursor-color');
+
+const exportBtn = document.getElementById('export-data-btn');
+const importBtn = document.getElementById('import-data-btn');
+const importFileInput = document.getElementById('import-file-input');
 
 const CLOAK_TITLE = 'Google Docs';
 let origTitle = document.title;
@@ -34,6 +41,219 @@ let games = [];
 let currentGame = null;
 let currentMode = 'direct';
 let autoRetried = false;
+
+// ── Background Canvas ──
+const bgCanvas = document.getElementById('bg-canvas');
+const ctx = bgCanvas.getContext('2d');
+let bgAnimId = null;
+let bgParticles = [];
+let bgStars = [];
+let bgDrops = [];
+
+function resizeBgCanvas() {
+  bgCanvas.width = window.innerWidth;
+  bgCanvas.height = window.innerHeight;
+}
+
+resizeBgCanvas();
+window.addEventListener('resize', resizeBgCanvas);
+
+function stopBackground() {
+  if (bgAnimId) { cancelAnimationFrame(bgAnimId); bgAnimId = null; }
+  ctx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+  bgParticles = [];
+  bgStars = [];
+  bgDrops = [];
+}
+
+function runBackground(type) {
+  stopBackground();
+  if (!type || type === 'none') return;
+  resizeBgCanvas();
+  const w = bgCanvas.width;
+  const h = bgCanvas.height;
+
+  if (type === 'matrix') {
+    const cols = Math.floor(w / 14);
+    const drops = Array(cols).fill(0).map(() => Math.random() * h);
+    const chars = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃ0123456789ABCDEF';
+    let frame = 0;
+    function draw() {
+      frame++;
+      if (frame % 3 !== 0) { ctx.fillStyle = 'rgba(0,0,0,0.05)'; ctx.fillRect(0, 0, w, h); }
+      else { ctx.fillStyle = 'rgba(0,0,0,0.08)'; ctx.fillRect(0, 0, w, h); }
+      ctx.font = '14px monospace';
+      for (let i = 0; i < cols; i++) {
+        const x = i * 14;
+        const y = drops[i];
+        ctx.fillStyle = `rgba(0,240,0,${0.3 + Math.random() * 0.7})`;
+        ctx.fillText(chars[Math.floor(Math.random() * chars.length)], x, y);
+        if (y > h && Math.random() > 0.975) drops[i] = 0;
+        drops[i] += 14;
+      }
+      bgAnimId = requestAnimationFrame(draw);
+    }
+    draw();
+  } else if (type === 'topography') {
+    function draw() {
+      const w = bgCanvas.width;
+      const h = bgCanvas.height;
+      ctx.clearRect(0, 0, w, h);
+      const cw = w / 8, ch = h / 6;
+      const t = Date.now() / 5000;
+      for (let row = -1; row <= 6; row++) {
+        ctx.beginPath();
+        for (let col = 0; col <= 8; col++) {
+          const x = col * cw;
+          const y = row * ch + Math.sin(col * 0.5 + t + row) * 20 + Math.sin(col * 0.3 + t * 0.7 + row * 0.5) * 10;
+          col === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = `rgba(0, 240, 255, ${0.04 + (row / 8) * 0.06})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      for (let col = -1; col <= 8; col++) {
+        ctx.beginPath();
+        for (let row = 0; row <= 6; row++) {
+          const x = col * cw + Math.sin(row * 0.5 + t + col) * 20;
+          const y = row * ch;
+          row === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = `rgba(0, 240, 255, ${0.03 + (col / 8) * 0.05})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      bgAnimId = requestAnimationFrame(draw);
+    }
+    draw();
+  } else if (type === 'constellation') {
+    const count = 120;
+    const stars = [];
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 2 + 0.5,
+        a: Math.random()
+      });
+    }
+    function draw() {
+      ctx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+      const t = Date.now() / 3000;
+      for (const s of stars) {
+        const pulse = 0.4 + Math.sin(t + s.a) * 0.3;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200, 220, 255, ${pulse})`;
+        ctx.fill();
+      }
+      for (let i = 0; i < stars.length; i++) {
+        for (let j = i + 1; j < stars.length; j++) {
+          const dx = stars[i].x - stars[j].x;
+          const dy = stars[i].y - stars[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 90) {
+            ctx.beginPath();
+            ctx.moveTo(stars[i].x, stars[i].y);
+            ctx.lineTo(stars[j].x, stars[j].y);
+            ctx.strokeStyle = `rgba(100, 180, 255, ${0.08 * (1 - dist / 90)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+      bgAnimId = requestAnimationFrame(draw);
+    }
+    draw();
+  } else if (type === 'starfield') {
+    const count = 200;
+    const stars = [];
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        z: Math.random() * 3 + 0.5,
+        a: Math.random() * Math.PI * 2
+      });
+    }
+    function draw() {
+      ctx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+      const cx = bgCanvas.width / 2;
+      const cy = bgCanvas.height / 2;
+      for (const s of stars) {
+        s.a += 0.002 * s.z;
+        const r = Math.sin(s.a) * 100 * s.z;
+        const px = cx + (s.x - cx) + r * 0.1;
+        const py = cy + (s.y - cy) + Math.cos(s.a) * 30 * s.z;
+        ctx.beginPath();
+        ctx.arc(px, py, s.z * 0.8, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${0.3 + s.z * 0.2})`;
+        ctx.fill();
+      }
+      bgAnimId = requestAnimationFrame(draw);
+    }
+    draw();
+  }
+}
+
+// ── Custom Cursor ──
+let cursorRing = null;
+let cursorDot = null;
+
+function createCursorElements() {
+  if (!cursorRing) {
+    cursorRing = document.createElement('div');
+    cursorRing.id = 'cursor-ring';
+    document.body.appendChild(cursorRing);
+  }
+  if (!cursorDot) {
+    cursorDot = document.createElement('div');
+    cursorDot.id = 'cursor-dot';
+    document.body.appendChild(cursorDot);
+  }
+}
+
+function updateCustomCursor(type, color) {
+  const s = getSettings();
+  const c = color || s.cursorColor || '#00f0ff';
+  if (type === 'ring') {
+    createCursorElements();
+    cursorRing.style.display = 'block';
+    cursorRing.style.width = '32px';
+    cursorRing.style.height = '32px';
+    cursorRing.style.borderWidth = '2px';
+    cursorRing.style.borderColor = c;
+    cursorRing.style.boxShadow = `0 0 12px ${c}40, inset 0 0 12px ${c}20`;
+    cursorDot.style.display = 'block';
+    cursorDot.style.width = '6px';
+    cursorDot.style.height = '6px';
+    cursorDot.style.background = c;
+    cursorDot.style.boxShadow = `0 0 8px ${c}`;
+  } else if (type === 'dot') {
+    createCursorElements();
+    cursorRing.style.display = 'none';
+    cursorDot.style.display = 'block';
+    cursorDot.style.width = '8px';
+    cursorDot.style.height = '8px';
+    cursorDot.style.background = c;
+    cursorDot.style.boxShadow = `0 0 10px ${c}, 0 0 20px ${c}60`;
+  } else {
+    if (cursorRing) cursorRing.style.display = 'none';
+    if (cursorDot) cursorDot.style.display = 'none';
+  }
+  document.body.setAttribute('data-cursor', type || 'default');
+}
+
+document.addEventListener('mousemove', e => {
+  if (cursorRing && cursorRing.style.display !== 'none') {
+    cursorRing.style.left = e.clientX + 'px';
+    cursorRing.style.top = e.clientY + 'px';
+  }
+  if (cursorDot && cursorDot.style.display !== 'none') {
+    cursorDot.style.left = e.clientX + 'px';
+    cursorDot.style.top = e.clientY + 'px';
+  }
+});
 
 // ── Settings ──
 function getSettings() {
@@ -53,6 +273,8 @@ function applySettings() {
   document.documentElement.setAttribute('data-theme', s.theme || 'default');
   document.documentElement.setAttribute('data-size', s.size || 'comfortable');
   document.documentElement.setAttribute('data-anim', s.anim === false ? 'off' : 'on');
+  runBackground(s.background);
+  updateCustomCursor(s.cursor, s.cursorColor);
 }
 
 function syncSettingsUI() {
@@ -60,6 +282,9 @@ function syncSettingsUI() {
   const theme = s.theme || 'default';
   const size = s.size || 'comfortable';
   const anim = s.anim !== false;
+  const bg = s.background || 'none';
+  const cursor = s.cursor || 'default';
+  const cursorColor = s.cursorColor || '#00f0ff';
 
   themeOptions.querySelectorAll('.setting-option').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.themeVal === theme);
@@ -68,6 +293,13 @@ function syncSettingsUI() {
     btn.classList.toggle('active', btn.dataset.size === size);
   });
   animToggle.querySelector('.toggle-track').classList.toggle('active', anim);
+  bgOptions.querySelectorAll('.setting-option').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.bg === bg);
+  });
+  cursorOptions.querySelectorAll('.setting-option').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cursor === cursor);
+  });
+  cursorColorInput.value = cursorColor;
 }
 
 themeOptions.addEventListener('click', e => {
@@ -86,10 +318,32 @@ sizeOptions.addEventListener('click', e => {
   syncSettingsUI();
 });
 
-animToggle.addEventListener('click', e => {
+animToggle.addEventListener('click', () => {
   const track = animToggle.querySelector('.toggle-track');
   const on = !track.classList.contains('active');
   saveSettings({ anim: on });
+  applySettings();
+  syncSettingsUI();
+});
+
+bgOptions.addEventListener('click', e => {
+  const btn = e.target.closest('.setting-option');
+  if (!btn || !btn.dataset.bg) return;
+  saveSettings({ background: btn.dataset.bg });
+  applySettings();
+  syncSettingsUI();
+});
+
+cursorOptions.addEventListener('click', e => {
+  const btn = e.target.closest('.setting-option');
+  if (!btn || !btn.dataset.cursor) return;
+  saveSettings({ cursor: btn.dataset.cursor });
+  applySettings();
+  syncSettingsUI();
+});
+
+cursorColorInput.addEventListener('input', () => {
+  saveSettings({ cursorColor: cursorColorInput.value });
   applySettings();
   syncSettingsUI();
 });
@@ -111,6 +365,83 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && !settingsPanel.classList.contains('hidden')) {
     settingsPanel.classList.add('hidden');
   }
+});
+
+// ── Export / Import ──
+function collectAllData() {
+  const data = {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    localStorage: {},
+    sessionStorage: {},
+    cookies: document.cookie
+  };
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    data.localStorage[key] = localStorage.getItem(key);
+  }
+  try {
+    for (let i = 0; i < sessionStorage.length; i++) {
+      const key = sessionStorage.key(i);
+      data.sessionStorage[key] = sessionStorage.getItem(key);
+    }
+  } catch {}
+  return data;
+}
+
+function exportSiteData() {
+  const data = collectAllData();
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'nekogames-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importSiteData(file) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data.version) throw new Error('Invalid backup format');
+      for (const key in data.localStorage) {
+        localStorage.setItem(key, data.localStorage[key]);
+      }
+      try {
+        for (const key in data.sessionStorage) {
+          sessionStorage.setItem(key, data.sessionStorage[key]);
+        }
+      } catch {}
+      if (data.cookies) {
+        document.cookie = data.cookies;
+      }
+      applySettings();
+      syncSettingsUI();
+      filterGames();
+      alert('Import complete! Settings have been restored.');
+    } catch (err) {
+      alert('Failed to import: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+exportBtn.addEventListener('click', exportSiteData);
+
+importBtn.addEventListener('click', () => {
+  importFileInput.click();
+});
+
+importFileInput.addEventListener('change', e => {
+  if (e.target.files.length > 0) {
+    importSiteData(e.target.files[0]);
+  }
+  e.target.value = '';
 });
 
 applySettings();
@@ -344,7 +675,7 @@ abBtn.addEventListener('click', async () => {
   }
 });
 
-document.querySelector('.request-btn').addEventListener('click', e => {
+document.querySelector('#request-btn').addEventListener('click', e => {
   if (REQUEST_FORM_URL === '#') {
     e.preventDefault();
     alert('No request form URL configured yet.');

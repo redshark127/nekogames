@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <canvas id="bg-canvas"></canvas>
+
   <header>
     <div class="header-inner">
       <div class="logo">
@@ -21,8 +23,8 @@
         </select>
         <button id="ab-btn" style="display:none">about:blank</button>
       </div>
-      <a id="request-btn" href="https://forms.gle/4TP4J3fqpZbanuuQ9" target="_blank" rel="noopener" class="request-btn" title="Request a Game">
-        <span class="request-icon">&#x1F4DD;</span>
+      <a id="request-btn" href="https://forms.gle/4TP4J3fqpZbanuuQ9" target="_blank" rel="noopener" title="Request a Game">
+        <span>&#x1F4DD;</span>
         <span>Request</span>
       </a>
       <button id="settings-btn" title="Settings">&#x2699;</button>
@@ -38,41 +40,69 @@
         <button id="settings-close">&times;</button>
       </div>
       <div id="settings-body">
+
         <div class="setting-group">
           <label class="setting-label">Theme</label>
           <div class="setting-options" id="theme-options">
-            <button class="setting-option active" data-theme-val="default">
-              <span class="opt-swatch swatch-default"></span>
-              Default
-            </button>
-            <button class="setting-option" data-theme-val="midnight">
-              <span class="opt-swatch swatch-midnight"></span>
-              Midnight
-            </button>
-            <button class="setting-option" data-theme-val="light">
-              <span class="opt-swatch swatch-light"></span>
-              Light
-            </button>
+            <button class="setting-option" data-theme-val="default"><span class="opt-swatch swatch-default"></span>Default</button>
+            <button class="setting-option" data-theme-val="midnight"><span class="opt-swatch swatch-midnight"></span>Midnight</button>
+            <button class="setting-option" data-theme-val="light"><span class="opt-swatch swatch-light"></span>Light</button>
           </div>
         </div>
+
+        <div class="setting-group">
+          <label class="setting-label">Background</label>
+          <div class="setting-options" id="bg-options">
+            <button class="setting-option" data-bg="none">None</button>
+            <button class="setting-option" data-bg="matrix">Matrix</button>
+            <button class="setting-option" data-bg="topography">Topography</button>
+            <button class="setting-option" data-bg="constellation">Constellation</button>
+            <button class="setting-option" data-bg="starfield">Starfield</button>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">Custom Cursor</label>
+          <div class="setting-options" id="cursor-options">
+            <button class="setting-option" data-cursor="default">Default</button>
+            <button class="setting-option" data-cursor="ring">Ring</button>
+            <button class="setting-option" data-cursor="dot">Dot</button>
+            <button class="setting-option" data-cursor="crosshair">Crosshair</button>
+          </div>
+          <div class="cursor-color-row">
+            <span class="cursor-color-label">Color</span>
+            <input type="color" id="cursor-color" value="#00f0ff">
+          </div>
+        </div>
+
         <div class="setting-group">
           <label class="setting-label">Card Size</label>
           <div class="setting-options" id="size-options">
             <button class="setting-option" data-size="compact">Compact</button>
-            <button class="setting-option active" data-size="comfortable">Comfortable</button>
+            <button class="setting-option" data-size="comfortable">Comfortable</button>
             <button class="setting-option" data-size="spacious">Spacious</button>
           </div>
         </div>
+
         <div class="setting-group">
           <label class="setting-label">Animations</label>
           <div class="setting-toggle" id="anim-toggle">
             <span>On</span>
-            <div class="toggle-track">
-              <div class="toggle-thumb"></div>
-            </div>
+            <div class="toggle-track"><div class="toggle-thumb"></div></div>
             <span>Off</span>
           </div>
         </div>
+
+        <div class="setting-group">
+          <label class="setting-label">Export / Import Site Data</label>
+          <p class="setting-hint">Export or import complete site data: settings, localStorage, sessionStorage, and cookies.</p>
+          <div class="setting-actions">
+            <button id="export-data-btn" class="setting-action-btn">&#x2B07; Export Data</button>
+            <button id="import-data-btn" class="setting-action-btn">&#x2B06; Import Data</button>
+          </div>
+          <input type="file" id="import-file-input" accept=".json" style="display:none">
+        </div>
+
       </div>
     </div>
   </div>
@@ -111,9 +141,7 @@
   <div id="panic-overlay" class="hidden">
     <div class="panic-bar">
       <span>docs.google.com/document/d/1xK...</span>
-      <div class="panic-actions">
-        <span>File</span><span>Edit</span><span>View</span><span>Help</span>
-      </div>
+      <div class="panic-actions"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>
     </div>
     <div class="panic-content">
       <div class="panic-paper">
