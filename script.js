@@ -1,7 +1,5 @@
 const GAMES_JSON = 'games.json';
 const REQUEST_FORM_URL = 'https://forms.gle/4TP4J3fqpZbanuuQ9';
-
-history.replaceState(null, '', '/');
 const SETTINGS_KEY = 'nekogames_settings';
 
 const gameGrid = document.getElementById('game-grid');
