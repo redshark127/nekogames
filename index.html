@@ -27,6 +27,7 @@
         <span>&#x1F4DD;</span>
         <span>Request</span>
       </a>
+      <button id="account-btn" title="Account">&#x1F464;</button>
       <button id="settings-btn" title="Settings">&#x2699;</button>
       <div class="header-badge" id="game-count"></div>
     </div>
@@ -128,6 +129,34 @@
     </div>
   </div>
 
+  <div id="account-panel" class="hidden">
+    <div id="account-backdrop"></div>
+    <div id="account-drawer">
+      <div id="account-header">
+        <h2>Account</h2>
+        <button id="account-close">&times;</button>
+      </div>
+      <div id="account-body">
+        <div class="setting-group">
+          <label class="setting-label">Username</label>
+          <input type="text" id="account-username" class="setting-text-input" placeholder="Enter your username" maxlength="24">
+        </div>
+        <div class="setting-group">
+          <label class="setting-label">Stats</label>
+          <div id="account-stats">
+            <div class="stat-row"><span class="stat-label">Games played</span><span class="stat-value" id="stat-played">0</span></div>
+            <div class="stat-row"><span class="stat-label">Total saves</span><span class="stat-value" id="stat-saves">0</span></div>
+          </div>
+        </div>
+        <div class="setting-group" id="account-saves-list">
+          <label class="setting-label">Your Saves</label>
+          <p class="setting-hint">Saves are stored on this device. Export your data in Settings to back them up.</p>
+          <div id="saves-container"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <main>
     <div id="game-grid"></div>
   </main>
@@ -156,6 +185,44 @@
         </div>
       </div>
       <iframe id="game-frame" allowfullscreen></iframe>
+      <div id="save-slots-bar">
+        <span id="save-slots-label">Save Slots</span>
+        <div id="save-slots">
+          <div class="save-slot" data-slot="0">
+            <div class="save-slot-info">
+              <span class="save-slot-name">Slot 1</span>
+              <span class="save-slot-status empty">Empty</span>
+            </div>
+            <div class="save-slot-actions">
+              <button class="save-slot-btn save-btn" data-slot="0" title="Save">&#x1F4BE;</button>
+              <button class="save-slot-btn load-btn hidden" data-slot="0" title="Load">&#x1F504;</button>
+              <button class="save-slot-btn del-btn hidden" data-slot="0" title="Delete">&#x1F5D1;</button>
+            </div>
+          </div>
+          <div class="save-slot" data-slot="1">
+            <div class="save-slot-info">
+              <span class="save-slot-name">Slot 2</span>
+              <span class="save-slot-status empty">Empty</span>
+            </div>
+            <div class="save-slot-actions">
+              <button class="save-slot-btn save-btn" data-slot="1" title="Save">&#x1F4BE;</button>
+              <button class="save-slot-btn load-btn hidden" data-slot="1" title="Load">&#x1F504;</button>
+              <button class="save-slot-btn del-btn hidden" data-slot="1" title="Delete">&#x1F5D1;</button>
+            </div>
+          </div>
+          <div class="save-slot" data-slot="2">
+            <div class="save-slot-info">
+              <span class="save-slot-name">Slot 3</span>
+              <span class="save-slot-status empty">Empty</span>
+            </div>
+            <div class="save-slot-actions">
+              <button class="save-slot-btn save-btn" data-slot="2" title="Save">&#x1F4BE;</button>
+              <button class="save-slot-btn load-btn hidden" data-slot="2" title="Load">&#x1F504;</button>
+              <button class="save-slot-btn del-btn hidden" data-slot="2" title="Delete">&#x1F5D1;</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

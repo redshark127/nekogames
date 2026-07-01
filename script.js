@@ -1,6 +1,8 @@
 const GAMES_JSON = 'games.json';
 const REQUEST_FORM_URL = 'https://forms.gle/4TP4J3fqpZbanuuQ9';
 const SETTINGS_KEY = 'nekogames_settings';
+const ACCOUNT_KEY = 'nekogames_account';
+const SAVES_KEY = 'nekogames_saves';
 
 const gameGrid = document.getElementById('game-grid');
 const searchInput = document.getElementById('search');
@@ -38,6 +40,18 @@ const cloakActiveTitle = document.getElementById('cloak-active-title');
 const cloakInactiveTitle = document.getElementById('cloak-inactive-title');
 const cloakFavicon = document.getElementById('cloak-favicon');
 const faviconLink = document.querySelector('link[rel="icon"]');
+
+const accountBtn = document.getElementById('account-btn');
+const accountPanel = document.getElementById('account-panel');
+const accountBackdrop = document.getElementById('account-backdrop');
+const accountClose = document.getElementById('account-close');
+const accountUsername = document.getElementById('account-username');
+const statPlayed = document.getElementById('stat-played');
+const statSaves = document.getElementById('stat-saves');
+const savesContainer = document.getElementById('saves-container');
+
+const saveSlotsBar = document.getElementById('save-slots-bar');
+const saveSlotsContainer = document.getElementById('save-slots');
 
 let games = [];
 let currentGame = null;
@@ -452,8 +466,9 @@ function importSiteData(file) {
       }
       applySettings();
       syncSettingsUI();
+      syncAccountUI();
       filterGames();
-      alert('Import complete! Settings have been restored.');
+      alert('Import complete! All settings and saves have been restored.');
     } catch (err) {
       alert('Failed to import: ' + err.message);
     }
@@ -472,6 +487,179 @@ importFileInput.addEventListener('change', e => {
     importSiteData(e.target.files[0]);
   }
   e.target.value = '';
+});
+
+// ── Account ──
+function getAccount() {
+  try {
+    return JSON.parse(localStorage.getItem(ACCOUNT_KEY)) || {};
+  } catch { return {}; }
+}
+
+function saveAccount(data) {
+  const cur = getAccount();
+  Object.assign(cur, data);
+  localStorage.setItem(ACCOUNT_KEY, JSON.stringify(cur));
+}
+
+function getSaves() {
+  try {
+    return JSON.parse(localStorage.getItem(SAVES_KEY)) || {};
+  } catch { return {}; }
+}
+
+function persistSaves(saves) {
+  localStorage.setItem(SAVES_KEY, JSON.stringify(saves));
+}
+
+function getGameSaves(gameId) {
+  const saves = getSaves();
+  return saves[String(gameId)] || [];
+}
+
+function refreshAccountStats() {
+  const saves = getSaves();
+  const account = getAccount();
+  let totalSaves = 0;
+  let totalPlayed = 0;
+  for (const gid in saves) {
+    totalSaves += saves[gid].length;
+    if (saves[gid].length > 0) totalPlayed++;
+  }
+  statPlayed.textContent = totalPlayed;
+  statSaves.textContent = totalSaves;
+}
+
+function refreshSavesList() {
+  const saves = getSaves();
+  savesContainer.innerHTML = '';
+  let hasAny = false;
+  for (const gid in saves) {
+    for (const slot of saves[gid]) {
+      hasAny = true;
+      const gameObj = games.find(g => String(g.id) === gid) || { name: 'Unknown game' };
+      const div = document.createElement('div');
+      div.className = 'save-list-item';
+      div.innerHTML = `
+        <span class="save-list-game">${gameObj.name}</span>
+        <span class="save-list-note">${slot.note || 'Slot ' + (slot.slot + 1)}</span>
+        <span class="save-list-date">${new Date(slot.savedAt).toLocaleDateString()}</span>
+      `;
+      savesContainer.appendChild(div);
+    }
+  }
+  if (!hasAny) {
+    savesContainer.innerHTML = '<p class="setting-hint" style="margin:0">No saves yet. Open a game and use save slots to create one.</p>';
+  }
+}
+
+function syncAccountUI() {
+  const account = getAccount();
+  accountUsername.value = account.username || '';
+  refreshAccountStats();
+  refreshSavesList();
+}
+
+accountBtn.addEventListener('click', () => {
+  accountPanel.classList.remove('hidden');
+  syncAccountUI();
+});
+
+accountClose.addEventListener('click', () => {
+  accountPanel.classList.add('hidden');
+});
+
+accountBackdrop.addEventListener('click', () => {
+  accountPanel.classList.add('hidden');
+});
+
+accountUsername.addEventListener('change', () => {
+  saveAccount({ username: accountUsername.value.trim() });
+});
+
+// ── Save Slots ──
+function syncSaveSlots() {
+  if (!currentGame) { saveSlotsBar.style.display = 'none'; return; }
+  saveSlotsBar.style.display = 'flex';
+  const saves = getGameSaves(currentGame.id);
+  saveSlotsContainer.querySelectorAll('.save-slot').forEach(el => {
+    const slotIdx = parseInt(el.dataset.slot);
+    const existing = saves.find(s => s.slot === slotIdx);
+    const info = el.querySelector('.save-slot-info');
+    const status = el.querySelector('.save-slot-status');
+    const nameEl = el.querySelector('.save-slot-name');
+    const loadBtn = el.querySelector('.load-btn');
+    const delBtn = el.querySelector('.del-btn');
+    if (existing) {
+      status.textContent = existing.note || 'Saved';
+      status.className = 'save-slot-status saved';
+      nameEl.textContent = new Date(existing.savedAt).toLocaleDateString();
+      loadBtn.classList.remove('hidden');
+      delBtn.classList.remove('hidden');
+    } else {
+      status.textContent = 'Empty';
+      status.className = 'save-slot-status empty';
+      nameEl.textContent = 'Slot ' + (slotIdx + 1);
+      loadBtn.classList.add('hidden');
+      delBtn.classList.add('hidden');
+    }
+  });
+}
+
+function saveToSlot(slotIdx) {
+  if (!currentGame) return;
+  const saves = getSaves();
+  const gid = String(currentGame.id);
+  if (!saves[gid]) saves[gid] = [];
+  const existing = saves[gid].findIndex(s => s.slot === slotIdx);
+  const data = {
+    slot: slotIdx,
+    savedAt: Date.now(),
+    note: '',
+    gameUrl: currentGame.url,
+    gameName: currentGame.name
+  };
+  const note = prompt('Save note (e.g. "Level 5, 1000 coins"):');
+  if (note !== null) data.note = note.trim();
+  if (existing >= 0) {
+    saves[gid][existing] = data;
+  } else {
+    saves[gid].push(data);
+  }
+  persistSaves(saves);
+  syncSaveSlots();
+  if (!accountPanel.classList.contains('hidden')) syncAccountUI();
+}
+
+function loadFromSlot(slotIdx) {
+  if (!currentGame) return;
+  const saves = getGameSaves(currentGame.id);
+  const slot = saves.find(s => s.slot === slotIdx);
+  if (!slot) return;
+  reloadGame();
+}
+
+function deleteSlot(slotIdx) {
+  if (!currentGame) return;
+  if (!confirm('Delete save from Slot ' + (slotIdx + 1) + '?')) return;
+  const saves = getSaves();
+  const gid = String(currentGame.id);
+  if (saves[gid]) {
+    saves[gid] = saves[gid].filter(s => s.slot !== slotIdx);
+    if (saves[gid].length === 0) delete saves[gid];
+  }
+  persistSaves(saves);
+  syncSaveSlots();
+  if (!accountPanel.classList.contains('hidden')) syncAccountUI();
+}
+
+saveSlotsContainer.addEventListener('click', e => {
+  const btn = e.target.closest('.save-slot-btn');
+  if (!btn) return;
+  const slotIdx = parseInt(btn.dataset.slot);
+  if (btn.classList.contains('save-btn')) saveToSlot(slotIdx);
+  else if (btn.classList.contains('load-btn')) loadFromSlot(slotIdx);
+  else if (btn.classList.contains('del-btn')) deleteSlot(slotIdx);
 });
 
 applySettings();
@@ -562,6 +750,7 @@ async function openGame(game) {
   document.body.style.overflow = 'hidden';
   gameFrame.removeAttribute('srcdoc');
   gameFrame.src = '';
+  syncSaveSlots();
   try {
     if (isCDNUrl(game.url)) {
       currentMode = 'srcdoc';
@@ -587,6 +776,7 @@ function closeGame() {
   gameFrame.src = '';
   currentGame = null;
   document.body.style.overflow = '';
+  saveSlotsBar.style.display = 'none';
 }
 
 function reloadGame() {
@@ -736,6 +926,10 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     if (!settingsPanel.classList.contains('hidden')) {
       settingsPanel.classList.add('hidden');
+      return;
+    }
+    if (!accountPanel.classList.contains('hidden')) {
+      accountPanel.classList.add('hidden');
       return;
     }
     if (document.fullscreenElement) {

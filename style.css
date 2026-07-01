@@ -297,6 +297,143 @@ header {
   transform: rotate(60deg);
 }
 
+/* ── Account Button ── */
+#account-btn {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-dim);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  flex-shrink: 0;
+  line-height: 1;
+}
+#account-btn:hover {
+  color: var(--accent);
+  border-color: var(--border-input);
+  background: var(--bg-input);
+}
+
+/* ── Account Panel ── */
+#account-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+}
+#account-panel.hidden { display: none; }
+
+#account-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  animation: fadeIn 0.2s ease;
+}
+
+#account-drawer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 340px;
+  max-width: 90vw;
+  background: var(--bg-settings);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 0.4s, border-color 0.4s;
+  box-shadow: -8px 0 40px rgba(0,0,0,0.3);
+}
+
+#account-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+#account-header h2 { font-size: 17px; font-weight: 600; }
+
+#account-close {
+  background: none; border: none;
+  color: var(--text); font-size: 28px;
+  cursor: pointer; opacity: 0.5;
+  transition: opacity 0.2s; line-height: 1; padding: 0 4px;
+}
+#account-close:hover { opacity: 1; }
+
+#account-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+#account-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--bg-input);
+  border-radius: 8px;
+  border: 1px solid var(--border-input);
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.stat-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+#saves-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+.save-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--bg-input);
+  border-radius: 8px;
+  border: 1px solid var(--border-input);
+  font-size: 12px;
+}
+.save-list-game {
+  font-weight: 600;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.save-list-note {
+  color: var(--text-muted);
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.save-list-date {
+  color: var(--text-dim);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
 /* ── Settings panel ── */
 #settings-panel {
   position: fixed;
@@ -714,6 +851,97 @@ header {
 
 #game-frame { flex: 1; width: 100%; border: none; display: block; background: #000; }
 
+/* ── Save Slots Bar ── */
+#save-slots-bar {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-modal-header);
+  flex-shrink: 0;
+  transition: background 0.4s, border-color 0.4s;
+}
+#save-slots-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+#save-slots {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+.save-slot {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  background: var(--bg-input);
+  min-width: 0;
+  transition: border-color 0.2s, background 0.4s;
+}
+.save-slot:hover {
+  border-color: var(--accent);
+}
+.save-slot-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.save-slot-name {
+  font-size: 11px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.save-slot-status {
+  font-size: 10px;
+}
+.save-slot-status.empty {
+  color: var(--text-dim);
+}
+.save-slot-status.saved {
+  color: var(--cyan);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.save-slot-actions {
+  display: flex;
+  gap: 3px;
+}
+.save-slot-btn {
+  background: none;
+  border: 1px solid var(--border-input);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 3px 7px;
+  line-height: 1;
+  transition: all 0.2s;
+}
+.save-slot-btn:hover {
+  border-color: var(--accent);
+  background: rgba(102,126,234,0.1);
+}
+.save-slot-btn.del-btn:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+  background: rgba(231,76,60,0.08);
+}
+.save-slot-btn.hidden { display: none; }
+
 /* ── Panic Overlay ── */
 #panic-overlay {
   position: fixed; inset: 0; z-index: 2000;
@@ -812,6 +1040,9 @@ footer {
   #game-modal { height: 96vh; border-radius: 12px; }
   #modal-header h2 { font-size: 14px; }
   #settings-drawer { width: 280px; }
+  #save-slots { flex-direction: column; }
+  #save-slots-bar { flex-direction: column; align-items: stretch; }
+  #account-drawer { width: 280px; }
 }
 @media (max-width: 450px) {
   #game-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px; }
