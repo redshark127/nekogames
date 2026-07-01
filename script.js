@@ -543,6 +543,14 @@ function isItchClassic(url) {
   return url.includes('html-classic.itch.zone');
 }
 
+function isNoahstutoringUrl(url) {
+  return url.includes('noahstutoring.academy');
+}
+
+function stripInlineScripts(html) {
+  return html.replace(/<script>(?!<\/script>)[\s\S]*?<\/script>/gi, '');
+}
+
 async function fetchItchClassic(url) {
   const resp = await fetch(url);
   let html = await resp.text();
@@ -550,6 +558,13 @@ async function fetchItchClassic(url) {
   html = html.replace(/<meta[^>]*Content-Security-Policy[^>]*>/gi, '');
   const base = url.substring(0, url.lastIndexOf('/') + 1);
   html = html.replace('<head>', '<head><base href="' + base + '">');
+  return html;
+}
+
+async function fetchNoahstutoring(url) {
+  const resp = await fetch(url);
+  let html = await resp.text();
+  html = stripInlineScripts(html);
   return html;
 }
 
@@ -571,6 +586,9 @@ async function openGame(game) {
     } else if (isItchClassic(game.url)) {
       currentMode = 'srcdoc';
       gameFrame.srcdoc = await fetchItchClassic(game.url);
+    } else if (isNoahstutoringUrl(game.url)) {
+      currentMode = 'srcdoc';
+      gameFrame.srcdoc = await fetchNoahstutoring(game.url);
     } else {
       currentMode = 'direct';
       gameFrame.src = game.url;
@@ -593,7 +611,10 @@ function reloadGame() {
   if (!currentGame) return;
   if (currentMode === 'srcdoc') {
     gameFrame.srcdoc = '';
-    fetch(currentGame.url).then(r => r.text()).then(html => { gameFrame.srcdoc = html; });
+    fetch(currentGame.url).then(r => r.text()).then(html => {
+      if (isNoahstutoringUrl(currentGame.url)) html = stripInlineScripts(html);
+      gameFrame.srcdoc = html;
+    });
   } else {
     gameFrame.removeAttribute('srcdoc');
     gameFrame.src = '';
