@@ -52,7 +52,7 @@ function filterGames() {
 }
 
 function isCDNUrl(url) {
-  return url.includes('jsdelivr.net');
+  return url.includes('jsdelivr.net') || url.includes('genizymath.github.io');
 }
 
 async function openGame(game) {
