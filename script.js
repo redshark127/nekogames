@@ -126,42 +126,14 @@ function updateCounts() {
   }
 }
 
-async function downloadSite() {
+function downloadSite() {
   const btn = downloadSiteBtn;
-  const origText = btn.innerHTML;
-  btn.innerHTML = '&#x23F3; Preparing...';
-  btn.disabled = true;
-
-  try {
-    const zip = new JSZip();
-
-    const files = [
-      { name: 'index.html', path: '/' },
-      { name: 'style.css', path: '/' },
-      { name: 'script.js', path: '/' },
-      { name: 'games.json', path: '/' },
-    ];
-
-    for (const file of files) {
-      const resp = await fetch(file.path + file.name);
-      zip.file(file.name, await resp.text());
-    }
-
-    const blob = await zip.generateAsync({ type: 'blob' });
-    saveAs(blob, 'nekogames.zip');
-    btn.innerHTML = '&#x2713; Downloaded!';
-    setTimeout(() => {
-      btn.innerHTML = origText;
-      btn.disabled = false;
-    }, 2000);
-  } catch (e) {
-    btn.innerHTML = '&#x2717; Failed';
-    console.error('Download failed:', e);
-    setTimeout(() => {
-      btn.innerHTML = origText;
-      btn.disabled = false;
-    }, 3000);
-  }
+  const a = document.createElement('a');
+  a.href = 'nekogames-full.zip';
+  a.download = 'nekogames-full.zip';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 
 searchInput.addEventListener('input', () => { filterGames(); updateCounts(); });
