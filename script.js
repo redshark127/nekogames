@@ -34,6 +34,7 @@ const sizeOptions = document.getElementById('size-options');
 const radiusOptions = document.getElementById('radius-options');
 const fontOptions = document.getElementById('font-options');
 const animToggle = document.getElementById('anim-toggle');
+const cardPulseToggle = document.getElementById('card-pulse-toggle');
 const bgOptions = document.getElementById('bg-options');
 const cursorOptions = document.getElementById('cursor-options');
 const cursorColorInput = document.getElementById('cursor-color');
@@ -676,6 +677,7 @@ function applySettings() {
   document.documentElement.setAttribute('data-anim', s.anim === false ? 'off' : 'on');
   document.documentElement.setAttribute('data-radius', s.cardRadius || 'normal');
   document.documentElement.setAttribute('data-font', s.fontSize || 'normal');
+  document.documentElement.setAttribute('data-card-pulse', s.cardPulse === false ? 'off' : 'on');
   runBackground(s.background);
   updateCustomCursor(s.cursor, s.cursorColor);
   applyCloak();
@@ -702,6 +704,7 @@ function syncSettingsUI() {
   const theme = s.theme || 'default';
   const size = s.size || 'comfortable';
   const anim = s.anim !== false;
+  const cardPulse = s.cardPulse !== false;
   const bg = s.background || 'none';
   const cursor = s.cursor || 'default';
   const bgColor = s.bgColor || '';
@@ -730,6 +733,7 @@ function syncSettingsUI() {
     });
   }
   animToggle.querySelector('.toggle-track').classList.toggle('active', anim);
+  cardPulseToggle.querySelector('.toggle-track').classList.toggle('active', cardPulse);
   bgOptions.querySelectorAll('.setting-option').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.bg === bg);
   });
@@ -773,6 +777,14 @@ animToggle.addEventListener('click', () => {
   const track = animToggle.querySelector('.toggle-track');
   const on = !track.classList.contains('active');
   saveSettings({ anim: on });
+  applySettings();
+  syncSettingsUI();
+});
+
+cardPulseToggle.addEventListener('click', () => {
+  const track = cardPulseToggle.querySelector('.toggle-track');
+  const on = !track.classList.contains('active');
+  saveSettings({ cardPulse: on });
   applySettings();
   syncSettingsUI();
 });

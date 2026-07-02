@@ -129,6 +129,11 @@
   transition-delay: 0s !important;
 }
 
+[data-card-pulse="off"] .game-card::after {
+  animation: none !important;
+  opacity: 0 !important;
+}
+
 /* ── Background Canvas ── */
 #bg-canvas {
   position: fixed;
