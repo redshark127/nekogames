@@ -581,6 +581,7 @@ function runBackground(type, speedOverride) {
 // ── Custom Cursor ──
 let cursorRing = null;
 let cursorDot = null;
+let cursorGlow = null;
 
 function createCursorElements() {
   if (!cursorRing) {
@@ -592,6 +593,11 @@ function createCursorElements() {
     cursorDot = document.createElement('div');
     cursorDot.id = 'cursor-dot';
     document.body.appendChild(cursorDot);
+  }
+  if (!cursorGlow) {
+    cursorGlow = document.createElement('div');
+    cursorGlow.id = 'cursor-glow';
+    document.body.appendChild(cursorGlow);
   }
 }
 
@@ -634,6 +640,10 @@ document.addEventListener('mousemove', e => {
   if (cursorDot && cursorDot.style.display !== 'none') {
     cursorDot.style.left = e.clientX + 'px';
     cursorDot.style.top = e.clientY + 'px';
+  }
+  if (cursorGlow) {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top = e.clientY + 'px';
   }
 });
 
@@ -1279,6 +1289,8 @@ document.addEventListener('keydown', e => {
 document.addEventListener('visibilitychange', () => {
   applyCloak();
 });
+
+createCursorElements();
 
 fetch(GAMES_JSON)
   .then(r => r.json())
