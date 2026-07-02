@@ -1092,6 +1092,13 @@ async function openGame(game) {
     currentMode = 'direct';
     gameFrame.src = game.url;
   }
+  if (game.name.toLowerCase().includes('minesweeper')) {
+    setTimeout(() => {
+      if (!document.fullscreenElement) {
+        gameModal.requestFullscreen().catch(() => {});
+      }
+    }, 500);
+  }
 }
 
 function closeGame() {
