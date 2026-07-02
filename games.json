@@ -1764,13 +1764,6 @@
     "image": "https://noahstutoring.academy/images/200.jpg"
   },
   {
-    "id": 259,
-    "name": "Doki Doki Literature Club",
-    "url": "https://noahstutoring.academy/games/73.html",
-    "category": "Simulation",
-    "image": "https://noahstutoring.academy/images/199.jpg"
-  },
-  {
     "id": 260,
     "name": "Getting Over It",
     "url": "https://noahstutoring.academy/games/72.html",
@@ -1937,13 +1930,6 @@
     "url": "https://ud-gles3games.shared-osj.k8s.n2i.io/?deeplinksURI=null%3A%2F%2F&deeplinksApp=com.innersloth.spacemafia&naturalOrientation=landscape&forcedNaturalOrientation&autofitOnConnect&jitterBufferMin=0&deeplinksService=true&backOnDisconnected=true&disconnectedMessage=null&api=%7B%22back%22%3Afalse%7D&title=Among+Us",
     "category": "Action",
     "image": "https://noahstutoring.academy/images/17.jpg"
-  },
-  {
-    "id": 285,
-    "name": "Yandere Simulator",
-    "url": "https://noahstutoring.academy/games/12.html",
-    "category": "Simulation",
-    "image": "https://noahstutoring.academy/images/18.jpg"
   },
   {
     "id": 286,
@@ -5342,7 +5328,7 @@
   },
   {
     "id": 771,
-    "name": "Friday Night Funkin’ Soft",
+    "name": "Friday Night Funkin\u2019 Soft",
     "url": "https://genizymath.github.io/iframe/509.html",
     "category": "Rhythm",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/509.png"
@@ -5895,14 +5881,14 @@
   },
   {
     "id": 850,
-    "name": "Friday Night Funkin’ Wednesday's Infidelity",
+    "name": "Friday Night Funkin\u2019 Wednesday's Infidelity",
     "url": "https://genizymath.github.io/iframe/616.html",
     "category": "Rhythm",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/616.png"
   },
   {
     "id": 851,
-    "name": "FNF vs Bob v2.0 (Bob’s Onslaught)",
+    "name": "FNF vs Bob v2.0 (Bob\u2019s Onslaught)",
     "url": "https://genizymath.github.io/iframe/618.html",
     "category": "Rhythm",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/618.png"
@@ -6420,7 +6406,7 @@
   },
   {
     "id": 925,
-    "name": "Saihate Station (さいはて駅)",
+    "name": "Saihate Station (\u3055\u3044\u306f\u3066\u99c5)",
     "url": "https://genizymath.github.io/iframe/737.html",
     "category": "Action",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/737.png"
@@ -6784,7 +6770,7 @@
   },
   {
     "id": 977,
-    "name": "t³ (T cubed)",
+    "name": "t\u00b3 (T cubed)",
     "url": "https://genizymath.github.io/iframe/818.html",
     "category": "Action",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/818.png"
@@ -6998,5 +6984,3127 @@
     "url": "https://html-classic.itch.zone/html/11252461/index.html",
     "category": "Simulation",
     "image": "https://img.itch.zone/aW1nLzE3NDE5MDI1LnBuZw==/original/dnG88C.png"
+  },
+  {
+    "id": 1008,
+    "name": "eagle-craft",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/minecraft/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/eagle-craft.jpg"
+  },
+  {
+    "id": 1009,
+    "name": "race-survival-arena-king",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/race_survival_arena_king/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/race-survival-arena-king.jpg"
+  },
+  {
+    "id": 1010,
+    "name": "eagle-duckcraft",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/minecraft/duckcraft/duckcraft-v1.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/eagle-duckcraft-new.webp"
+  },
+  {
+    "id": 1011,
+    "name": "golf-orbit",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/golf_orbit/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Golf-Orbit-Play-Online.jpg"
+  },
+  {
+    "id": 1012,
+    "name": "granny",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/granny/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/granny.webp"
+  },
+  {
+    "id": 1013,
+    "name": "five-nights-at-freddys",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fnaf/index.html",
+    "category": "Uncategorized",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/fnaf.webp"
+  },
+  {
+    "id": 1014,
+    "name": "ragdoll-archers",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/ragdoll_archers/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ragdoll-archers.jpg"
+  },
+  {
+    "id": 1015,
+    "name": "tomodachi-collection",
+    "url": "https://db2.duckmath.org/2026/em/tomodachi-collection/index.html",
+    "category": "Emulator",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/tomodachi-collection.webp"
+  },
+  {
+    "id": 1016,
+    "name": "snow-rider-3d",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/snow_rider_3d/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/snowrider3d.webp"
+  },
+  {
+    "id": 1017,
+    "name": "deadly-descent",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/deadly_descent/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/deadly-descent.jpg"
+  },
+  {
+    "id": 1018,
+    "name": "highway-traffic",
+    "url": "https://db2.duckmath.org/2022/unity/highway-traffic/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Highway-Traffic-2.jpg"
+  },
+  {
+    "id": 1019,
+    "name": "twerk-race-3d",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/twerk_race_3d/index.html",
+    "category": "Food",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/twerk-race-3d.webp"
+  },
+  {
+    "id": 1020,
+    "name": "moto-x3m",
+    "url": "https://db2.duckmath.org/2024/gm/moto-x3m/index.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/motox3m.webp"
+  },
+  {
+    "id": 1021,
+    "name": "among-us",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/among_us/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/amongus.webp"
+  },
+  {
+    "id": 1022,
+    "name": "five-nights-at-freddys-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fnaf2/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/fnaf2.webp"
+  },
+  {
+    "id": 1023,
+    "name": "velocity-rush",
+    "url": "https://db2.duckmath.org/2026/unity/velocity-rush/pre.html",
+    "category": "New",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/velocity-rush.webp"
+  },
+  {
+    "id": 1024,
+    "name": "ultrakill",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/ultrakill/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ultrakill.jpg"
+  },
+  {
+    "id": 1025,
+    "name": "ragdoll-hit",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/ragdoll_hit/index.html",
+    "category": "Stickman",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ragdoll-hit.jpg"
+  },
+  {
+    "id": 1026,
+    "name": "sh3llsh0ck",
+    "url": "https://mathlete.pages.dev",
+    "category": "2-player",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/shell-shockers.webp"
+  },
+  {
+    "id": 1027,
+    "name": "escape-car",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/escape_car/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Escape-Car.jpg"
+  },
+  {
+    "id": 1028,
+    "name": "friday-night-funkin",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/friday_night_funkin/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/friday.webp"
+  },
+  {
+    "id": 1029,
+    "name": "drift-king",
+    "url": "https://db2.duckmath.org/2024/unity/drift-king/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Drift-King.jpg"
+  },
+  {
+    "id": 1030,
+    "name": "thorns-and-ballons",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/thorns_and_ballons/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/thorns-and-ballons.jpg"
+  },
+  {
+    "id": 1031,
+    "name": "geometry-dash",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/geometry_freezenova/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Geometry-Dash.jpg"
+  },
+  {
+    "id": 1032,
+    "name": "obby-but-youre-on-a-bike",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/obby_but_youre_on_a_bike/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/obby-but-youre-on-a-bike.jpg"
+  },
+  {
+    "id": 1033,
+    "name": "cookie-clicker",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/cookie_clicker/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/cookieclicker.webp"
+  },
+  {
+    "id": 1034,
+    "name": "backflip-challenge",
+    "url": "https://db2.duckmath.org/2026/unity/backflip-challenge/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/backflip-challenge-game-lg.webp"
+  },
+  {
+    "id": 1035,
+    "name": "bridge-race",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/bridge_race/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/bridge-race.jpg"
+  },
+  {
+    "id": 1036,
+    "name": "baseball-bros",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/baseball_bros/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/baseball-bros.jpg"
+  },
+  {
+    "id": 1037,
+    "name": "2d-fortnite",
+    "url": "https://db2.duckmath.org/2025/more/fort-battle-royale/pre.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/fort-battle-royale.webp"
+  },
+  {
+    "id": 1038,
+    "name": "super-liquid-soccer",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/super_liquid_soccer/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/super-liquid-soccer.jpg"
+  },
+  {
+    "id": 1039,
+    "name": "solar-smash",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/solar_smash/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/solar-smash.png"
+  },
+  {
+    "id": 1040,
+    "name": "the-binding-of-isaac",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/thebindingofisaac/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/isaac.webp"
+  },
+  {
+    "id": 1041,
+    "name": "stack-fire-ball",
+    "url": "https://db2.duckmath.org/2021/unity/stack-fire-ball/pre.html",
+    "category": "Clicker",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Stack-Fire-Ball-Game.jpg"
+  },
+  {
+    "id": 1042,
+    "name": "geometry-vector",
+    "url": "https://db2.duckmath.org/2026/construct/329/geometry-vector/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/geometry-vector.webp"
+  },
+  {
+    "id": 1043,
+    "name": "pizza-tower",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/pizza_tower/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/pizza-tower.jpg"
+  },
+  {
+    "id": 1044,
+    "name": "wheelie-bike",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/wheelie_bike/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/wheelie-bike.jpg"
+  },
+  {
+    "id": 1045,
+    "name": "football-bros",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/football_bros/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/football-bros.jpg"
+  },
+  {
+    "id": 1046,
+    "name": "pokemon-emerald",
+    "url": "https://db2.duckmath.org/2026/em/pokemon-emerald/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/pokemon-emerald.jpg"
+  },
+  {
+    "id": 1047,
+    "name": "basketball-stars",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/basketball_stars/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/basketball-stars.webp"
+  },
+  {
+    "id": 1048,
+    "name": "snek-io",
+    "url": "https://db2.duckmath.org/2026/more/snek-io/pre.html",
+    "category": "Io",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/snek-io.webp"
+  },
+  {
+    "id": 1049,
+    "name": "clash-royale",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/clash_royale/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/clash-royale.jpg"
+  },
+  {
+    "id": 1050,
+    "name": "99-nights-in-the-forest",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/99_nights_in_the_forest/index.html",
+    "category": "Minecraft",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/99-nights-in-the-forest.png"
+  },
+  {
+    "id": 1051,
+    "name": "e-life-simulator",
+    "url": "https://db2.duckmath.org/2025/more/e-life-simulation/pre.html",
+    "category": "Idle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/life-simulator.jpg"
+  },
+  {
+    "id": 1052,
+    "name": "brookhaven",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/brookhaven/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/brookhaven.jpg"
+  },
+  {
+    "id": 1053,
+    "name": "gta-simulator",
+    "url": "https://db2.duckmath.org/2023/unity2/gta-simulator/pre.html",
+    "category": "Car",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/GTA-Simulator.jpg"
+  },
+  {
+    "id": 1054,
+    "name": "crazy-roll",
+    "url": "https://db2.duckmath.org/2021/unity2/crazy-roll/pre.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/crazy-roll.webp"
+  },
+  {
+    "id": 1055,
+    "name": "smash-karts",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/smash_karts/index.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/smashkarts.webp"
+  },
+  {
+    "id": 1056,
+    "name": "blocky-puzzle",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/blocky_puzzle/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/blocky-puzzle.jpg"
+  },
+  {
+    "id": 1057,
+    "name": "stickman-gta-city",
+    "url": "https://db2.duckmath.org/2024/unity3/stickman-gta-city/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/stickman-gta-city-free.jpg"
+  },
+  {
+    "id": 1058,
+    "name": "1v1.lol",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/1v1lol/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/1v1.lol-old.webp"
+  },
+  {
+    "id": 1059,
+    "name": "cod-zombies-portable",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/cod_zombies_portable/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/cod-zombies-portable.jpeg"
+  },
+  {
+    "id": 1060,
+    "name": "real-flight-simulator",
+    "url": "https://db2.duckmath.org/2023/unity2/real-flight-simulator/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Real-Flight-Simulator-2.jpg"
+  },
+  {
+    "id": 1061,
+    "name": "geometry-dash-scratch",
+    "url": "https://db2.duckmath.org/2025/scratch/geometry-dash-scratch/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/Geometry-Dash-Scratch.webp"
+  },
+  {
+    "id": 1062,
+    "name": "undertale-yellow",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/undertale_yellow/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Undertale-Yellow.webp"
+  },
+  {
+    "id": 1063,
+    "name": "crazy-cattle-3d-pro",
+    "url": "https://db2.duckmath.org/2025/unity3/crazy-cattle-3d/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/crazy-cattle-3d.webp"
+  },
+  {
+    "id": 1064,
+    "name": "spider-dude-parkour",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/spider_dude_parkour/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/spider-dude-parkour.jpg"
+  },
+  {
+    "id": 1065,
+    "name": "bloonstd-5",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/btd5/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/bloonstd-5.jpg"
+  },
+  {
+    "id": 1066,
+    "name": "masked-special-forces",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/masked_special_forces/index.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/masked-special-forces.jpg"
+  },
+  {
+    "id": 1067,
+    "name": "five-nights-at-freddys-4",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fnaf4/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/fnaf4.webp"
+  },
+  {
+    "id": 1068,
+    "name": "grow-a-garden",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/grow_a_garden/index.html",
+    "category": "Clicker",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/grow-a-garden.jpg"
+  },
+  {
+    "id": 1069,
+    "name": "hollow-knight",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/hollow_knight/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/hollow-knight.jpg"
+  },
+  {
+    "id": 1070,
+    "name": "level-troll",
+    "url": "https://db2.duckmath.org/2024/unity2/troll-level/pre.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/troll-level-game.webp"
+  },
+  {
+    "id": 1071,
+    "name": "fast-food-manager",
+    "url": "https://db2.duckmath.org/2025/unity4/fast-food-manager/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/fast-food-manager.webp"
+  },
+  {
+    "id": 1072,
+    "name": "retro-bowl",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/retro_bowl/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/retro_bowl_icon.webp"
+  },
+  {
+    "id": 1073,
+    "name": "drift-hunters-pro",
+    "url": "https://db2.duckmath.org/2023/unity/drift-hunters-pro/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Drift-Hunters-Pro.jpg"
+  },
+  {
+    "id": 1074,
+    "name": "hole.io",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/holeio/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/hole.io.webp"
+  },
+  {
+    "id": 1075,
+    "name": "five-nights-at-freddys-pizzeria-simulator",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fnaf_pizzeria_simulator/index.html",
+    "category": "Horror",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/five-nights-at-freddys-pizzeria-simulator.jpg"
+  },
+  {
+    "id": 1076,
+    "name": "stickman-parkour",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/stickman_parkour/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/stickman-parkour.webp"
+  },
+  {
+    "id": 1078,
+    "name": "fighter-aircraft-pilot",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fighter_aircraft_pilot/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/fighter-aircraft-pilotb.webp"
+  },
+  {
+    "id": 1079,
+    "name": "basket-bros",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/basket_bros/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/basket-bros.jpeg"
+  },
+  {
+    "id": 1080,
+    "name": "spiral-roll",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/spiral_roll/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/spiralroll.webp"
+  },
+  {
+    "id": 1081,
+    "name": "rainbow-friends-return",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/rainbow_friends_return/index.html",
+    "category": "Roblox",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/rainbow-friends-return.jpg"
+  },
+  {
+    "id": 1082,
+    "name": "funny-shooter-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/funny_shooter_2/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/funntshooes.webp"
+  },
+  {
+    "id": 1083,
+    "name": "subway-runner-barcelona",
+    "url": "https://db2.duckmath.org/2022/unity/bus-subway-runner/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/subway-runner-barcelona.jpg"
+  },
+  {
+    "id": 1084,
+    "name": "soviet-sniper",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/soviet_sniper/index.html",
+    "category": "Fps",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/cod.webp"
+  },
+  {
+    "id": 1085,
+    "name": "drift-hunters-2024",
+    "url": "https://db2.duckmath.org/2024/unity/drift-hunters-2024/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/drift-hunters-2024-freezenova.jpg"
+  },
+  {
+    "id": 1086,
+    "name": "pokemon-red",
+    "url": "https://db2.duckmath.org/2026/em/pokemon-red/index.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/pokemon-red.jpg"
+  },
+  {
+    "id": 1087,
+    "name": "99-nights-forest-survival",
+    "url": "https://db2.duckmath.org/2026/unity/99-nights-in-the-forest-survival/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/99-nights-in-the-forest-survival-lg.webp"
+  },
+  {
+    "id": 1088,
+    "name": "ink-game",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/squid_game_2_mini_games/index.html",
+    "category": "Roblox",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ink-game.png"
+  },
+  {
+    "id": 1089,
+    "name": "arrow-master",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/arrow_master/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/arrowmaster.oi.webp"
+  },
+  {
+    "id": 1090,
+    "name": "capybara-clicker",
+    "url": "https://db2.duckmath.org/2023/q2/capy-cutie-clicker/pre.html",
+    "category": "Idle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/capybara-clicker.jpg"
+  },
+  {
+    "id": 1091,
+    "name": "incredibox",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/incredibox/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/incredibox.webp"
+  },
+  {
+    "id": 1092,
+    "name": "super-mario-64",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/super_mario_64/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/supermario64.webp"
+  },
+  {
+    "id": 1093,
+    "name": "ants-clicker",
+    "url": "https://db2.duckmath.org/2026/more/ants-clicker/pre.html",
+    "category": "Clicker",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/ants-clicker.webp"
+  },
+  {
+    "id": 1094,
+    "name": "happy-wheels",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/happy_wheels/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/happpywheels.webp"
+  },
+  {
+    "id": 1095,
+    "name": "escaping-the-prison",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/escapetheprison/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/escapeprison.webp"
+  },
+  {
+    "id": 1096,
+    "name": "five-nights-at-freddys-3",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fnaf3/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/fnaf3.webp"
+  },
+  {
+    "id": 1097,
+    "name": "spartahoppers",
+    "url": "https://db2.duckmath.org/2025/construct/227/spartahoppers/pre.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/spartahoppers.webp"
+  },
+  {
+    "id": 1098,
+    "name": "burrito-bison",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/burrito_bison_launcha_libre/index.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/burrito-bison.jpg"
+  },
+  {
+    "id": 1099,
+    "name": "fnaf-world",
+    "url": "https://db2.duckmath.org/2024/more2/fnaf-world/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/fnaf-world-game.webp"
+  },
+  {
+    "id": 1100,
+    "name": "backrooms",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/backroomsv1.5/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/backrooms1.webp"
+  },
+  {
+    "id": 1101,
+    "name": "ducky-clicker",
+    "url": "https://db2.duckmath.org/2026/more/ducky-clicker/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/ducky-clicker.webp"
+  },
+  {
+    "id": 1102,
+    "name": "pixel-path",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/pixel_path/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/pixel-path.webp"
+  },
+  {
+    "id": 1103,
+    "name": "survival-karts",
+    "url": "https://db2.duckmath.org/2024/unity3/survival-karts/pre.html",
+    "category": "Car",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/survival-karts-play.jpg"
+  },
+  {
+    "id": 1104,
+    "name": "moto-x3m-winter",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/moto_x3m_winter/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/motox3mwinter.webp"
+  },
+  {
+    "id": 1105,
+    "name": "cubecraft-survival",
+    "url": "https://db2.duckmath.org/2025/unity4/cubecraft-survival/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/cubecraft-survival.webp"
+  },
+  {
+    "id": 1106,
+    "name": "stickman-destruction",
+    "url": "https://db2.duckmath.org/2021/unity3/stickman-destruction/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Stickman-Destruction.jpg"
+  },
+  {
+    "id": 1107,
+    "name": "crazycattle3d",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/crazycattle3d/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Crazy-Cattle-3D.jpg"
+  },
+  {
+    "id": 1108,
+    "name": "warstrike",
+    "url": "https://db2.duckmath.org/2024/unity3/warstrike/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/WarStrike-Online.jpg"
+  },
+  {
+    "id": 1109,
+    "name": "drift-boss",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/drift_boss/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/driftboss.webp"
+  },
+  {
+    "id": 1110,
+    "name": "su-battle-royale",
+    "url": "https://db2.duckmath.org/2024/su-battle-royale/pre.html",
+    "category": "Fps",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Su-Battle-Royale.jpg"
+  },
+  {
+    "id": 1111,
+    "name": "penalty-king",
+    "url": "https://db2.duckmath.org/2024/q2/penalty-king/pre.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/penalty-king.webp"
+  },
+  {
+    "id": 1112,
+    "name": "life-simulator",
+    "url": "https://db2.duckmath.org/2025/unity/life-sim-v1/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/life-simulator.jpg"
+  },
+  {
+    "id": 1113,
+    "name": "bit-planes",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/bit_planes/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/bit-planes.webp"
+  },
+  {
+    "id": 1114,
+    "name": "plants-vs-zombies",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/pvz/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/pvz.webp"
+  },
+  {
+    "id": 1115,
+    "name": "edys-car-simulator",
+    "url": "https://db2.duckmath.org/2022/unity/edys-car-simulator/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Edys-Car-Simulator-Online.jpg"
+  },
+  {
+    "id": 1116,
+    "name": "five-nights-at-freddys-5",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fnaf5/index.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/fnaf5.webp"
+  },
+  {
+    "id": 1117,
+    "name": "basket-random",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/basket_random/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Basket-Random.jpg"
+  },
+  {
+    "id": 1118,
+    "name": "fnf-mods",
+    "url": "https://db2.duckmath.org/2000/fnf/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/fnf-mods.webp"
+  },
+  {
+    "id": 1119,
+    "name": "papas-freezeria",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/papasfreezeria/index.html",
+    "category": "Girls",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/icecream.webp"
+  },
+  {
+    "id": 1120,
+    "name": "davo",
+    "url": "https://db2.duckmath.org/2025/construct/302/davo/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/davo.webp"
+  },
+  {
+    "id": 1121,
+    "name": "pocket-champions",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/pocket_champions/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/pocket-champions.jpg"
+  },
+  {
+    "id": 1122,
+    "name": "uno",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/uno/index.html",
+    "category": "2-player",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/uno.webp"
+  },
+  {
+    "id": 1123,
+    "name": "temple-run-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/temple_run_2/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/templerun2.webp"
+  },
+  {
+    "id": 1124,
+    "name": "basketball-legends",
+    "url": "https://db2.duckmath.org/2002/basketball-legends/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/basketball-legends.jpg"
+  },
+  {
+    "id": 1125,
+    "name": "spacebar-clicker",
+    "url": "https://db2.duckmath.org/2024/more/spacebar-clicker/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Spacebar-Clicker.jpg"
+  },
+  {
+    "id": 1126,
+    "name": "traffic-jam",
+    "url": "https://db2.duckmath.org/2025/more/traffic-jam/pre.html",
+    "category": "Car",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Traffic-Jam.jpg"
+  },
+  {
+    "id": 1127,
+    "name": "poppy-playtime",
+    "url": "https://db2.duckmath.org/2026/more/poppy-playtime/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/poppy.webp"
+  },
+  {
+    "id": 1128,
+    "name": "five-nights-at-freddys-web",
+    "url": "https://db2.duckmath.org/2024/more2/five-nights-at-freddys/fnaf/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/five-nights-at-freddys-web.jpg"
+  },
+  {
+    "id": 1129,
+    "name": "police-chase-drifter",
+    "url": "https://db2.duckmath.org/2021/3/police-chase-drifter/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Police-Chase-Drifter-Online.jpg"
+  },
+  {
+    "id": 1130,
+    "name": "ovo",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/ovo/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ovo.jpg"
+  },
+  {
+    "id": 1131,
+    "name": "run-3-freezenova",
+    "url": "https://db2.duckmath.org/2026/unity/run-3/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/run-freezenova.webp"
+  },
+  {
+    "id": 1132,
+    "name": "dune",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/dune/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/dune.jpg"
+  },
+  {
+    "id": 1133,
+    "name": "sprunki",
+    "url": "https://db2.duckmath.org/2024/more2/sprunki/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Sprunki.jpg"
+  },
+  {
+    "id": 1134,
+    "name": "zombie-derby-pixel-survival",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/zombie_derby_pixel_survival/index.html",
+    "category": "Horror",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/zombie-derby-pixel-survival.jpg"
+  },
+  {
+    "id": 1135,
+    "name": "stealing-the-diamond",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/stealing_the_diamond/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/stealdiamond.webp"
+  },
+  {
+    "id": 1136,
+    "name": "kart-bros",
+    "url": "https://db2.duckmath.org/2024/unity3/survival-karts/pre.html?g=kart-bros",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/kart-bros.jpg"
+  },
+  {
+    "id": 1137,
+    "name": "checkout-frenzy",
+    "url": "https://db2.duckmath.org/2025/unity/checkout-frenzy/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/checkout-frenzy-cashier-game.jpg"
+  },
+  {
+    "id": 1138,
+    "name": "elastic-man",
+    "url": "https://db2.duckmath.org/2025/more/elastic-man/gm/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Elastic-Man-Game-2.jpg"
+  },
+  {
+    "id": 1139,
+    "name": "growden-io",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/growden_io/index.html",
+    "category": "Idle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/growden-io.jpeg"
+  },
+  {
+    "id": 1140,
+    "name": "drift-hunters",
+    "url": "https://db2.duckmath.org/2023/unity3/drift-hunters/pre.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Drift-Hunters-Game.jpg"
+  },
+  {
+    "id": 1141,
+    "name": "duck-life-4",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/duck_life_4/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/dl4.webp"
+  },
+  {
+    "id": 1142,
+    "name": "moto-x3m-pool-party",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/moto_x3m_pool_party/index.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/Moto-X3M-Pool-Party-512x512.jpg"
+  },
+  {
+    "id": 1143,
+    "name": "moto-x3m-3",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/moto_x3m_3/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/moto-x3m-3.jpg"
+  },
+  {
+    "id": 1144,
+    "name": "super-mario-bros",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/super_mario_bros/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/super_mario_bros_old.webp"
+  },
+  {
+    "id": 1145,
+    "name": "moto-x3m-spooky-land",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/moto_x3m_spooky_land/index.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/Moto-X3M-Pool-Party-512x512.jpg"
+  },
+  {
+    "id": 1146,
+    "name": "drift-rider",
+    "url": "https://db2.duckmath.org/2023/unity3/drift-rider/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Drift-Rider.jpg"
+  },
+  {
+    "id": 1147,
+    "name": "fps-strike",
+    "url": "https://db2.duckmath.org/2024/unity2/fps-strike/pre.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/fps-strike-online.jpg"
+  },
+  {
+    "id": 1148,
+    "name": "eggy-car",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/eggy_car/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/eggy-car.webp"
+  },
+  {
+    "id": 1149,
+    "name": "animal-crossing",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/animal_crossing/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/animal_crossing.webp"
+  },
+  {
+    "id": 1150,
+    "name": "bob-the-robber-4",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/bob_the_robber_4/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/bob-the-robber-4.jpg"
+  },
+  {
+    "id": 1151,
+    "name": "jungle-mart",
+    "url": "https://db2.duckmath.org/2026/construct/339/jungle-mart/pre.html",
+    "category": "Food",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/jungle-mart.webp"
+  },
+  {
+    "id": 1152,
+    "name": "cs-online",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/cs_online/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/1.6.webp"
+  },
+  {
+    "id": 1153,
+    "name": "fast-food-rush",
+    "url": "https://db2.duckmath.org/2025/unity/fast-food-rush/pre.html",
+    "category": "Food",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/fast-food-rush.jpg"
+  },
+  {
+    "id": 1154,
+    "name": "fall-brainrots",
+    "url": "https://db2.duckmath.org/2026/unity/fall-brainrots/pre.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/fall-brainrots-game-lg.webp"
+  },
+  {
+    "id": 1155,
+    "name": "super-star-car",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/super_star_car/index.html",
+    "category": "Car",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/superstarcar.webp"
+  },
+  {
+    "id": 1156,
+    "name": "basket-random-pro",
+    "url": "https://db2.duckmath.org/2025/construct/320/basket-random-pro/pre.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/basket-random-pro.webp"
+  },
+  {
+    "id": 1157,
+    "name": "wrestle-bros",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/wrestle_bros/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/wheelie-bike.jpg"
+  },
+  {
+    "id": 1158,
+    "name": "fish-it",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fish_it/index.html",
+    "category": "New",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/fish-it.jpg"
+  },
+  {
+    "id": 1159,
+    "name": "armed-forces-io",
+    "url": "https://db2.duckmath.org/2021/unity3/armedforces-io/pre.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Armed-Forces-io.jpg"
+  },
+  {
+    "id": 1160,
+    "name": "madalin-stunt-cars-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/madalin_stunt_cars_2/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/madalin.webp"
+  },
+  {
+    "id": 1161,
+    "name": "fnf-garcello",
+    "url": "https://db2.duckmath.org/2024/cube/fnf-garcello/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/fnf-garcello.webp"
+  },
+  {
+    "id": 1162,
+    "name": "roblox-cloud",
+    "url": "https://db2.duckmath.org/2001/cloud/index.html",
+    "category": "Roblox",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/cloud-gaming.webp"
+  },
+  {
+    "id": 1163,
+    "name": "classic-minecraft",
+    "url": "https://db2.duckmath.org/2026/more/duckcraft/pre.html",
+    "category": "Minecraft",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/mc-classic.webp"
+  },
+  {
+    "id": 1164,
+    "name": "football-legends",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/football_legends/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Football-Legends.jpg"
+  },
+  {
+    "id": 1165,
+    "name": "we-become-what-we-behold",
+    "url": "https://db2.duckmath.org/2024/more/we-become-what-we-behold/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/we-become-what-we-behold-game.webp"
+  },
+  {
+    "id": 1166,
+    "name": "learn-2-fly-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/learn_to_fly_2/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/learntofly2.webp"
+  },
+  {
+    "id": 1167,
+    "name": "geometry-escape",
+    "url": "https://db2.duckmath.org/2024/construct/299/geometry-escape/pre.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Geometry-Escape.jpg"
+  },
+  {
+    "id": 1168,
+    "name": "chess",
+    "url": "https://db2.duckmath.org/2025/unity3/chess/pre.html",
+    "category": "2-player",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/chess-freezenova.webp"
+  },
+  {
+    "id": 1169,
+    "name": "madalin-stunt-cars-pro",
+    "url": "https://db2.duckmath.org/2023/unity/madalin-stunt-cars-pro/pre.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Madalin-Stunt-Cars-Pro-Game.jpg"
+  },
+  {
+    "id": 1170,
+    "name": "time-shooter-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/time_shooter_2/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Time-Shooter-2.jpg"
+  },
+  {
+    "id": 1171,
+    "name": "global-guesser",
+    "url": "https://db2.duckmath.org/2025/html/global-guesser/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/global-guesser.webp"
+  },
+  {
+    "id": 1172,
+    "name": "tap-tap-shots",
+    "url": "https://db2.duckmath.org/2023/q/1/tap-tap-shots/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/TapTap-Shots.jpg"
+  },
+  {
+    "id": 1173,
+    "name": "fps-simulator",
+    "url": "https://db2.duckmath.org/2023/unity3/fps-simulator/pre.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Fps-simulator.jpg"
+  },
+  {
+    "id": 1174,
+    "name": "playground-latest-version",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/playground_latest_version/index.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/playground-latest-version.jpg"
+  },
+  {
+    "id": 1175,
+    "name": "archer-hero",
+    "url": "https://db2.duckmath.org/2023/unity/archer-hero/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Archer-Hero-Online.jpg"
+  },
+  {
+    "id": 1176,
+    "name": "highway-moto",
+    "url": "https://db2.duckmath.org/2024/unity/highway-moto/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/highway-moto-512.webp"
+  },
+  {
+    "id": 1177,
+    "name": "rooftop-snipers",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/rooftop_snipers/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/rooftop.webp"
+  },
+  {
+    "id": 1178,
+    "name": "head-soccer",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/head_soccer/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/head-soccer.jpg"
+  },
+  {
+    "id": 1179,
+    "name": "jetpack-joyride",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/jetpack_joyride/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/jetpackjoyride.webp"
+  },
+  {
+    "id": 1180,
+    "name": "bloxorz",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/bloxorz/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/bloxorz.webp"
+  },
+  {
+    "id": 1181,
+    "name": "electric-man-2",
+    "url": "https://db2.duckmath.org/2024/flash/electric-man-2/pre.html",
+    "category": "Stickman",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/electric.webp"
+  },
+  {
+    "id": 1182,
+    "name": "time-shooter-swat",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/time_shooter_swat/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/time-shooter-swat.jpg"
+  },
+  {
+    "id": 1183,
+    "name": "pac-man",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/pac_man/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/pacman.webp"
+  },
+  {
+    "id": 1184,
+    "name": "portal",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/portal_tfv/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/portal.webp"
+  },
+  {
+    "id": 1185,
+    "name": "penalty-challenge",
+    "url": "https://db2.duckmath.org/2023/code/penalty-challenge/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/penalty-challenge-512.jpg"
+  },
+  {
+    "id": 1186,
+    "name": "doom-1",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/doom_1/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/doom1.webp"
+  },
+  {
+    "id": 1187,
+    "name": "golf-bit",
+    "url": "https://db2.duckmath.org/2026/construct/328/golf-bit/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/golf-bit.webp"
+  },
+  {
+    "id": 1188,
+    "name": "crazy-cars",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/crazy_cars/index.html",
+    "category": "2-player",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/crazycars.webp"
+  },
+  {
+    "id": 1189,
+    "name": "cheese-chompers-3d",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/cheese_chompers_3d/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/cheese-chompers-3d.jpeg"
+  },
+  {
+    "id": 1190,
+    "name": "battle-simulator",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/battle_simulator/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/tabs.webp"
+  },
+  {
+    "id": 1191,
+    "name": "fire-and-water",
+    "url": "https://db2.duckmath.org/2023/construct/179/fire-and-water/pre.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/fireboy.webp"
+  },
+  {
+    "id": 1192,
+    "name": "cluster-reborn",
+    "url": "https://db2.duckmath.org/2026/unity/cluster-reborn/pre.html",
+    "category": "New",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/cluster-reborn.webp"
+  },
+  {
+    "id": 1193,
+    "name": "papas-tacomia",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/papastacomia/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/taco.webp"
+  },
+  {
+    "id": 1194,
+    "name": "cs-surf",
+    "url": "https://scratch.mit.edu/projects/159243389/embed",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/cssurf.webp"
+  },
+  {
+    "id": 1195,
+    "name": "duck-life",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/duck_life/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/dl1.webp"
+  },
+  {
+    "id": 1196,
+    "name": "papas-bakeria",
+    "url": "https://db2.duckmath.org/2024/flash/papas-bakeria/pre.html",
+    "category": "Papas",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/papas-bakeria.webp"
+  },
+  {
+    "id": 1197,
+    "name": "car-football",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/car_football/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Car-Football.jpg"
+  },
+  {
+    "id": 1198,
+    "name": "the-worlds-hardest-game",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/theworldshardestgame/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/hardgame1.webp"
+  },
+  {
+    "id": 1199,
+    "name": "blumgi-racers",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/blumgi_racers/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/blumgi-racers.jpg"
+  },
+  {
+    "id": 1200,
+    "name": "run-3",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/run3/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/run3.webp"
+  },
+  {
+    "id": 1201,
+    "name": "red-ball-4",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/redball_4/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/red-ball-4.jpg"
+  },
+  {
+    "id": 1202,
+    "name": "bffs-black-friday-collection",
+    "url": "https://db2.duckmath.org/2024/fabbox/bffs-black-friday-collection/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/bffs-black-friday-collection.webp"
+  },
+  {
+    "id": 1203,
+    "name": "block-blast",
+    "url": "https://db2.duckmath.org/2024/unity3/block-blast/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/block-blast.jpg"
+  },
+  {
+    "id": 1204,
+    "name": "papas-donuteria",
+    "url": "https://db2.duckmath.org/2024/flash/papas-donuteria/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/donuteria.webp"
+  },
+  {
+    "id": 1205,
+    "name": "tanuki-sunset",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/tanuki_sunset/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/tanuki.webp"
+  },
+  {
+    "id": 1206,
+    "name": "papas-scooperia",
+    "url": "https://db2.duckmath.org/2024/flash/papas-scooperia/pre.html",
+    "category": "Food",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/papas-scooperia.webp"
+  },
+  {
+    "id": 1207,
+    "name": "infiltrating-the-airship",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/infiltratingtheairship/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/airship.webp"
+  },
+  {
+    "id": 1208,
+    "name": "cluster-rush",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/cluster_rush/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/cluster_rush.webp"
+  },
+  {
+    "id": 1209,
+    "name": "rodeo-stampede",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/rodeo_stampede/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/rodeo-stampede.webp"
+  },
+  {
+    "id": 1210,
+    "name": "flappy-bird",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/flappy_bird/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/flappy-bird-game.webp"
+  },
+  {
+    "id": 1211,
+    "name": "burnout-city",
+    "url": "https://db2.duckmath.org/2024/unity/burnout-city/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/burnoutcity.jpg"
+  },
+  {
+    "id": 1212,
+    "name": "cross-roads",
+    "url": "https://db2.duckmath.org/2023/unity/cross-the-road/pre.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/crossyroad.webp"
+  },
+  {
+    "id": 1213,
+    "name": "duck-life-3",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/duck_life_3/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/dl3.webp"
+  },
+  {
+    "id": 1214,
+    "name": "ovo-multiplayer",
+    "url": "https://db2.duckmath.org/2025/html/ovo-online/pre.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ovo-multiplayer.jpg"
+  },
+  {
+    "id": 1215,
+    "name": "super-car-driving",
+    "url": "https://db2.duckmath.org/2024/unity2/super-car-driving/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/supercardriving-2.jpg"
+  },
+  {
+    "id": 1216,
+    "name": "soccer-random",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/soccer_random/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/soccer-random.jpg"
+  },
+  {
+    "id": 1217,
+    "name": "fleeing-the-complex",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fleeingthecomplex/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/complex.webp"
+  },
+  {
+    "id": 1218,
+    "name": "rally-point",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/rally_point/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/rallypoint.webp"
+  },
+  {
+    "id": 1219,
+    "name": "highway-driver",
+    "url": "https://db2.duckmath.org/2024/unity2/highway-driver/pre.html",
+    "category": "Car",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/highway-driver-512.webp"
+  },
+  {
+    "id": 1220,
+    "name": "justfall.lol",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/just_fall_lol/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/justfall-lol.jpeg"
+  },
+  {
+    "id": 1221,
+    "name": "basket-hoop",
+    "url": "https://db2.duckmath.org/2024/construct/311/basket-hoop/pre.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Basket-Hoop.jpg"
+  },
+  {
+    "id": 1222,
+    "name": "stick-battle",
+    "url": "https://db2.duckmath.org/2024/code/7/stick-battle/pre.html",
+    "category": "Stickman",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/stick-battle-unblocked.jpg"
+  },
+  {
+    "id": 1223,
+    "name": "papas-pizzeria",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/papaspizzeria/index.html",
+    "category": "Girls",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/papapizza.webp"
+  },
+  {
+    "id": 1224,
+    "name": "jasmine-beauty-salon",
+    "url": "https://db2.duckmath.org/2021/2/jasmine-beauty-salon/pre.html",
+    "category": "Girls",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/Jasmine-Beauty-Salon.webp"
+  },
+  {
+    "id": 1225,
+    "name": "stunt-rider",
+    "url": "https://db2.duckmath.org/2024/unity/stunt-rider/pre.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/stunt-rider.webp"
+  },
+  {
+    "id": 1226,
+    "name": "papas-burgeria",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/papasburgeria/index.html",
+    "category": "Girls",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/burger.webp"
+  },
+  {
+    "id": 1227,
+    "name": "watermelon-game",
+    "url": "https://db2.duckmath.org/2025/construct/321/watermelon-game/pre.html",
+    "category": "Food",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Watermelon-Game-Online.jpg"
+  },
+  {
+    "id": 1228,
+    "name": "rocket-hero-clicker",
+    "url": "https://db2.duckmath.org/2025/unity4/rocket-hero-clicker/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/rocket-hero-clicker.webp"
+  },
+  {
+    "id": 1229,
+    "name": "simple-loot-idle",
+    "url": "https://db2.duckmath.org/2024/gm/games3/simple-loot-idle/pre.html",
+    "category": "Clicker",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/simple-loot-idle.jpg"
+  },
+  {
+    "id": 1230,
+    "name": "pixelmon-town",
+    "url": "https://db2.duckmath.org/2025/html/pixelmon-town/pre.html",
+    "category": "Minecraft",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/pixelmon-town-game-512.webp"
+  },
+  {
+    "id": 1231,
+    "name": "simply-up",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/simply_up/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/simply-up.jpg"
+  },
+  {
+    "id": 1232,
+    "name": "little-alchemy-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/little_alchemy_2/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/little-alchemy-2.jpg"
+  },
+  {
+    "id": 1233,
+    "name": "highway-racer-pro",
+    "url": "https://db2.duckmath.org/2024/unity/highway-racer-pro/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Highway-Racer-Pro.jpg"
+  },
+  {
+    "id": 1234,
+    "name": "blocky-combat-swat",
+    "url": "https://db2.duckmath.org/2023/unity3/blocky-combat-swat/pre.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/blocky-combat-swat.jpg"
+  },
+  {
+    "id": 1235,
+    "name": "super-smash-flash",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/supersmashflash/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/smashflash2.webp"
+  },
+  {
+    "id": 1236,
+    "name": "cat-simulator",
+    "url": "https://db2.duckmath.org/2022/unity4/cat-simulator/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Cat-Simulator-Online.jpg"
+  },
+  {
+    "id": 1237,
+    "name": "apple-knight-mini-dungeons",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/apple_knight_mini_dungeons/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/apple-knight.webp"
+  },
+  {
+    "id": 1238,
+    "name": "president-simulator",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/president_simulator/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/pres_sim.webp"
+  },
+  {
+    "id": 1239,
+    "name": "tennis-masters",
+    "url": "https://db2.duckmath.org/2024/gm/tennis-masters/pre.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Tennis-Masters-2.jpg"
+  },
+  {
+    "id": 1240,
+    "name": "jacksmith",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/jacksmith/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/jackSmith.webp"
+  },
+  {
+    "id": 1241,
+    "name": "soccer-random-pro",
+    "url": "https://db2.duckmath.org/2024/construct/303/soccer-random-pro/pre.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/soccer-random-pro.jpg"
+  },
+  {
+    "id": 1242,
+    "name": "doodle-jump",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/doodle_jump/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/doodle.webp"
+  },
+  {
+    "id": 1243,
+    "name": "famidash",
+    "url": "https://db2.duckmath.org/2026/em/famidash/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/famidash.webp"
+  },
+  {
+    "id": 1244,
+    "name": "street-fighter",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/street_fighter/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/street-fighter.webp"
+  },
+  {
+    "id": 1245,
+    "name": "idle-dev-startup",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/idle_dev_startup/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/idle-dev-startup.jpg"
+  },
+  {
+    "id": 1246,
+    "name": "ado-cars-drifter",
+    "url": "https://db2.duckmath.org/2023/unity3/ado-cars-drifter/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/ado-cars-drifter.jpg"
+  },
+  {
+    "id": 1247,
+    "name": "meat-boy",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/meat/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/meat.webp"
+  },
+  {
+    "id": 1248,
+    "name": "riddle-school",
+    "url": "https://db2.duckmath.org/2025/flash/riddle-school/pre.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/riddle-school.webp"
+  },
+  {
+    "id": 1249,
+    "name": "house-painter",
+    "url": "https://db2.duckmath.org/2023/construct/238/house-painter/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/house-painter-512.jpg"
+  },
+  {
+    "id": 1250,
+    "name": "yeti-sensation",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/yeti_sensation/gabe.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/yetidash.webp"
+  },
+  {
+    "id": 1251,
+    "name": "papas-sushiria",
+    "url": "https://db2.duckmath.org/2024/flash/papas-sushiria/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/papas-sushiria.webp"
+  },
+  {
+    "id": 1252,
+    "name": "papas-cheeseria",
+    "url": "https://db2.duckmath.org/2024/flash/papas-cheeseria/pre.html",
+    "category": "Papas",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/papas-cheeseria.webp"
+  },
+  {
+    "id": 1253,
+    "name": "math-duck",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/math_duck/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/math-duck.webp"
+  },
+  {
+    "id": 1254,
+    "name": "fancy-pants-adventures-world-3",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fpaworld3/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/fpaw3.webp"
+  },
+  {
+    "id": 1255,
+    "name": "poop-clicker",
+    "url": "https://db2.duckmath.org/2024/construct/292/poop-clicker/pre.html",
+    "category": "Clicker",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Poop-Clicker.jpg"
+  },
+  {
+    "id": 1256,
+    "name": "car-stunt-king",
+    "url": "https://db2.duckmath.org/2024/unity/car-stunt-king/pre.html",
+    "category": "Car",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Car-Stunt-King.jpg"
+  },
+  {
+    "id": 1257,
+    "name": "archer-master-3d-castle-defender",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/archer_master_3d_castle_defender/index.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/archer-master-3d-castle-defender.jpg"
+  },
+  {
+    "id": 1258,
+    "name": "turn-turn",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/turnturn/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/turn-turn.webp"
+  },
+  {
+    "id": 1259,
+    "name": "swords-and-souls",
+    "url": "https://db2.duckmath.org/2024/flash/swords-and-souls/pre.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/swords-and-souls-512.webp"
+  },
+  {
+    "id": 1260,
+    "name": "supercars-drift",
+    "url": "https://db2.duckmath.org/2023/unity3/supercars-drift/pre.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/SuperCars-Drift.jpg"
+  },
+  {
+    "id": 1261,
+    "name": "mini-golf",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/mini_golf/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/golfmini.webp"
+  },
+  {
+    "id": 1262,
+    "name": "vex-8",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/vex_8/index.html",
+    "category": "Stickman",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/vex-8.webp"
+  },
+  {
+    "id": 1263,
+    "name": "raft-wars-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/raftwars2/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/rw2.webp"
+  },
+  {
+    "id": 1264,
+    "name": "paper-minecraft",
+    "url": "https://db2.duckmath.org/2025/scratch/paper-minecraft-scratch/pre.html",
+    "category": "Minecraft",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Paper-Minecraft.jpg"
+  },
+  {
+    "id": 1265,
+    "name": "papas-pastaria",
+    "url": "https://db2.duckmath.org/2024/flash/papas-pastaria/pre.html",
+    "category": "Papas",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/papas-pastaria.webp"
+  },
+  {
+    "id": 1266,
+    "name": "axis-football-league",
+    "url": "https://db2.duckmath.org/2024/flash/axis-football-league/pre.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/axis-football-league-game.webp"
+  },
+  {
+    "id": 1267,
+    "name": "hero-dragon-power",
+    "url": "https://db2.duckmath.org/2023/unity/hero-dragon-power/pre.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Hero-Dragon-Power-Game.jpg"
+  },
+  {
+    "id": 1268,
+    "name": "papas-pancakeria",
+    "url": "https://db2.duckmath.org/2024/flash/papas-pancakeria/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/papas-pancakeria.webp"
+  },
+  {
+    "id": 1269,
+    "name": "papas-cupcakeria",
+    "url": "https://db2.duckmath.org/2024/flash/papas-cupcakeria/pre.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/papas-cupcakeria.webp"
+  },
+  {
+    "id": 1270,
+    "name": "papas-wingeria",
+    "url": "https://db2.duckmath.org/2024/flash/papas-wingeria/pre.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/papas-wingeria.webp"
+  },
+  {
+    "id": 1271,
+    "name": "drift-fury",
+    "url": "https://db2.duckmath.org/2023/unity/drift-fury/pre.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Drift-Fury.jpg"
+  },
+  {
+    "id": 1272,
+    "name": "drift-city",
+    "url": "https://db2.duckmath.org/2024/gm/games2/drift-city/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/drift-city-unblocked.jpg"
+  },
+  {
+    "id": 1273,
+    "name": "learn-to-fly-3",
+    "url": "https://db2.duckmath.org/2024/flash/learn-to-fly-3/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/learn-to-fly-3.webp"
+  },
+  {
+    "id": 1274,
+    "name": "secret-sniper-agent",
+    "url": "https://db2.duckmath.org/2022/construct/129/secret-sniper-agent/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Secret-Sniper-Agent.jpg"
+  },
+  {
+    "id": 1275,
+    "name": "orb-farm",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/orb_farm/index.html",
+    "category": "Idle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/orb-farm.jpg"
+  },
+  {
+    "id": 1276,
+    "name": "tunnel-rush-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/tunnel_rush_2/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/tunnelrush.webp"
+  },
+  {
+    "id": 1277,
+    "name": "dreamlike-room",
+    "url": "https://db2.duckmath.org/2024/code/dreamlike-room/pre.html",
+    "category": "Brain",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/dreamlike-room.webp"
+  },
+  {
+    "id": 1278,
+    "name": "wheres-my-water",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/where_is_the_water/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/wheresmywater.webp"
+  },
+  {
+    "id": 1279,
+    "name": "fortnite-z",
+    "url": "https://turbowarp.org/404950182/embed",
+    "category": "Fps",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/fort-2d.jpg"
+  },
+  {
+    "id": 1280,
+    "name": "crazy-karts",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/crazy_karts/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/crazy-karts.webp"
+  },
+  {
+    "id": 1281,
+    "name": "basketball-king",
+    "url": "https://db2.duckmath.org/2024/construct/316/basketball-king/pre.html",
+    "category": "2-player",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/basketball-king.jpg"
+  },
+  {
+    "id": 1282,
+    "name": "dark-forest-idle",
+    "url": "https://db2.duckmath.org/2024/godot/dark-forest-idle/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/dark-forest-idle-512.webp"
+  },
+  {
+    "id": 1283,
+    "name": "crazy-christmas-3d",
+    "url": "https://db2.duckmath.org/2025/unity3/crazy-christmas-3d/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/crazy-christmas-game.webp"
+  },
+  {
+    "id": 1284,
+    "name": "fancy-pants-adventures-world-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fpaworld2/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/fpaw2.webp"
+  },
+  {
+    "id": 1285,
+    "name": "head-ball-online",
+    "url": "https://db2.duckmath.org/2024/unity2/head-ball-online/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/head-ball-online-512.webp"
+  },
+  {
+    "id": 1286,
+    "name": "papas-hot-doggeria",
+    "url": "https://db2.duckmath.org/2024/flash/papas-hot-doggeria/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/hot-doggeria.webp"
+  },
+  {
+    "id": 1287,
+    "name": "burnout-drift-hunter",
+    "url": "https://db2.duckmath.org/2022/unity4/burnout-drift-hunter/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Burnout-Drift-Hunter-Online.jpg"
+  },
+  {
+    "id": 1288,
+    "name": "cool-cookie-clicker",
+    "url": "https://db2.duckmath.org/2025/construct/260/cool-cookie-clicker/pre.html",
+    "category": "Clicker",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/cool-cookie-clicker.webp"
+  },
+  {
+    "id": 1289,
+    "name": "duck-life-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/duck_life_2/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/dl2.webp"
+  },
+  {
+    "id": 1290,
+    "name": "arcane-archer",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/arcane_archer/index.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/arcane-archer.jpg"
+  },
+  {
+    "id": 1291,
+    "name": "the-worlds-hardest-game-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/theworldshardestgame2/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/hardgame2.webp"
+  },
+  {
+    "id": 1292,
+    "name": "interactive-buddy",
+    "url": "https://db2.duckmath.org/2024/flash/interactive-buddy/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/interactive-buddy-game.webp"
+  },
+  {
+    "id": 1293,
+    "name": "agent-smith",
+    "url": "https://db2.duckmath.org/2021/unity/agent-smith/pre.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Agent-Smith-2.jpg"
+  },
+  {
+    "id": 1294,
+    "name": "uno-online",
+    "url": "https://db2.duckmath.org/2022/unity4/uno-online/pre.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Uno-Online-2.jpg"
+  },
+  {
+    "id": 1295,
+    "name": "nova-craft",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/nova_craft/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Nova-Craft.jpg"
+  },
+  {
+    "id": 1296,
+    "name": "storm-the-house-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/storm_the_house_2/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/storm-the-house-2.webp"
+  },
+  {
+    "id": 1297,
+    "name": "super-stickman-golf",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/super_stickman_golf/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/super-stickman-golf.jpg"
+  },
+  {
+    "id": 1298,
+    "name": "extreme-run-3d",
+    "url": "https://db2.duckmath.org/2026/docs/extreme-run-3d/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/extreme-run-3d.webp"
+  },
+  {
+    "id": 1299,
+    "name": "nova-clicker",
+    "url": "https://db2.duckmath.org/2024/construct/314/nova-clicker/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Nova-Clicker.jpg"
+  },
+  {
+    "id": 1300,
+    "name": "alien-sky-invasion",
+    "url": "https://db2.duckmath.org/2021/unity3/alien-sky-invasion/pre.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Alien-Sky-Invasion.jpg"
+  },
+  {
+    "id": 1301,
+    "name": "papa-louie-2-when-burgers-attack",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/papalouie2/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/papalouie2_100x100%20(1).webp"
+  },
+  {
+    "id": 1302,
+    "name": "deer-hunter",
+    "url": "https://db2.duckmath.org/2021/1/deer-hunter/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Deer-Hunter.jpg"
+  },
+  {
+    "id": 1303,
+    "name": "among-impostor",
+    "url": "https://db2.duckmath.org/2023/construct/234/among-impostor/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/among-impostor-512.jpg"
+  },
+  {
+    "id": 1304,
+    "name": "snaker-io",
+    "url": "https://db2.duckmath.org/2026/more/snaker-io/pre.html",
+    "category": "Io",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/snaker-io.webp"
+  },
+  {
+    "id": 1305,
+    "name": "f1-drift-racer",
+    "url": "https://db2.duckmath.org/2022/construct/134/f1-drift-racer/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/F1-Drift-Racer.jpg"
+  },
+  {
+    "id": 1306,
+    "name": "crazy-parking-fury",
+    "url": "https://db2.duckmath.org/2022/unity3/crazy-parking-fury/pre.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Crazy-Parking-Fury.jpg"
+  },
+  {
+    "id": 1307,
+    "name": "8-ball-pool-billiard",
+    "url": "https://db2.duckmath.org/2022/unity3/8-ball-pool-billiard/pre.html",
+    "category": "Brain",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/8-Ball-Pool-Billiard.jpg"
+  },
+  {
+    "id": 1308,
+    "name": "helix-jump",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/helix_jump/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/helix-jump.jpg"
+  },
+  {
+    "id": 1309,
+    "name": "ultimate-moto",
+    "url": "https://db2.duckmath.org/2021/2/ultimate-moto/pre.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ultimate-moto.jpg"
+  },
+  {
+    "id": 1310,
+    "name": "mini-shooters",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/mini_shooters/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/mini-shooters.jpg"
+  },
+  {
+    "id": 1311,
+    "name": "awesome-tanks-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/awesometanks2/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/awesome-tanks-2.webp"
+  },
+  {
+    "id": 1312,
+    "name": "tractor-farming-simulator",
+    "url": "https://db2.duckmath.org/2022/unity/tractor-farming-simulator/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Tractor-Farming-Simulator.jpg"
+  },
+  {
+    "id": 1313,
+    "name": "ducklingsio",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/ducklingsio/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/ducklingsio.jpg"
+  },
+  {
+    "id": 1314,
+    "name": "duck-life-5",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/duck_life_5/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/duck-life-5.jpg"
+  },
+  {
+    "id": 1315,
+    "name": "volley-random",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/volley_random/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/volley-random.jpg"
+  },
+  {
+    "id": 1316,
+    "name": "breaking-the-bank",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/breakingthebank/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/breakbank.webp"
+  },
+  {
+    "id": 1317,
+    "name": "awesome-tanks",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/awesometanks/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/awesometanks1.webp"
+  },
+  {
+    "id": 1318,
+    "name": "learn-to-fly-idle",
+    "url": "https://db2.duckmath.org/2024/flash/learn-to-fly-idle/pre.html",
+    "category": "Idle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/learn-to-fly-idle.webp"
+  },
+  {
+    "id": 1319,
+    "name": "city-stunts",
+    "url": "https://db2.duckmath.org/2023/unity3/city-stunts/pre.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/City-Stunts-Game.jpg"
+  },
+  {
+    "id": 1320,
+    "name": "tetris",
+    "url": "https://scratch.mit.edu/projects/451773001/embed",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/tetris.webp"
+  },
+  {
+    "id": 1321,
+    "name": "burnout-racers",
+    "url": "https://db2.duckmath.org/2024/unity/burnout-racers/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Burnout-Racers.jpg"
+  },
+  {
+    "id": 1322,
+    "name": "stickman-peacekeeper",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/stickman_peacekeeper/index.html?kiz10",
+    "category": "Stickman",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/stickmanpeace.webp"
+  },
+  {
+    "id": 1323,
+    "name": "basketball-slam-dunk",
+    "url": "https://db2.duckmath.org/2021/unity2/basketball-slam-dunk/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Basketball-Slam-Dunk.jpg"
+  },
+  {
+    "id": 1324,
+    "name": "funny-shooter-bro",
+    "url": "https://db2.duckmath.org/2024/unity/funny-shooter-bro/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Funny-Shooter-Bro.jpg"
+  },
+  {
+    "id": 1325,
+    "name": "learn-to-fly",
+    "url": "https://db2.duckmath.org/2024/flash/learn-to-fly/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/learn-to-fly.webp"
+  },
+  {
+    "id": 1326,
+    "name": "marble-skies",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/marble_skies/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/marble_skies.webp"
+  },
+  {
+    "id": 1327,
+    "name": "super-mini-racing",
+    "url": "https://db2.duckmath.org/2022/unity4/super-mini-racing/pre.html",
+    "category": "Car",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Super-Mini-Racing.jpg"
+  },
+  {
+    "id": 1328,
+    "name": "swords-and-sandals-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/swordsandsandals2/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/sas2.webp"
+  },
+  {
+    "id": 1329,
+    "name": "egg-car-racing",
+    "url": "https://db2.duckmath.org/2024/construct/289/egg-car-racing/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/egg-car-racing.jpg"
+  },
+  {
+    "id": 1330,
+    "name": "cargo-jeep-racing",
+    "url": "https://db2.duckmath.org/2021/4/cargo-jeep-racing/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/Cargo-Jeep-Racing.webp"
+  },
+  {
+    "id": 1331,
+    "name": "raft-wars",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/raftwars/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/rw1.webp"
+  },
+  {
+    "id": 1332,
+    "name": "potty-racers-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/pottyracers2/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/potty-racers-2.jpg"
+  },
+  {
+    "id": 1333,
+    "name": "car-parkour",
+    "url": "https://db2.duckmath.org/2022/construct/163/car-parkour/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/Car-Parkour.webp"
+  },
+  {
+    "id": 1334,
+    "name": "crazy-moto-racing",
+    "url": "https://db2.duckmath.org/2022/unity3/crazy-moto-racing/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/crazy-moto-racing.jpg"
+  },
+  {
+    "id": 1335,
+    "name": "rooftop-duel",
+    "url": "https://db2.duckmath.org/2025/construct/213/rooftop-duel/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Rooftop-Duel-Online.jpg"
+  },
+  {
+    "id": 1336,
+    "name": "cat-miner-2",
+    "url": "https://scratch.mit.edu/projects/351793769/embed",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/cat-miner.webp"
+  },
+  {
+    "id": 1337,
+    "name": "crazy-stickman-physics",
+    "url": "https://db2.duckmath.org/2023/construct/185/crazy-stickman-physics/pre.html",
+    "category": "Stickman",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Crazy-Stickman-Physics.jpg"
+  },
+  {
+    "id": 1338,
+    "name": "storm-the-house-3",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/stormthehouse3/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/storm-house-3.webp"
+  },
+  {
+    "id": 1339,
+    "name": "cube-worlds",
+    "url": "https://db2.duckmath.org/2025/html/cube-worlds/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Cube-Worlds.jpg"
+  },
+  {
+    "id": 1340,
+    "name": "conquer-kingdoms",
+    "url": "https://db2.duckmath.org/2025/unity/conquer-kingdoms/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/conquer-kingdoms.webp"
+  },
+  {
+    "id": 1341,
+    "name": "fun-party-makeup",
+    "url": "https://db2.duckmath.org/2021/4/fun-party-makeup/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Fun-Party-Makeup.jpg"
+  },
+  {
+    "id": 1342,
+    "name": "neon-moto-driver",
+    "url": "https://db2.duckmath.org/2022/construct/138/neon-moto-driver/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/neon-moto-driver.webp"
+  },
+  {
+    "id": 1343,
+    "name": "crown-defense",
+    "url": "https://db2.duckmath.org/2025/construct/337/crown-defense/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/crown-defense-online.webp"
+  },
+  {
+    "id": 1344,
+    "name": "state-io-wars",
+    "url": "https://db2.duckmath.org/2024/construct/233/state-io-wars/pre.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/State-io-Wars.jpg"
+  },
+  {
+    "id": 1345,
+    "name": "fancy-pants-adventures-world-1",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/fancypantsadventure/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/fancy.webp"
+  },
+  {
+    "id": 1346,
+    "name": "endless-lake",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/endless_lake/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/endlesslake.webp"
+  },
+  {
+    "id": 1347,
+    "name": "fall-boys",
+    "url": "https://db2.duckmath.org/2023/unity3/fall-boys/pre.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Fall-Boys.jpg"
+  },
+  {
+    "id": 1348,
+    "name": "alien-hominid",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/alien_hominid/index.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/alien.webp"
+  },
+  {
+    "id": 1349,
+    "name": "wheres-my-pizza",
+    "url": "https://db2.duckmath.org/2024/wix/wheres-my-pizza/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/wheres-my-pizza-game.webp"
+  },
+  {
+    "id": 1350,
+    "name": "hero-rush-tower-defense",
+    "url": "https://db2.duckmath.org/2023/unity/hero-rush-tower-defense/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Hero-Rush-Tower-Defense-Play.jpg"
+  },
+  {
+    "id": 1351,
+    "name": "run-1",
+    "url": "https://db2.duckmath.org/2024/flash/run-1/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/run-1-game.webp"
+  },
+  {
+    "id": 1352,
+    "name": "vapor-trails",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/vapor_trails/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/vapor-trails.jpg"
+  },
+  {
+    "id": 1353,
+    "name": "hexa-puzzle",
+    "url": "https://db2.duckmath.org/2024/unity2/hexa-puzzle/pre.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/hexa-puzzle-512.webp"
+  },
+  {
+    "id": 1354,
+    "name": "xtreme-paintball-wars",
+    "url": "https://db2.duckmath.org/2023/unity2/xtreme-paintball-wars/pre.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Xtreme-Paintball-Wars.jpg"
+  },
+  {
+    "id": 1355,
+    "name": "boxing-random",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/boxing_random/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Boxing-Random.jpg"
+  },
+  {
+    "id": 1356,
+    "name": "supermarket-simulator",
+    "url": "https://db2.duckmath.org/2025/unity/supermarket-simulator/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Supermarket-Simulator-Online.jpg"
+  },
+  {
+    "id": 1357,
+    "name": "diggy",
+    "url": "https://db2.duckmath.org/2024/flash/diggy/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/diggy.webp"
+  },
+  {
+    "id": 1358,
+    "name": "kingdom-attack",
+    "url": "https://db2.duckmath.org/2021/unity3/kingdom-attack/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io//img2/kingdom-battle-3d.webp"
+  },
+  {
+    "id": 1359,
+    "name": "subway-idle-3d",
+    "url": "https://db2.duckmath.org/2022/unity4/subway-idle-3d/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Subway-Idle.jpg"
+  },
+  {
+    "id": 1360,
+    "name": "cloud",
+    "url": "https://db2.duckmath.org/2001/cloud/index.html?cloud=1",
+    "category": "Roblox",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/cloud-gaming.webp"
+  },
+  {
+    "id": 1361,
+    "name": "2-player-crazy-racer",
+    "url": "https://db2.duckmath.org/2022/unity3/2-player-crazy-racer/pre.html",
+    "category": "Car",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/2-Player-Crazy-Racer.jpg"
+  },
+  {
+    "id": 1362,
+    "name": "classicube",
+    "url": "https://db2.duckmath.org/2024/cube/classicube/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/classicube.jpg"
+  },
+  {
+    "id": 1363,
+    "name": "doggo-clicker",
+    "url": "https://db2.duckmath.org/2024/gm/games4/doggo-clicker/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Doggo-Clicker.jpg"
+  },
+  {
+    "id": 1364,
+    "name": "choppy-orc",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/choppy_orc/index.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/choppy-orc.jpg"
+  },
+  {
+    "id": 1365,
+    "name": "mini-cars-racing",
+    "url": "https://db2.duckmath.org/2021/unity/mini-cars-racing/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Mini-Cars-Racing.jpg"
+  },
+  {
+    "id": 1366,
+    "name": "storm-the-house",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/stormthehouse/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/stormthehouse.webp"
+  },
+  {
+    "id": 1367,
+    "name": "pizza-party",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/pizza_party/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/pizzaparty.webp"
+  },
+  {
+    "id": 1368,
+    "name": "digital-museum",
+    "url": "https://noclip.website",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/digital.webp"
+  },
+  {
+    "id": 1369,
+    "name": "super-mario-defense",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/super_mario_defense/index.html",
+    "category": "Emulator",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/super-mario-defense.jpg"
+  },
+  {
+    "id": 1370,
+    "name": "train-racing",
+    "url": "https://db2.duckmath.org/2022/construct/120/train-racing/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Train-Racing-Game.jpg"
+  },
+  {
+    "id": 1371,
+    "name": "squad-shooter",
+    "url": "https://db2.duckmath.org/2024/unity2/squad-shooter/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/squad-shooter-512.webp"
+  },
+  {
+    "id": 1372,
+    "name": "bloonstd",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/bloonstd/index.html",
+    "category": "Multiplayer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/bloons1.webp"
+  },
+  {
+    "id": 1373,
+    "name": "stick-guys-defense",
+    "url": "https://db2.duckmath.org/2022/unity3/stick-guys-defense/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Stick-Guys-Defense.jpg"
+  },
+  {
+    "id": 1374,
+    "name": "awesome-pirates",
+    "url": "https://db2.duckmath.org/2024/flash/awesome-pirates/pre.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/awesome-pirates-512.webp"
+  },
+  {
+    "id": 1375,
+    "name": "slime-rush-td",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/slime_rush_td/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/slime-rush-td.jpg"
+  },
+  {
+    "id": 1376,
+    "name": "kawai-run-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/kawai_run_2_offline/index.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/kawai-run-2.jpg"
+  },
+  {
+    "id": 1377,
+    "name": "find-it",
+    "url": "https://db2.duckmath.org/2025/unity/find-it/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Find-It.jpg"
+  },
+  {
+    "id": 1378,
+    "name": "cobraz-io-classic",
+    "url": "https://db2.duckmath.org/2022/unity/cobraz-io-classic/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Cobraz.io-Classic.jpg"
+  },
+  {
+    "id": 1380,
+    "name": "farming-island",
+    "url": "https://db2.duckmath.org/2025/unity/farming-island/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/farming-island.jpg"
+  },
+  {
+    "id": 1381,
+    "name": "idle-restaurant",
+    "url": "https://db2.duckmath.org/2023/unity2/idle-restaurant/pre.html",
+    "category": "Idle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Idle-Restaurant.jpg"
+  },
+  {
+    "id": 1382,
+    "name": "bloonstd-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/bloonstd2/index.html",
+    "category": "2-player",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/bloons2.webp"
+  },
+  {
+    "id": 1383,
+    "name": "bloonstd-3",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/bloonstd3/index.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/bloons3.webp"
+  },
+  {
+    "id": 1384,
+    "name": "tiny-castle",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/tinycastle/index.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/tinycastle.webp"
+  },
+  {
+    "id": 1385,
+    "name": "tank-arena",
+    "url": "https://db2.duckmath.org/2025/construct/293/tank-arena/pre.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Tank-Arena-Online.jpg"
+  },
+  {
+    "id": 1386,
+    "name": "stunt-simulator-2",
+    "url": "https://db2.duckmath.org/2021/unity3/stunt-simulator-2/pre.html",
+    "category": "Car",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Stunt-simulator-2.jpg"
+  },
+  {
+    "id": 1387,
+    "name": "age-of-battle",
+    "url": "https://db2.duckmath.org/2026/unity/age-of-battle/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/age-of-battle-game-lg.webp"
+  },
+  {
+    "id": 1388,
+    "name": "cool-game",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/heck_sucker/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/heck.png"
+  },
+  {
+    "id": 1389,
+    "name": "powerslide-kart-simulator",
+    "url": "https://db2.duckmath.org/2022/unity3/powerslide-kart-simulator/pre.html",
+    "category": "Driving",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Powerslide-Kart-Simulator.jpg"
+  },
+  {
+    "id": 1390,
+    "name": "survival-island",
+    "url": "https://db2.duckmath.org/2024/unity2/survival-island/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Survival-Island.jpg"
+  },
+  {
+    "id": 1391,
+    "name": "car-wash",
+    "url": "https://db2.duckmath.org/2023/unity2/car-wash/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Car-Wash-Online-Game.jpg"
+  },
+  {
+    "id": 1392,
+    "name": "war-simulator",
+    "url": "https://db2.duckmath.org/2021/unity2/war-simulator/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/War-Simulator.jpg"
+  },
+  {
+    "id": 1393,
+    "name": "kingdom-battle-3d",
+    "url": "https://db2.duckmath.org/2025/unity2/kingdom-battle-3d/pre.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/kingdom-battle-3d.webp"
+  },
+  {
+    "id": 1394,
+    "name": "hover-racer-pro",
+    "url": "https://db2.duckmath.org/2021/unity/hover-racer-pro/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Hover-Racer-Pro.jpg"
+  },
+  {
+    "id": 1395,
+    "name": "snake-wars",
+    "url": "https://db2.duckmath.org/2024/unity/snake-wars/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Snake-Wars-Free-Game.jpg"
+  },
+  {
+    "id": 1396,
+    "name": "rogue-soul-2",
+    "url": "https://db2.duckmath.org/2024/flash/rogue-soul-2/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/rogue-soul-2-512.webp"
+  },
+  {
+    "id": 1397,
+    "name": "the-farmer",
+    "url": "https://db2.duckmath.org/2022/unity/the-farmer/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/The-Farmer.jpg"
+  },
+  {
+    "id": 1398,
+    "name": "head-basketball",
+    "url": "https://db2.duckmath.org/2022/unity/head-basketball/pre.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Head-Basketball.jpg"
+  },
+  {
+    "id": 1399,
+    "name": "american-touchdown",
+    "url": "https://db2.duckmath.org/2021/unity3/american-touchdown/pre.html",
+    "category": "Sports",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/American-Touchdown-Game.jpg"
+  },
+  {
+    "id": 1400,
+    "name": "nuts-and-bolts-puzzle",
+    "url": "https://db2.duckmath.org/2025/unity/nuts-and-bolts-puzzle/pre.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/nuts-and-bolts-puzzle.jpg"
+  },
+  {
+    "id": 1401,
+    "name": "speedrun-parkour",
+    "url": "https://db2.duckmath.org/2022/construct/145/speedrun-parkour/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Speedrun-Parkour.jpg"
+  },
+  {
+    "id": 1402,
+    "name": "mini-zombie-shooters",
+    "url": "https://db2.duckmath.org/2022/construct/162/mini-zombie-shooters/pre.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/Mini-Zombie-Shooters.webp"
+  },
+  {
+    "id": 1403,
+    "name": "grand-prix-multiplication",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/grand_prix_multiplication/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/grandprix.webp"
+  },
+  {
+    "id": 1404,
+    "name": "war-of-ships-io",
+    "url": "https://db2.duckmath.org/2022/unity3/war-of-ships-io/pre.html",
+    "category": "Io",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/War-of-Ships-io.jpg"
+  },
+  {
+    "id": 1405,
+    "name": "neighborhood-defense",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/neighborhood_defense/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Neighborhood-Defense.jpg"
+  },
+  {
+    "id": 1406,
+    "name": "xmas-cookie-clicker",
+    "url": "https://db2.duckmath.org/2023/construct/288/xmas-cookie-clicker/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Xmas-Cookie-Clicker.jpg"
+  },
+  {
+    "id": 1407,
+    "name": "mafia-getaway-cars",
+    "url": "https://db2.duckmath.org/2025/construct/298/mafia-getaway-cars/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Mafia-Getaway-Cars.jpg"
+  },
+  {
+    "id": 1408,
+    "name": "monster-survivors",
+    "url": "https://db2.duckmath.org/2025/unity/monster-survivors/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Monster-survivors.jpg"
+  },
+  {
+    "id": 1409,
+    "name": "run-3-space",
+    "url": "https://db2.duckmath.org/2023/construct/192/run-3-space/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Run-3-Space.jpg"
+  },
+  {
+    "id": 1410,
+    "name": "paper-planets",
+    "url": "https://db2.duckmath.org/2023/unity3/paper-planets/pre.html",
+    "category": "Io",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/paper-planets.webp"
+  },
+  {
+    "id": 1411,
+    "name": "tile-match",
+    "url": "https://db2.duckmath.org/2025/unity/tile-match/pre.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/tile-match.jpg"
+  },
+  {
+    "id": 1412,
+    "name": "bubble-shooter-easy",
+    "url": "https://db2.duckmath.org/2024/koz/bubble-shooter-easy/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/bubble-shooter-ez-512.webp"
+  },
+  {
+    "id": 1413,
+    "name": "cactus-mccoy-1",
+    "url": "https://db2.duckmath.org/2024/flash/cactus-mccoy-1/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/cactus-mccoy-1.webp"
+  },
+  {
+    "id": 1414,
+    "name": "cake-match-puzzle",
+    "url": "https://db2.duckmath.org/2024/unity3/cake-match-puzzle/pre.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/cake-match-puzzle.webp"
+  },
+  {
+    "id": 1415,
+    "name": "paw-clicker",
+    "url": "https://db2.duckmath.org/2025/construct/331/paw-clicker/pre.html",
+    "category": "Clicker",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Paw-Clicker.webp"
+  },
+  {
+    "id": 1416,
+    "name": "xx142-b2.exe",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/xx142-b2.exe/index.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/xx142-b2.webp"
+  },
+  {
+    "id": 1417,
+    "name": "freeway-fury-2",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/freewayfury2/index.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/freewayfury2.webp"
+  },
+  {
+    "id": 1418,
+    "name": "survival-craft",
+    "url": "https://db2.duckmath.org/2022/unity/survival-craft/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Survival-Craft-Game.jpg"
+  },
+  {
+    "id": 1419,
+    "name": "storm-city-mafia",
+    "url": "https://db2.duckmath.org/2022/unity/storm-city-mafia/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Storm-City-Mafia.jpg"
+  },
+  {
+    "id": 1420,
+    "name": "dont-fall-io",
+    "url": "https://db2.duckmath.org/2021/unity/dont-fall-io/pre.html",
+    "category": "Platformer",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Dont-Fall-io-2.jpg"
+  },
+  {
+    "id": 1421,
+    "name": "kingdom-rush-frontiers",
+    "url": "https://db2.duckmath.org/2024/flash/kingdom-rush-frontiers/pre.html",
+    "category": "Fighting",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/kingdom-rush-frontiers-512.webp"
+  },
+  {
+    "id": 1422,
+    "name": "crazy-hill-climb",
+    "url": "https://db2.duckmath.org/2023/construct/209/crazy-hill-climb/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Crazy-Hill-Climb.jpg"
+  },
+  {
+    "id": 1423,
+    "name": "doom-2d",
+    "url": "https://db2.duckmath.org/2024/flash/doom-2d/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/doom-2d.webp"
+  },
+  {
+    "id": 1424,
+    "name": "darkness-survivors",
+    "url": "https://db2.duckmath.org/2024/q2/darkness-survivors/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Darkness-Survivors.jpg"
+  },
+  {
+    "id": 1425,
+    "name": "flappy-circle",
+    "url": "https://dives05.github.io/flappyCircle/",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/flappycircle.webp"
+  },
+  {
+    "id": 1426,
+    "name": "hill-climb-cars",
+    "url": "https://db2.duckmath.org/2021/3/hill-climb-cars/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Hill-Climb-Cars.jpg"
+  },
+  {
+    "id": 1427,
+    "name": "the-farmer-craft",
+    "url": "https://db2.duckmath.org/2022/unity4/the-farmer-craft/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/The-Farmer-Craft.jpg"
+  },
+  {
+    "id": 1428,
+    "name": "galactic-driver",
+    "url": "https://db2.duckmath.org/2022/construct/65/galactic-driver/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Galactic-Driver.jpg"
+  },
+  {
+    "id": 1429,
+    "name": "veggie-survivors",
+    "url": "https://db2.duckmath.org/2025/unity3/veggie-survivors/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/veggie-survivors-freezenova.webp"
+  },
+  {
+    "id": 1430,
+    "name": "mahjong",
+    "url": "https://db2.duckmath.org/2025/unity/mahjong/pre.html",
+    "category": "Brain",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Mahjong.jpg"
+  },
+  {
+    "id": 1431,
+    "name": "money-movers",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/money_movers/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/moneymovers1.webp"
+  },
+  {
+    "id": 1432,
+    "name": "gold-miner",
+    "url": "https://db2.duckmath.org/2024/flash/gold-miner/pre.html",
+    "category": "Flash",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/gold-miner-512.webp"
+  },
+  {
+    "id": 1433,
+    "name": "voxel-world",
+    "url": "https://db2.duckmath.org/2025/unity/voxel-world/pre.html",
+    "category": "Minecraft",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/voxel-world.jpg"
+  },
+  {
+    "id": 1434,
+    "name": "truck-loader-4",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/truck_loader_4/index.html",
+    "category": "Brain",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/truckloader4.webp"
+  },
+  {
+    "id": 1435,
+    "name": "siegius",
+    "url": "https://db2.duckmath.org/2024/flash/siegius/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/siegius-512.jpg"
+  },
+  {
+    "id": 1436,
+    "name": "heist-escape",
+    "url": "https://db2.duckmath.org/2022/construct/119/heist-escape/pre.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Heist-Escape.jpg"
+  },
+  {
+    "id": 1437,
+    "name": "soul-essence-adventure",
+    "url": "https://db2.duckmath.org/2022/unity2/soul-essence-adventure/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Soul-Essence-Adventure.jpg"
+  },
+  {
+    "id": 1438,
+    "name": "solitaire-adventure",
+    "url": "https://db2.duckmath.org/2022/unity4/solitaire-adventure/pre.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Solitaire-Adventure-Tripeaks.jpg"
+  },
+  {
+    "id": 1439,
+    "name": "marco",
+    "url": "https://db2.duckmath.org/2023/unity/marco/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Marco-Online.jpg"
+  },
+  {
+    "id": 1440,
+    "name": "fantasy-tower-defense",
+    "url": "https://db2.duckmath.org/2022/unity/fantasy-tower-defense/pre.html",
+    "category": "Strategy",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Fantasy-Tower-Defense-2.jpg"
+  },
+  {
+    "id": 1441,
+    "name": "arena-of-heroes",
+    "url": "https://db2.duckmath.org/2022/unity/arena-of-heroes/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/Arena-of-Heroes.webp"
+  },
+  {
+    "id": 1442,
+    "name": "bookworm",
+    "url": "https://db2.duckmath.org/2024/flash/bookworm/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/bookworm.webp"
+  },
+  {
+    "id": 1443,
+    "name": "snake",
+    "url": "https://db2.duckmath.org/2024/phaser/snake/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/snake.jpg"
+  },
+  {
+    "id": 1444,
+    "name": "hook-wars",
+    "url": "https://db2.duckmath.org/2023/unity3/hook-wars/pre.html",
+    "category": "3d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Hook-Wars.jpg"
+  },
+  {
+    "id": 1445,
+    "name": "diver-down",
+    "url": "https://db2.duckmath.org/2024/godot/diver-down/pre.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/diver-down-512.webp"
+  },
+  {
+    "id": 1446,
+    "name": "math-experta",
+    "url": "https://db2.duckmath.org/2024/unity2/math-experta/pre.html",
+    "category": "Brain",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/math-experta-512-2.webp"
+  },
+  {
+    "id": 1447,
+    "name": "nova-billiard",
+    "url": "https://db2.duckmath.org/2021/unity2/nova-billiard/pre.html",
+    "category": "Brain",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Nova-Billiard-Game.jpg"
+  },
+  {
+    "id": 1448,
+    "name": "cactus-mccoy-2",
+    "url": "https://db2.duckmath.org/2024/flash/cactus-mccoy-2/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img2/cactus-mccoy-2-game.webp"
+  },
+  {
+    "id": 1449,
+    "name": "library",
+    "url": "https://db2.duckmath.org/2026/library/pre.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/library.webp"
+  },
+  {
+    "id": 1450,
+    "name": "jewelanche",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/jewelanche/index.html",
+    "category": "2d",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/jewelanche.jpg"
+  },
+  {
+    "id": 1451,
+    "name": "orion-sandbox",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/orion_sandbox/index.html",
+    "category": "Rpg",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/orion-sandbox.jpg"
+  },
+  {
+    "id": 1452,
+    "name": "sudoku",
+    "url": "https://db2.duckmath.org/2025/html/sudoku/pre.html",
+    "category": "Casual",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/Sudoku.jpg"
+  },
+  {
+    "id": 1453,
+    "name": "maddoxcraft",
+    "url": "https://classroomlesson.github.io/basic-ruffle-player/html/minecraft/maddox/maddoxcraft.html",
+    "category": "Minecraft",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img3/maddoxcraft.jpeg"
+  },
+  {
+    "id": 1454,
+    "name": "wordle",
+    "url": "https://db2.duckmath.org/2025/html/wordle/pre.html",
+    "category": "Puzzle",
+    "image": "https://cdn.jsdelivr.net/gh/mathlesson/mathlesson.github.io/img/wordle.jpg"
+  },
+  {
+    "id": 1455,
+    "name": "Minesweeper",
+    "url": "https://freeopensourcegames.github.io/minesweeper/index.html",
+    "category": "Puzzle",
+    "image": ""
   }
 ]
