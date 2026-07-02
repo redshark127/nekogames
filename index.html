@@ -60,10 +60,33 @@
             <button class="setting-option" data-bg="topography">Topography</button>
             <button class="setting-option" data-bg="constellation">Constellation</button>
             <button class="setting-option" data-bg="starfield">Starfield</button>
+            <button class="setting-option" data-bg="aurora">Aurora</button>
+            <button class="setting-option" data-bg="nebula">Nebula</button>
+            <button class="setting-option" data-bg="ocean">Ocean</button>
+            <button class="setting-option" data-bg="fire">Fire</button>
+            <button class="setting-option" data-bg="geometric">Geometric</button>
+            <button class="setting-option" data-bg="grid">Grid</button>
+            <button class="setting-option" data-bg="hexagon">Hexagon</button>
+            <button class="setting-option" data-bg="circuit">Circuit</button>
           </div>
           <div class="color-row">
             <span class="color-label">Background Color</span>
             <input type="color" id="bg-color" class="color-picker" value="#07070f">
+          </div>
+          <div class="range-row">
+            <span class="color-label">Blur</span>
+            <input type="range" id="bg-blur" min="0" max="20" value="0" step="1">
+            <span class="range-value" id="bg-blur-val">0px</span>
+          </div>
+          <div class="range-row">
+            <span class="color-label">Speed</span>
+            <input type="range" id="bg-speed" min="1" max="10" value="5" step="1">
+            <span class="range-value" id="bg-speed-val">1x</span>
+          </div>
+          <div class="range-row">
+            <span class="color-label">Opacity</span>
+            <input type="range" id="bg-opacity" min="10" max="100" value="100" step="5">
+            <span class="range-value" id="bg-opacity-val">100%</span>
           </div>
         </div>
 
@@ -95,6 +118,24 @@
             <button class="setting-option" data-size="compact">Compact</button>
             <button class="setting-option" data-size="comfortable">Comfortable</button>
             <button class="setting-option" data-size="spacious">Spacious</button>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">Card Radius</label>
+          <div class="setting-options" id="radius-options">
+            <button class="setting-option setting-option-sm" data-radius="compact">Compact</button>
+            <button class="setting-option setting-option-sm" data-radius="normal">Normal</button>
+            <button class="setting-option setting-option-sm" data-radius="rounded">Rounded</button>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">Font Size</label>
+          <div class="setting-options" id="font-options">
+            <button class="setting-option setting-option-sm" data-font="small">Small</button>
+            <button class="setting-option setting-option-sm" data-font="normal">Normal</button>
+            <button class="setting-option setting-option-sm" data-font="large">Large</button>
           </div>
         </div>
 
