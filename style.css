@@ -265,10 +265,10 @@ header::after {
 /* ── Controls ── */
 .controls {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex: 1;
   justify-content: center;
-  min-width: 240px;
+  min-width: 160px;
 }
 
 .controls input, .controls select {
@@ -302,9 +302,9 @@ header::after {
   pointer-events: none;
   color: var(--text);
 }
-.search-wrap input { width: 220px; padding-left: 32px; }
+.search-wrap input { width: 160px; padding-left: 32px; }
 .controls input::placeholder { color: var(--text-dim); }
-.controls select { width: 160px; cursor: pointer; }
+.controls select { width: 130px; cursor: pointer; }
 
 #ab-btn {
   padding: 8px 16px;
@@ -383,52 +383,6 @@ header::after {
 }
 
 
-
-/* ── Category Chips ── */
-#category-chips {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 24px 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  position: relative;
-  z-index: 1;
-}
-.cat-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 5px 12px;
-  border-radius: 20px;
-  border: 1px solid var(--border-input);
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: inherit;
-  letter-spacing: 0.3px;
-}
-.cat-chip:hover {
-  border-color: var(--accent);
-  color: var(--text);
-  background: rgba(102,126,234,0.06);
-}
-.cat-chip.active {
-  border-color: var(--accent);
-  background: rgba(102,126,234,0.15);
-  color: #fff;
-  box-shadow: 0 0 12px var(--shadow-glow);
-}
-[data-theme="light"] .cat-chip.active { color: var(--accent); }
-.cat-chip .chip-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
 
 /* ── Settings panel ── */
 #settings-panel {
@@ -1174,8 +1128,6 @@ footer::before {
   #save-slots { flex-direction: column; }
   #save-slots-bar { flex-direction: column; align-items: stretch; }
   .logo-img { height: 28px; }
-  #category-chips { padding: 0 14px 8px; gap: 4px; }
-  .cat-chip { font-size: 10px; padding: 4px 10px; }
 }
 @media (max-width: 450px) {
   #game-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px; }
