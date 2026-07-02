@@ -1212,11 +1212,20 @@ function renderGames(filtered) {
     const icon = gameIcon(game.name);
     const colorIdx = game.category.length % palette.length;
     const iconBg = palette[colorIdx];
-    card.innerHTML = `
-      <div class="thumb"><span class="game-icon" style="background:${iconBg}">${icon}</span></div>
-      <div class="name">${game.name}</div>
-      <div class="category">${game.category}</div>
-    `;
+    const hasImg = !!game.image;
+    if (hasImg) {
+      card.innerHTML = `
+        <div class="thumb" style="background-image:url('${game.image}')"></div>
+        <div class="name">${game.name}</div>
+        <div class="category">${game.category}</div>
+      `;
+    } else {
+      card.innerHTML = `
+        <div class="thumb"><span class="game-icon" style="background:${iconBg}">${icon}</span></div>
+        <div class="name">${game.name}</div>
+        <div class="category">${game.category}</div>
+      `;
+    }
     card.addEventListener('click', () => openGame(game));
     gameGrid.appendChild(card);
 
