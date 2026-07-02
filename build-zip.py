@@ -24,4 +24,4 @@ with zipfile.ZipFile(OUTPUT, 'w', zipfile.ZIP_DEFLATED) as z:
         z.writestr(f'games/{g["id"]}.html', wrapper)
 
 size = os.path.getsize(OUTPUT)
-print(f'Updated {OUTPUT} ({len(games)} games, {size/1024/1024:.0f} MB)')
+print(f'Updated {OUTPUT} ({len(games)} games, {size/1024:.0f} KB)')

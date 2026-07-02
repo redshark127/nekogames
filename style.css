@@ -6,85 +6,85 @@
 
 /* ── Theme Variables ── */
 :root, [data-theme="default"] {
-  --bg: #07070f;
-  --bg-header: rgba(11, 11, 26, 0.92);
-  --bg-card: #10102a;
-  --bg-card-alt: #0a0a1e;
-  --bg-modal: #0e0e26;
-  --bg-modal-header: rgba(14, 14, 38, 0.98);
-  --bg-footer: rgba(8, 8, 20, 0.6);
-  --bg-input: rgba(18, 18, 42, 0.8);
-  --bg-settings: #0e0e26;
-  --text: #e0e0e0;
-  --text-dim: rgba(255,255,255,0.2);
-  --text-muted: rgba(255,255,255,0.25);
-  --accent: #667eea;
-  --accent2: #a855f7;
-  --accent3: #f472b6;
-  --cyan: #00f0ff;
-  --border: rgba(102, 126, 234, 0.12);
-  --border-input: rgba(102, 126, 234, 0.2);
-  --shadow: rgba(102, 126, 234, 0.12);
-  --shadow-glow: rgba(102, 126, 234, 0.08);
-  --scrollbar-bg: #07070f;
-  --scrollbar-thumb: rgba(102, 126, 234, 0.15);
-  --card-radius: 14px;
+  --bg: #0f0d0b;
+  --bg-header: rgba(18, 15, 13, 0.92);
+  --bg-card: #181512;
+  --bg-card-alt: #12100d;
+  --bg-modal: #181512;
+  --bg-modal-header: rgba(20, 17, 14, 0.98);
+  --bg-footer: rgba(14, 12, 10, 0.7);
+  --bg-input: rgba(28, 24, 21, 0.85);
+  --bg-settings: #1a1714;
+  --text: #e8e2dc;
+  --text-dim: rgba(232, 226, 220, 0.18);
+  --text-muted: rgba(232, 226, 220, 0.3);
+  --accent: #14b8a6;
+  --accent2: #f97316;
+  --accent3: #fbbf24;
+  --cyan: #2dd4bf;
+  --border: rgba(20, 184, 166, 0.1);
+  --border-input: rgba(20, 184, 166, 0.18);
+  --shadow: rgba(20, 184, 166, 0.08);
+  --shadow-glow: rgba(20, 184, 166, 0.06);
+  --scrollbar-bg: #0f0d0b;
+  --scrollbar-thumb: rgba(20, 184, 166, 0.12);
+  --card-radius: 12px;
   --bg-blur: 0px;
   --bg-opacity: 1;
   --font-scale: 1;
-  --accent-gradient: linear-gradient(135deg, #667eea, #a855f7, #f472b6);
+  --accent-gradient: linear-gradient(135deg, #14b8a6, #f97316, #fbbf24);
 }
 
 [data-theme="midnight"] {
-  --bg: #0a0e1a;
-  --bg-header: rgba(10, 14, 30, 0.94);
-  --bg-card: #0d1530;
-  --bg-card-alt: #090f25;
-  --bg-modal: #0b1230;
-  --bg-modal-header: rgba(11, 18, 48, 0.98);
-  --bg-footer: rgba(8, 12, 28, 0.6);
-  --bg-input: rgba(13, 21, 48, 0.85);
-  --bg-settings: #0b1230;
-  --text: #c8d0e8;
-  --text-dim: rgba(180, 200, 255, 0.2);
-  --text-muted: rgba(180, 200, 255, 0.2);
-  --accent: #4f8aff;
-  --accent2: #7c5cfc;
-  --accent3: #c084fc;
-  --cyan: #64d8ff;
-  --border: rgba(79, 138, 255, 0.1);
-  --border-input: rgba(79, 138, 255, 0.2);
-  --shadow: rgba(79, 138, 255, 0.08);
-  --shadow-glow: rgba(79, 138, 255, 0.06);
-  --scrollbar-bg: #0a0e1a;
-  --scrollbar-thumb: rgba(79, 138, 255, 0.12);
-  --accent-gradient: linear-gradient(135deg, #4f8aff, #7c5cfc, #c084fc);
+  --bg: #0c0e14;
+  --bg-header: rgba(12, 14, 22, 0.94);
+  --bg-card: #14182a;
+  --bg-card-alt: #0f1220;
+  --bg-modal: #14182a;
+  --bg-modal-header: rgba(14, 18, 34, 0.98);
+  --bg-footer: rgba(10, 13, 22, 0.6);
+  --bg-input: rgba(20, 24, 42, 0.85);
+  --bg-settings: #14182a;
+  --text: #d0d8e8;
+  --text-dim: rgba(200, 210, 230, 0.15);
+  --text-muted: rgba(200, 210, 230, 0.25);
+  --accent: #6366f1;
+  --accent2: #818cf8;
+  --accent3: #a5b4fc;
+  --cyan: #818cf8;
+  --border: rgba(99, 102, 241, 0.1);
+  --border-input: rgba(99, 102, 241, 0.18);
+  --shadow: rgba(99, 102, 241, 0.08);
+  --shadow-glow: rgba(99, 102, 241, 0.05);
+  --scrollbar-bg: #0c0e14;
+  --scrollbar-thumb: rgba(99, 102, 241, 0.1);
+  --accent-gradient: linear-gradient(135deg, #6366f1, #818cf8, #a5b4fc);
 }
 
 [data-theme="light"] {
-  --bg: #f0f2f5;
+  --bg: #f5f3f0;
   --bg-header: rgba(255, 255, 255, 0.95);
   --bg-card: #ffffff;
-  --bg-card-alt: #f5f5f5;
+  --bg-card-alt: #f0eee9;
   --bg-modal: #ffffff;
   --bg-modal-header: rgba(255, 255, 255, 0.98);
-  --bg-footer: rgba(240, 242, 245, 0.9);
+  --bg-footer: rgba(245, 243, 240, 0.9);
   --bg-input: #ffffff;
   --bg-settings: #ffffff;
-  --text: #1a1a2e;
-  --text-dim: rgba(0,0,0,0.15);
-  --text-muted: rgba(0,0,0,0.25);
-  --accent: #5b6abf;
-  --accent2: #8b5cf6;
-  --accent3: #ec4899;
-  --cyan: #0891b2;
-  --border: rgba(91, 106, 191, 0.12);
-  --border-input: rgba(91, 106, 191, 0.25);
-  --shadow: rgba(91, 106, 191, 0.1);
-  --shadow-glow: rgba(91, 106, 191, 0.06);
-  --scrollbar-bg: #f0f2f5;
-  --scrollbar-thumb: rgba(91, 106, 191, 0.15);
-  --accent-gradient: linear-gradient(135deg, #5b6abf, #8b5cf6, #ec4899);
+  --text: #1c1917;
+  --text-dim: rgba(0,0,0,0.12);
+  --text-muted: rgba(0,0,0,0.22);
+  --accent: #0d9488;
+  --accent2: #ea580c;
+  --accent3: #d97706;
+  --cyan: #0d9488;
+  --border: rgba(13, 148, 136, 0.1);
+  --border-input: rgba(13, 148, 136, 0.2);
+  --shadow: rgba(13, 148, 136, 0.08);
+  --shadow-glow: rgba(13, 148, 136, 0.05);
+  --scrollbar-bg: #f5f3f0;
+  --scrollbar-thumb: rgba(13, 148, 136, 0.12);
+  --accent-gradient: linear-gradient(135deg, #0d9488, #ea580c, #d97706);
 }
 
 /* ── Font Scale ── */
@@ -132,6 +132,16 @@
 [data-card-pulse="off"] .game-card::after {
   animation: none !important;
   opacity: 0 !important;
+}
+
+/* ── Particles Canvas ── */
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* ── Background Canvas ── */
@@ -221,12 +231,12 @@ header {
 header::after {
   content: '';
   position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
-  opacity: 0.3;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.15;
 }
 
 .header-inner {
@@ -274,8 +284,7 @@ header::after {
 
 .controls input:focus, .controls select:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.12), 0 0 20px rgba(102, 126, 234, 0.04), inset 0 0 10px rgba(102, 126, 234, 0.04);
-  transform: scale(1.01);
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.1);
 }
 
 .search-wrap {
@@ -448,20 +457,8 @@ header::after {
   border-left: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  animation: slideInRight 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: slideInRight 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   transition: background 0.4s, border-color 0.4s;
-  box-shadow: -8px 0 40px rgba(0,0,0,0.4), -2px 0 60px var(--shadow-glow);
-}
-
-#settings-drawer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0.3;
 }
 
 @keyframes slideInRight {
@@ -597,11 +594,9 @@ header::after {
 }
 .setting-option.active {
   border-color: var(--accent);
-  background: rgba(102,126,234,0.12);
-  color: #fff;
-  box-shadow: 0 0 12px var(--shadow-glow);
+  background: rgba(20, 184, 166, 0.12);
+  color: var(--accent);
 }
-[data-theme="light"] .setting-option.active { color: var(--accent); }
 
 .setting-option-sm {
   padding: 5px 9px;
@@ -638,11 +633,9 @@ header::after {
 }
 .bg-opt.active {
   border-color: var(--accent);
-  background: rgba(102,126,234,0.12);
-  color: #fff;
-  box-shadow: 0 0 8px var(--shadow-glow);
+  background: rgba(20, 184, 166, 0.12);
+  color: var(--accent);
 }
-[data-theme="light"] .bg-opt.active { color: var(--accent); }
 
 .bg-preview {
   width: 28px;
@@ -869,18 +862,6 @@ header::after {
               border-color 0.3s;
 }
 
-.game-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(102,126,234,0.06), rgba(168,85,247,0.03));
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  z-index: 1;
-}
-
 .game-card::after {
   content: '';
   position: absolute;
@@ -888,7 +869,7 @@ header::after {
   border-radius: inherit;
   background: var(--accent-gradient);
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.35s;
   pointer-events: none;
   z-index: 0;
   animation: borderGlow 3s ease-in-out infinite;
@@ -899,16 +880,15 @@ header::after {
   50% { opacity: 0.5; }
 }
 
-.game-card:hover::before { opacity: 1; }
-.game-card:hover::after { opacity: 0.15; }
+.game-card:hover::after { opacity: 0.12; }
 
 .game-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 20px 60px var(--shadow), 0 8px 24px rgba(0,0,0,0.5), 0 0 40px var(--shadow-glow), inset 0 0 0 1px rgba(102, 126, 234, 0.2);
-  border-color: rgba(102, 126, 234, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px -8px rgba(0,0,0,0.4), 0 0 24px var(--shadow-glow);
+  border-color: rgba(20, 184, 166, 0.12);
 }
 
-.game-card:active { transform: translateY(-3px) scale(1.01); }
+.game-card:active { transform: translateY(-2px); }
 
 .game-card .thumb {
   width: 100%;

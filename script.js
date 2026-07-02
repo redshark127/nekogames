@@ -37,6 +37,7 @@ const radiusOptions = document.getElementById('radius-options');
 const fontOptions = document.getElementById('font-options');
 const animToggle = document.getElementById('anim-toggle');
 const cardPulseToggle = document.getElementById('card-pulse-toggle');
+const particlesToggle = document.getElementById('particles-toggle');
 const bgOptions = document.getElementById('bg-options');
 const cursorOptions = document.getElementById('cursor-options');
 const cursorColorInput = document.getElementById('cursor-color');
@@ -650,6 +651,128 @@ document.addEventListener('mousemove', e => {
   }
 });
 
+// ── Interactive Particles ──
+let particlesCanvas = null;
+let pCtx = null;
+let pAnimId = null;
+let pParticles = [];
+let pMouse = { x: -1000, y: -1000 };
+let pMouseActive = false;
+
+function createParticlesCanvas() {
+  if (particlesCanvas) return;
+  particlesCanvas = document.createElement('canvas');
+  particlesCanvas.id = 'particles-canvas';
+  document.body.appendChild(particlesCanvas);
+  pCtx = particlesCanvas.getContext('2d');
+  resizeParticlesCanvas();
+  window.addEventListener('resize', resizeParticlesCanvas);
+}
+
+function resizeParticlesCanvas() {
+  if (!particlesCanvas) return;
+  particlesCanvas.width = window.innerWidth;
+  particlesCanvas.height = window.innerHeight;
+}
+
+function initParticles() {
+  if (!pCtx) return;
+  const w = particlesCanvas.width;
+  const h = particlesCanvas.height;
+  const count = Math.min(60, Math.floor((w * h) / 25000));
+  pParticles = [];
+  for (let i = 0; i < count; i++) {
+    pParticles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      r: 1.5 + Math.random() * 2.5,
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+}
+
+function startParticles() {
+  stopParticles();
+  if (!pCtx) return;
+  initParticles();
+  const w = particlesCanvas.width;
+  const h = particlesCanvas.height;
+  let t = 0;
+
+  function draw() {
+    t++;
+    pCtx.clearRect(0, 0, w, h);
+    const maxDist = 120;
+
+    for (const p of pParticles) {
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (pMouseActive) {
+        const dx = p.x - pMouse.x;
+        const dy = p.y - pMouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150 && dist > 0) {
+          const force = (150 - dist) / 150 * 0.5;
+          p.x += (dx / dist) * force;
+          p.y += (dy / dist) * force;
+        }
+      }
+
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
+      if (p.y < -10) p.y = h + 10;
+      if (p.y > h + 10) p.y = -10;
+    }
+
+    for (let i = 0; i < pParticles.length; i++) {
+      for (let j = i + 1; j < pParticles.length; j++) {
+        const dx = pParticles[i].x - pParticles[j].x;
+        const dy = pParticles[i].y - pParticles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < maxDist) {
+          const alpha = (1 - dist / maxDist) * 0.2;
+          pCtx.beginPath();
+          pCtx.moveTo(pParticles[i].x, pParticles[i].y);
+          pCtx.lineTo(pParticles[j].x, pParticles[j].y);
+          pCtx.strokeStyle = `rgba(20, 184, 166, ${alpha})`;
+          pCtx.lineWidth = 0.5;
+          pCtx.stroke();
+        }
+      }
+    }
+
+    for (const p of pParticles) {
+      const pulse = 0.6 + Math.sin(t * 0.02 + p.phase) * 0.4;
+      pCtx.beginPath();
+      pCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      pCtx.fillStyle = `rgba(20, 184, 166, ${0.3 * pulse})`;
+      pCtx.fill();
+      pCtx.beginPath();
+      pCtx.arc(p.x, p.y, p.r * 2, 0, Math.PI * 2);
+      pCtx.fillStyle = `rgba(20, 184, 166, ${0.06 * pulse})`;
+      pCtx.fill();
+    }
+
+    pAnimId = requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+function stopParticles() {
+  if (pAnimId) { cancelAnimationFrame(pAnimId); pAnimId = null; }
+  if (pCtx) pCtx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
+}
+
+document.addEventListener('mousemove', e => {
+  pMouse.x = e.clientX;
+  pMouse.y = e.clientY;
+  pMouseActive = true;
+});
+document.addEventListener('mouseleave', () => { pMouseActive = false; });
+
 // ── Settings ──
 function getSettings() {
   try {
@@ -680,6 +803,13 @@ function applySettings() {
   document.documentElement.setAttribute('data-radius', s.cardRadius || 'normal');
   document.documentElement.setAttribute('data-font', s.fontSize || 'normal');
   document.documentElement.setAttribute('data-card-pulse', s.cardPulse === false ? 'off' : 'on');
+  const particlesOn = s.particles !== false;
+  if (particlesOn) {
+    createParticlesCanvas();
+    startParticles();
+  } else {
+    stopParticles();
+  }
   runBackground(s.background);
   updateCustomCursor(s.cursor, s.cursorColor);
   applyCloak();
@@ -707,6 +837,7 @@ function syncSettingsUI() {
   const size = s.size || 'comfortable';
   const anim = s.anim !== false;
   const cardPulse = s.cardPulse !== false;
+  const particles = s.particles !== false;
   const bg = s.background || 'none';
   const cursor = s.cursor || 'default';
   const bgColor = s.bgColor || '';
@@ -736,6 +867,7 @@ function syncSettingsUI() {
   }
   animToggle.querySelector('.toggle-track').classList.toggle('active', anim);
   cardPulseToggle.querySelector('.toggle-track').classList.toggle('active', cardPulse);
+  if (particlesToggle) particlesToggle.querySelector('.toggle-track').classList.toggle('active', particles);
   bgOptions.querySelectorAll('.setting-option, .bg-opt').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.bg === bg);
   });
@@ -790,6 +922,16 @@ cardPulseToggle.addEventListener('click', () => {
   applySettings();
   syncSettingsUI();
 });
+
+if (particlesToggle) {
+  particlesToggle.addEventListener('click', () => {
+    const track = particlesToggle.querySelector('.toggle-track');
+    const on = !track.classList.contains('active');
+    saveSettings({ particles: on });
+    applySettings();
+    syncSettingsUI();
+  });
+}
 
 bgOptions.addEventListener('click', e => {
   const btn = e.target.closest('.setting-option') || e.target.closest('.bg-opt');
