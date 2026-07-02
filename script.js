@@ -1034,7 +1034,7 @@ function filterGames() {
   if (query === 'cocoloco' && !document.getElementById('download-site-btn')) {
     const btn = document.createElement('button');
     btn.id = 'download-site-btn';
-    btn.textContent = '\u2193 Download All Games (42 MB)';
+    btn.textContent = '\u2193 Download All Games (452 KB)';
     btn.addEventListener('click', downloadSite);
     container.appendChild(btn);
   } else if (query !== 'cocoloco') {
