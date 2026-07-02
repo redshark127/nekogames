@@ -798,6 +798,7 @@ function applyCloak() {
 function applySettings() {
   const s = getSettings();
   document.documentElement.setAttribute('data-theme', s.theme || 'default');
+  if (!s.theme) document.documentElement.setAttribute('data-theme', 'default');
   document.documentElement.setAttribute('data-size', s.size || 'comfortable');
   document.documentElement.setAttribute('data-anim', s.anim === false ? 'off' : 'on');
   document.documentElement.setAttribute('data-radius', s.cardRadius || 'normal');
@@ -1126,10 +1127,20 @@ importFileInput.addEventListener('change', e => {
 applySettings();
 
 // ── Render ──
+const iconCache = {};
+function gameIcon(name) {
+  if (iconCache[name]) return iconCache[name];
+  const first = name.trim().charAt(0).toUpperCase();
+  if (!first || first < 'A' || first > 'Z') return '#';
+  return first;
+}
+
 function renderGames(filtered) {
   gameGrid.innerHTML = '';
   const s = getSettings();
   const animate = s.anim !== false;
+
+  const palette = ['#14b8a6','#f97316','#fbbf24','#a855f7','#f472b6','#34d399','#38bdf8','#fb923c','#818cf8','#2dd4bf'];
 
   filtered.forEach((game, i) => {
     const card = document.createElement('div');
@@ -1138,9 +1149,11 @@ function renderGames(filtered) {
       card.style.transitionDelay = '0s';
       card.style.transition = 'none';
     }
-    const thumbStyle = game.image ? `style="background-image:url('${game.image}')"` : '';
+    const icon = gameIcon(game.name);
+    const colorIdx = game.category.length % palette.length;
+    const iconBg = palette[colorIdx];
     card.innerHTML = `
-      <div class="thumb" ${thumbStyle}></div>
+      <div class="thumb"><span class="game-icon" style="background:${iconBg}">${icon}</span></div>
       <div class="name">${game.name}</div>
       <div class="category">${game.category}</div>
     `;
