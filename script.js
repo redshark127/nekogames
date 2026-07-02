@@ -24,8 +24,7 @@ const panicOverlay = document.getElementById('panic-overlay');
 const abBtn = document.getElementById('ab-btn');
 const gameCount = document.getElementById('game-count');
 const footerCount = document.getElementById('footer-count');
-const categoryChips = document.getElementById('category-chips');
-let activeChip = null;
+
 
 const settingsBtn = document.getElementById('settings-btn');
 const settingsPanel = document.getElementById('settings-panel');
@@ -1271,13 +1270,11 @@ async function openGame(game) {
     currentMode = 'direct';
     gameFrame.src = game.url;
   }
-  if (game.name.toLowerCase().includes('minesweeper')) {
-    setTimeout(() => {
-      if (!document.fullscreenElement) {
-        gameModal.requestFullscreen().catch(() => {});
-      }
-    }, 500);
-  }
+  setTimeout(() => {
+    if (!document.fullscreenElement) {
+      gameModal.requestFullscreen().catch(() => {});
+    }
+  }, 500);
 }
 
 function closeGame() {
@@ -1341,9 +1338,6 @@ searchInput.addEventListener('input', () => { filterGames(); updateCounts(); });
 categoryFilter.addEventListener('change', () => {
   filterGames();
   updateCounts();
-  categoryChips.querySelectorAll('.cat-chip').forEach(c => {
-    c.classList.toggle('active', c.dataset.cat === categoryFilter.value);
-  });
 });
 closeBtn.addEventListener('click', closeGame);
 reloadBtn.addEventListener('click', reloadGame);
@@ -1473,43 +1467,6 @@ document.querySelectorAll('.setting-section-hdr').forEach(hdr => {
   });
 });
 
-// ── Category Chips ──
-function populateChips() {
-  const cats = [...new Set(games.map(g => g.category))].sort();
-  const allChip = document.createElement('button');
-  allChip.className = 'cat-chip active';
-  allChip.dataset.cat = 'all';
-  allChip.innerHTML = '<span class="chip-dot" style="background:var(--accent)"></span>All';
-  allChip.addEventListener('click', () => {
-    categoryFilter.value = 'all';
-    filterGames();
-    updateCounts();
-    chips();
-  });
-  categoryChips.appendChild(allChip);
-
-  const palette = ['#f472b6','#a855f7','#667eea','#34d399','#fbbf24','#fb923c','#f87171','#38bdf8','#818cf8','#2dd4bf','#f472b6','#c084fc'];
-  cats.forEach((cat, i) => {
-    const chip = document.createElement('button');
-    chip.className = 'cat-chip';
-    chip.dataset.cat = cat;
-    chip.innerHTML = `<span class="chip-dot" style="background:${palette[i % palette.length]}"></span>${cat}`;
-    chip.addEventListener('click', () => {
-      categoryFilter.value = cat;
-      filterGames();
-      updateCounts();
-      chips();
-    });
-    categoryChips.appendChild(chip);
-  });
-
-  function chips() {
-    categoryChips.querySelectorAll('.cat-chip').forEach(c => {
-      c.classList.toggle('active', c.dataset.cat === categoryFilter.value);
-    });
-  }
-}
-
 createCursorElements();
 
 fetch(GAMES_JSON)
@@ -1517,7 +1474,6 @@ fetch(GAMES_JSON)
   .then(data => {
     games = data;
     populateCategories();
-    populateChips();
     renderGames(games);
     updateCounts();
   })
