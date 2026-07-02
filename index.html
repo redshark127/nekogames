@@ -19,12 +19,16 @@
         <img class="logo-img" src="https://photos.fife.usercontent.google.com/pw/AP1GczNsU2C0Kc1hle-pP2TZhoJ3xVkm6sHIX2JSR-oGmb0CoqKjD_nUP1nl=w1668-h919-s-no?authuser=0" alt="Nekogames">
       </div>
       <form class="controls" autocomplete="off">
-        <input type="text" id="search" placeholder="Search games..." autocomplete="off" name="search">
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.35-4.35"/></svg>
+          <input type="text" id="search" placeholder="Search games..." autocomplete="off" name="search">
+        </div>
         <select id="category-filter">
           <option value="all">All Categories</option>
         </select>
         <button id="ab-btn" style="display:none">about:blank</button>
       </form>
+      <div id="category-chips"></div>
       <a id="request-btn" href="https://forms.gle/4TP4J3fqpZbanuuQ9" target="_blank" rel="noopener" title="Request a Game">
         <span>&#x1F4DD;</span>
         <span>Request</span>
@@ -43,149 +47,185 @@
       </div>
       <div id="settings-body">
 
-        <div class="setting-group">
-          <label class="setting-label">Theme</label>
-          <div class="setting-options" id="theme-options">
-            <button class="setting-option" data-theme-val="default"><span class="opt-swatch swatch-default"></span>Default</button>
-            <button class="setting-option" data-theme-val="midnight"><span class="opt-swatch swatch-midnight"></span>Midnight</button>
-            <button class="setting-option" data-theme-val="light"><span class="opt-swatch swatch-light"></span>Light</button>
+        <div class="setting-section">
+          <div class="setting-section-hdr" data-section="appearance">
+            <span class="section-icon">&#x2728;</span>
+            <span>Appearance</span>
+            <span class="section-arrow">&#x25B8;</span>
           </div>
-        </div>
-
-        <div class="setting-group">
-          <label class="setting-label">Background</label>
-          <div class="setting-options" id="bg-options">
-            <button class="setting-option" data-bg="none">None</button>
-            <button class="setting-option" data-bg="matrix">Matrix</button>
-            <button class="setting-option" data-bg="topography">Topography</button>
-            <button class="setting-option" data-bg="constellation">Constellation</button>
-            <button class="setting-option" data-bg="starfield">Starfield</button>
-            <button class="setting-option" data-bg="aurora">Aurora</button>
-            <button class="setting-option" data-bg="nebula">Nebula</button>
-            <button class="setting-option" data-bg="ocean">Ocean</button>
-            <button class="setting-option" data-bg="fire">Fire</button>
-            <button class="setting-option" data-bg="geometric">Geometric</button>
-            <button class="setting-option" data-bg="grid">Grid</button>
-            <button class="setting-option" data-bg="hexagon">Hexagon</button>
-            <button class="setting-option" data-bg="circuit">Circuit</button>
-          </div>
-          <div class="color-row">
-            <span class="color-label">Background Color</span>
-            <input type="color" id="bg-color" class="color-picker" value="#07070f">
-          </div>
-          <div class="range-row">
-            <span class="color-label">Blur</span>
-            <input type="range" id="bg-blur" min="0" max="20" value="0" step="1">
-            <span class="range-value" id="bg-blur-val">0px</span>
-          </div>
-          <div class="range-row">
-            <span class="color-label">Speed</span>
-            <input type="range" id="bg-speed" min="1" max="10" value="5" step="1">
-            <span class="range-value" id="bg-speed-val">1x</span>
-          </div>
-          <div class="range-row">
-            <span class="color-label">Opacity</span>
-            <input type="range" id="bg-opacity" min="10" max="100" value="100" step="5">
-            <span class="range-value" id="bg-opacity-val">100%</span>
-          </div>
-        </div>
-
-        <div class="setting-group">
-          <label class="setting-label">Accent Color</label>
-          <div class="color-row">
-            <span class="color-label">Accent Color</span>
-            <input type="color" id="accent-color" class="color-picker" value="#667eea">
-          </div>
-        </div>
-
-        <div class="setting-group">
-          <label class="setting-label">Custom Cursor</label>
-          <div class="setting-options" id="cursor-options">
-            <button class="setting-option" data-cursor="default">Default</button>
-            <button class="setting-option" data-cursor="ring">Ring</button>
-            <button class="setting-option" data-cursor="dot">Dot</button>
-            <button class="setting-option" data-cursor="crosshair">Crosshair</button>
-          </div>
-          <div class="color-row">
-            <span class="color-label">Cursor Color</span>
-            <input type="color" id="cursor-color" class="color-picker" value="#00f0ff">
-          </div>
-        </div>
-
-        <div class="setting-group">
-          <label class="setting-label">Card Size</label>
-          <div class="setting-options" id="size-options">
-            <button class="setting-option" data-size="compact">Compact</button>
-            <button class="setting-option" data-size="comfortable">Comfortable</button>
-            <button class="setting-option" data-size="spacious">Spacious</button>
-          </div>
-        </div>
-
-        <div class="setting-group">
-          <label class="setting-label">Card Radius</label>
-          <div class="setting-options" id="radius-options">
-            <button class="setting-option setting-option-sm" data-radius="compact">Compact</button>
-            <button class="setting-option setting-option-sm" data-radius="normal">Normal</button>
-            <button class="setting-option setting-option-sm" data-radius="rounded">Rounded</button>
-          </div>
-        </div>
-
-        <div class="setting-group">
-          <label class="setting-label">Font Size</label>
-          <div class="setting-options" id="font-options">
-            <button class="setting-option setting-option-sm" data-font="small">Small</button>
-            <button class="setting-option setting-option-sm" data-font="normal">Normal</button>
-            <button class="setting-option setting-option-sm" data-font="large">Large</button>
-          </div>
-        </div>
-
-        <div class="setting-group">
-          <label class="setting-label">Animations</label>
-          <div class="setting-toggle" id="anim-toggle">
-            <span>On</span>
-            <div class="toggle-track"><div class="toggle-thumb"></div></div>
-            <span>Off</span>
-          </div>
-        </div>
-
-        <div class="setting-group">
-          <label class="setting-label">Card Pulse</label>
-          <div class="setting-toggle" id="card-pulse-toggle">
-            <span>On</span>
-            <div class="toggle-track"><div class="toggle-thumb"></div></div>
-            <span>Off</span>
-          </div>
-        </div>
-
-        <div class="setting-group">
-          <label class="setting-label">Tab Cloaking</label>
-          <p class="setting-hint">Title and icon shown when tab is active vs inactive (hidden).</p>
-          <div class="cloak-row">
-            <div class="cloak-field">
-              <label class="cloak-field-label">Active Title</label>
-              <input type="text" id="cloak-active-title" class="setting-text-input" value="Google Docs">
+          <div class="setting-section-body">
+            <div class="setting-group">
+              <label class="setting-label">Theme</label>
+              <div class="setting-options" id="theme-options">
+                <button class="setting-option" data-theme-val="default"><span class="opt-swatch swatch-default"></span>Default</button>
+                <button class="setting-option" data-theme-val="midnight"><span class="opt-swatch swatch-midnight"></span>Midnight</button>
+                <button class="setting-option" data-theme-val="light"><span class="opt-swatch swatch-light"></span>Light</button>
+              </div>
             </div>
-            <div class="cloak-field">
-              <label class="cloak-field-label">Inactive Title</label>
-              <input type="text" id="cloak-inactive-title" class="setting-text-input" value="Google Docs - Home">
+            <div class="setting-group">
+              <label class="setting-label">Background</label>
+              <div class="setting-options bg-grid" id="bg-options">
+                <button class="bg-opt" data-bg="none"><span class="bg-preview bg-pv-none"></span>None</button>
+                <button class="bg-opt" data-bg="matrix"><span class="bg-preview bg-pv-matrix"></span>Matrix</button>
+                <button class="bg-opt" data-bg="topography"><span class="bg-preview bg-pv-topo"></span>Topo</button>
+                <button class="bg-opt" data-bg="constellation"><span class="bg-preview bg-pv-const"></span>Stars</button>
+                <button class="bg-opt" data-bg="starfield"><span class="bg-preview bg-pv-star"></span>Field</button>
+                <button class="bg-opt" data-bg="aurora"><span class="bg-preview bg-pv-aurora"></span>Aurora</button>
+                <button class="bg-opt" data-bg="nebula"><span class="bg-preview bg-pv-nebula"></span>Nebula</button>
+                <button class="bg-opt" data-bg="ocean"><span class="bg-preview bg-pv-ocean"></span>Ocean</button>
+                <button class="bg-opt" data-bg="fire"><span class="bg-preview bg-pv-fire"></span>Fire</button>
+                <button class="bg-opt" data-bg="geometric"><span class="bg-preview bg-pv-geo"></span>Geo</button>
+                <button class="bg-opt" data-bg="grid"><span class="bg-preview bg-pv-grid"></span>Grid</button>
+                <button class="bg-opt" data-bg="hexagon"><span class="bg-preview bg-pv-hex"></span>Hex</button>
+                <button class="bg-opt" data-bg="circuit"><span class="bg-preview bg-pv-circuit"></span>Circuit</button>
+              </div>
+              <div class="color-row">
+                <span class="color-label">BG Color</span>
+                <input type="color" id="bg-color" class="color-picker" value="#07070f">
+              </div>
+              <div class="range-row">
+                <span class="color-label">Blur</span>
+                <input type="range" id="bg-blur" min="0" max="20" value="0" step="1">
+                <span class="range-value" id="bg-blur-val">0px</span>
+              </div>
+              <div class="range-row">
+                <span class="color-label">Speed</span>
+                <input type="range" id="bg-speed" min="1" max="10" value="5" step="1">
+                <span class="range-value" id="bg-speed-val">1x</span>
+              </div>
+              <div class="range-row">
+                <span class="color-label">Opacity</span>
+                <input type="range" id="bg-opacity" min="10" max="100" value="100" step="5">
+                <span class="range-value" id="bg-opacity-val">100%</span>
+              </div>
             </div>
-          </div>
-          <div class="cloak-row">
-            <div class="cloak-field">
-              <label class="cloak-field-label">Favicon URL</label>
-              <input type="text" id="cloak-favicon" class="setting-text-input" value="https://www.google.com/favicon.ico">
+            <div class="setting-group">
+              <label class="setting-label">Accent</label>
+              <div class="color-row">
+                <input type="color" id="accent-color" class="color-picker" value="#667eea">
+              </div>
+            </div>
+            <div class="setting-group">
+              <label class="setting-label">Cursor</label>
+              <div class="setting-options" id="cursor-options">
+                <button class="setting-option" data-cursor="default">Default</button>
+                <button class="setting-option" data-cursor="ring">Ring</button>
+                <button class="setting-option" data-cursor="dot">Dot</button>
+                <button class="setting-option" data-cursor="crosshair">Crosshair</button>
+              </div>
+              <div class="color-row">
+                <input type="color" id="cursor-color" class="color-picker" value="#00f0ff">
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="setting-group">
-          <label class="setting-label">Export / Import Site Data</label>
-          <p class="setting-hint">Export or import complete site data: settings, localStorage, sessionStorage, and cookies.</p>
-          <div class="setting-actions">
-            <button id="export-data-btn" class="setting-action-btn">&#x2B07; Export Data</button>
-            <button id="import-data-btn" class="setting-action-btn">&#x2B06; Import Data</button>
+        <div class="setting-section">
+          <div class="setting-section-hdr" data-section="layout">
+            <span class="section-icon">&#x1F504;</span>
+            <span>Layout</span>
+            <span class="section-arrow">&#x25B8;</span>
           </div>
-          <input type="file" id="import-file-input" accept=".json" style="display:none">
+          <div class="setting-section-body">
+            <div class="setting-group">
+              <label class="setting-label">Card Size</label>
+              <div class="setting-options" id="size-options">
+                <button class="setting-option" data-size="compact">Compact</button>
+                <button class="setting-option" data-size="comfortable">Comfortable</button>
+                <button class="setting-option" data-size="spacious">Spacious</button>
+              </div>
+            </div>
+            <div class="setting-group">
+              <label class="setting-label">Card Radius</label>
+              <div class="setting-options" id="radius-options">
+                <button class="setting-option" data-radius="compact">Compact</button>
+                <button class="setting-option" data-radius="normal">Normal</button>
+                <button class="setting-option" data-radius="rounded">Rounded</button>
+              </div>
+            </div>
+            <div class="setting-group">
+              <label class="setting-label">Font Size</label>
+              <div class="setting-options" id="font-options">
+                <button class="setting-option" data-font="small">Small</button>
+                <button class="setting-option" data-font="normal">Normal</button>
+                <button class="setting-option" data-font="large">Large</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-section">
+          <div class="setting-section-hdr" data-section="effects">
+            <span class="section-icon">&#x2726;</span>
+            <span>Effects</span>
+            <span class="section-arrow">&#x25B8;</span>
+          </div>
+          <div class="setting-section-body">
+            <div class="setting-group">
+              <label class="setting-label">Animations</label>
+              <div class="setting-toggle" id="anim-toggle">
+                <span>On</span>
+                <div class="toggle-track"><div class="toggle-thumb"></div></div>
+                <span>Off</span>
+              </div>
+            </div>
+            <div class="setting-group">
+              <label class="setting-label">Card Pulse</label>
+              <div class="setting-toggle" id="card-pulse-toggle">
+                <span>On</span>
+                <div class="toggle-track"><div class="toggle-thumb"></div></div>
+                <span>Off</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-section">
+          <div class="setting-section-hdr" data-section="privacy">
+            <span class="section-icon">&#x1F6E1;</span>
+            <span>Privacy</span>
+            <span class="section-arrow">&#x25B8;</span>
+          </div>
+          <div class="setting-section-body">
+            <div class="setting-group">
+              <label class="setting-label">Tab Cloaking</label>
+              <p class="setting-hint">Title &amp; icon when active vs hidden</p>
+              <div class="cloak-row">
+                <div class="cloak-field">
+                  <label class="cloak-field-label">Active Title</label>
+                  <input type="text" id="cloak-active-title" class="setting-text-input" value="Google Docs">
+                </div>
+                <div class="cloak-field">
+                  <label class="cloak-field-label">Inactive Title</label>
+                  <input type="text" id="cloak-inactive-title" class="setting-text-input" value="Google Docs - Home">
+                </div>
+              </div>
+              <div class="cloak-row" style="margin-top:6px">
+                <div class="cloak-field">
+                  <label class="cloak-field-label">Favicon URL</label>
+                  <input type="text" id="cloak-favicon" class="setting-text-input" value="https://www.google.com/favicon.ico">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-section">
+          <div class="setting-section-hdr" data-section="data">
+            <span class="section-icon">&#x1F4BE;</span>
+            <span>Data</span>
+            <span class="section-arrow">&#x25B8;</span>
+          </div>
+          <div class="setting-section-body">
+            <div class="setting-group">
+              <p class="setting-hint">Export or import settings &amp; saves</p>
+              <div class="setting-actions">
+                <button id="export-data-btn" class="setting-action-btn">&#x2B07; Export</button>
+                <button id="import-data-btn" class="setting-action-btn">&#x2B06; Import</button>
+              </div>
+              <input type="file" id="import-file-input" accept=".json" style="display:none">
+            </div>
+          </div>
         </div>
 
       </div>
