@@ -782,7 +782,7 @@ header::after {
 #game-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 16px;
+  gap: var(--grid-gap, 16px);
   padding: 28px;
   max-width: 1280px;
   margin: 0 auto;

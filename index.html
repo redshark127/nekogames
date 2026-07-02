@@ -31,7 +31,7 @@
         </select>
         <button id="ab-btn" style="display:none">about:blank</button>
       </form>
-      <div id="category-chips"></div>
+
       <a id="request-btn" href="https://forms.gle/4TP4J3fqpZbanuuQ9" target="_blank" rel="noopener" title="Request a Game">
         <span>&#x1F4DD;</span>
         <span>Request</span>
@@ -103,9 +103,27 @@
               </div>
             </div>
             <div class="setting-group">
-              <label class="setting-label">Accent</label>
+              <label class="setting-label">Accent Color</label>
               <div class="color-row">
-                <input type="color" id="accent-color" class="color-picker" value="#667eea">
+                <input type="color" id="accent-color" class="color-picker" value="#14b8a6">
+              </div>
+            </div>
+            <div class="setting-group">
+              <label class="setting-label">Card BG Color</label>
+              <div class="color-row">
+                <input type="color" id="card-bg-color" class="color-picker" value="#181512">
+              </div>
+            </div>
+            <div class="setting-group">
+              <label class="setting-label">Text Color</label>
+              <div class="color-row">
+                <input type="color" id="text-color" class="color-picker" value="#e8e2dc">
+              </div>
+            </div>
+            <div class="setting-group">
+              <label class="setting-label">Border Color</label>
+              <div class="color-row">
+                <input type="color" id="border-color" class="color-picker" value="#14b8a6">
               </div>
             </div>
             <div class="setting-group">
@@ -152,6 +170,13 @@
                 <button class="setting-option" data-font="small">Small</button>
                 <button class="setting-option" data-font="normal">Normal</button>
                 <button class="setting-option" data-font="large">Large</button>
+              </div>
+            </div>
+            <div class="setting-group">
+              <label class="setting-label">Card Gap</label>
+              <div class="range-row">
+                <input type="range" id="grid-gap" min="4" max="32" value="16" step="2">
+                <span class="range-value" id="grid-gap-val">16px</span>
               </div>
             </div>
           </div>

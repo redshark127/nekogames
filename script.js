@@ -41,6 +41,9 @@ const bgOptions = document.getElementById('bg-options');
 const cursorOptions = document.getElementById('cursor-options');
 const cursorColorInput = document.getElementById('cursor-color');
 const bgColorInput = document.getElementById('bg-color');
+const cardBgColorInput = document.getElementById('card-bg-color');
+const textColorInput = document.getElementById('text-color');
+const borderColorInput = document.getElementById('border-color');
 const accentColorInput = document.getElementById('accent-color');
 const bgBlurInput = document.getElementById('bg-blur');
 const bgSpeedInput = document.getElementById('bg-speed');
@@ -48,6 +51,8 @@ const bgOpacityInput = document.getElementById('bg-opacity');
 const bgBlurVal = document.getElementById('bg-blur-val');
 const bgSpeedVal = document.getElementById('bg-speed-val');
 const bgOpacityVal = document.getElementById('bg-opacity-val');
+const gridGapInput = document.getElementById('grid-gap');
+const gridGapVal = document.getElementById('grid-gap-val');
 
 const exportBtn = document.getElementById('export-data-btn');
 const importBtn = document.getElementById('import-data-btn');
@@ -825,10 +830,31 @@ function applySettings() {
     document.documentElement.style.removeProperty('--accent');
     document.documentElement.style.removeProperty('--cyan');
   }
+  if (s.cardBgColor) {
+    document.documentElement.style.setProperty('--bg-card', s.cardBgColor);
+    document.documentElement.style.setProperty('--bg-card-alt', s.cardBgColor);
+  } else {
+    document.documentElement.style.removeProperty('--bg-card');
+    document.documentElement.style.removeProperty('--bg-card-alt');
+  }
+  if (s.textColor) {
+    document.documentElement.style.setProperty('--text', s.textColor);
+  } else {
+    document.documentElement.style.removeProperty('--text');
+  }
+  if (s.borderColor) {
+    document.documentElement.style.setProperty('--border', s.borderColor + '18');
+    document.documentElement.style.setProperty('--border-input', s.borderColor + '2a');
+  } else {
+    document.documentElement.style.removeProperty('--border');
+    document.documentElement.style.removeProperty('--border-input');
+  }
   const blur = s.bgBlur || 0;
   document.documentElement.style.setProperty('--bg-blur', blur + 'px');
   const opacity = (s.bgOpacity !== undefined ? s.bgOpacity : 100) / 100;
   document.documentElement.style.setProperty('--bg-opacity', opacity);
+  const gap = s.gridGap || 16;
+  document.documentElement.style.setProperty('--grid-gap', gap + 'px');
 }
 
 function syncSettingsUI() {
@@ -874,8 +900,11 @@ function syncSettingsUI() {
   cursorOptions.querySelectorAll('.setting-option').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.cursor === cursor);
   });
-  bgColorInput.value = bgColor || '#07070f';
-  accentColorInput.value = accentColor || '#667eea';
+  bgColorInput.value = bgColor || '#0f0d0b';
+  if (cardBgColorInput) cardBgColorInput.value = s.cardBgColor || '#181512';
+  if (textColorInput) textColorInput.value = s.textColor || '#e8e2dc';
+  if (borderColorInput) borderColorInput.value = s.borderColor || '#14b8a6';
+  accentColorInput.value = accentColor || '#14b8a6';
   cursorColorInput.value = cursorColor;
 
   if (bgBlurInput) bgBlurInput.value = bgBlur;
@@ -884,6 +913,8 @@ function syncSettingsUI() {
   if (bgSpeedVal) bgSpeedVal.textContent = (bgSpeed / 5).toFixed(1) + 'x';
   if (bgOpacityInput) bgOpacityInput.value = bgOpacity;
   if (bgOpacityVal) bgOpacityVal.textContent = bgOpacity + '%';
+  if (gridGapInput) gridGapInput.value = s.gridGap || 16;
+  if (gridGapVal) gridGapVal.textContent = (s.gridGap || 16) + 'px';
 
   const s2 = getSettings();
   cloakActiveTitle.value = s2.cloakActiveTitle || 'Google Docs';
@@ -966,6 +997,36 @@ cursorColorInput.addEventListener('input', () => {
   applySettings();
   syncSettingsUI();
 });
+
+if (cardBgColorInput) {
+  cardBgColorInput.addEventListener('input', () => {
+    saveSettings({ cardBgColor: cardBgColorInput.value });
+    applySettings();
+    syncSettingsUI();
+  });
+}
+if (textColorInput) {
+  textColorInput.addEventListener('input', () => {
+    saveSettings({ textColor: textColorInput.value });
+    applySettings();
+    syncSettingsUI();
+  });
+}
+if (borderColorInput) {
+  borderColorInput.addEventListener('input', () => {
+    saveSettings({ borderColor: borderColorInput.value });
+    applySettings();
+    syncSettingsUI();
+  });
+}
+if (gridGapInput) {
+  gridGapInput.addEventListener('input', () => {
+    const val = parseInt(gridGapInput.value);
+    saveSettings({ gridGap: val });
+    applySettings();
+    if (gridGapVal) gridGapVal.textContent = val + 'px';
+  });
+}
 
 cloakActiveTitle.addEventListener('change', () => {
   saveSettings({ cloakActiveTitle: cloakActiveTitle.value });
