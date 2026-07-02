@@ -301,10 +301,11 @@ header::after {
 }
 
 .header-badge {
-  font-size: 11px;
-  color: var(--text-dim);
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
   white-space: nowrap;
   flex-shrink: 0;
+  font-weight: 500;
 }
 
 /* ── Request button ── */
@@ -940,7 +941,7 @@ footer::before {
   gap: 14px;
 }
 
-.footer-links { font-size: 12px; color: var(--text-muted); }
+.footer-links { font-size: 12px; color: rgba(255,255,255,0.45); }
 .footer-links a {
   color: var(--accent);
   opacity: 0.5;
