@@ -1368,26 +1368,30 @@ function updateCounts() {
   }
 }
 
-function downloadSite() {
+async function downloadSite() {
   const btn = document.getElementById('download-site-btn');
   btn.textContent = '\u23F3 Generating...';
-  const html = generateGameCatalog();
-  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'nekogames-catalog.html';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  try {
+    const resp = await fetch(GAMES_JSON);
+    const allGames = await resp.json();
+    const html = generateGameCatalog(allGames);
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'nekogames-catalog.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch {}
   updateDownloadSize();
 }
 
-function generateGameCatalog() {
+function generateGameCatalog(gameList) {
   const bg = getSettings().bgColor || '#0f0d0b';
   const accent = getSettings().accentColor || '#14b8a6';
-  const rows = games.map((g, i) => {
+  const rows = gameList.map((g, i) => {
     const img = g.image ? `<img src="${g.image.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}" alt="">` : '<div class="noimg">' + g.name[0].toUpperCase() + '</div>';
     return `<a href="${g.url.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}" target="_blank" class="card">
       <div class="thumb">${img}</div>
@@ -1424,7 +1428,7 @@ header p{font-size:13px;color:rgba(232,226,220,.45);margin-top:4px}
 <body>
 <header>
   <h1>&#x1F431; Nekogames Catalog</h1>
-  <p>${games.length} games &middot; Generated ${new Date().toLocaleDateString()}</p>
+  <p>${gameList.length} games &middot; Generated ${new Date().toLocaleDateString()}</p>
 </header>
 <div class="grid">
       ${rows}
