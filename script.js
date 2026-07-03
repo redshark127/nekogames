@@ -67,8 +67,6 @@ const faviconLink = document.querySelector('link[rel="icon"]');
 let games = [];
 let currentGame = null;
 let currentMode = 'direct';
-let autoRetried = false;
-
 // ── Background Canvas ──
 const bgCanvas = document.getElementById('bg-canvas');
 const ctx = bgCanvas.getContext('2d');
@@ -1310,9 +1308,7 @@ async function resolveCdnGameUrl(url) {
 }
 
 async function openGame(game) {
-  clearTimeout(autoRetryTimer);
   currentGame = game;
-  autoRetried = false;
   modalTitle.textContent = game.name;
   overlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
@@ -1530,32 +1526,6 @@ document.querySelector('#request-btn').addEventListener('click', e => {
     e.preventDefault();
     alert('No request form URL configured yet.');
   }
-});
-
-let autoRetryTimer;
-let retryCount = 0;
-gameFrame.addEventListener('load', () => {
-  clearTimeout(autoRetryTimer);
-  autoRetryTimer = setTimeout(() => {
-    if (retryCount >= 3) return;
-    try {
-      const doc = gameFrame.contentDocument || gameFrame.contentWindow?.document;
-      if (!doc) throw new Error('no document');
-      const text = doc.body?.textContent || '';
-      if (text.trim() === '') throw new Error('empty body');
-      if (/404|not found|error|failed to load/i.test(text)) throw new Error('error page');
-    } catch {
-      retryCount++;
-      const delay = Math.min(1000 * Math.pow(2, retryCount - 1), 8000);
-      const indicator = document.getElementById('modal-title');
-      indicator.textContent = (indicator.textContent || '').replace(/ \([0-9]+\)$/, '') + ' (retry ' + retryCount + ')';
-      setTimeout(() => {
-        gameFrame.removeAttribute('srcdoc');
-        gameFrame.src = '';
-        setTimeout(() => { gameFrame.src = currentGame.url; }, 200);
-      }, delay);
-    }
-  }, 5000);
 });
 
 overlay.addEventListener('click', e => {
