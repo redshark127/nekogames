@@ -8,6 +8,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="googlebot" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,8 +31,16 @@
           <option value="all">All Categories</option>
         </select>
         <button id="random-btn" type="button" title="Random Game">&#x1F3B2;</button>
+        <button id="fav-filter-btn" type="button" title="Favorites">&#x2606;</button>
+        <button id="sort-btn" type="button" title="Sort">&#x2195;</button>
+        <button id="view-toggle-btn" type="button" title="Toggle List View">&#x2630;</button>
         <button id="ab-btn" style="display:none">about:blank</button>
       </form>
+      <div id="sort-menu" class="hidden">
+        <button data-sort="name-asc">Name A-Z</button>
+        <button data-sort="name-desc">Name Z-A</button>
+        <button data-sort="category">Category</button>
+      </div>
 
       <a id="request-btn" href="https://forms.gle/4TP4J3fqpZbanuuQ9" target="_blank" rel="noopener" title="Request a Game">
         <span>&#x1F4DD;</span>
@@ -271,8 +280,17 @@
   </div>
 
   <main>
+    <div id="recent-section" class="hidden">
+      <h3 class="section-title">&#x1F552; Recently Played</h3>
+      <div id="recent-grid"></div>
+    </div>
     <div id="game-grid"></div>
   </main>
+  <div id="install-banner" class="hidden">
+    <span>&#x1F4F1; Install Nekogames for quick access</span>
+    <button id="install-btn">Install</button>
+    <button id="install-dismiss">&times;</button>
+  </div>
 
   <footer>
     <div class="footer-inner">
@@ -314,6 +332,11 @@
     </div>
   </div>
 
-  <script src="script.js?v=4"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>

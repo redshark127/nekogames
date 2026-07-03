@@ -1,6 +1,8 @@
 const GAMES_JSON = 'games.json?v=' + Date.now();
 const REQUEST_FORM_URL = 'https://forms.gle/4TP4J3fqpZbanuuQ9';
 const SETTINGS_KEY = 'nekogames_settings';
+const FAVORITES_KEY = 'nekogames_favorites';
+const RECENT_KEY = 'nekogames_recent';
 
 const baseHref = window.location.pathname.replace(/\/?$/, '/');
 const baseEl = document.createElement('base');
@@ -25,6 +27,16 @@ const abBtn = document.getElementById('ab-btn');
 const randomBtn = document.getElementById('random-btn');
 const gameCount = document.getElementById('game-count');
 const footerCount = document.getElementById('footer-count');
+
+const favFilterBtn = document.getElementById('fav-filter-btn');
+const sortBtn = document.getElementById('sort-btn');
+const sortMenu = document.getElementById('sort-menu');
+const viewToggleBtn = document.getElementById('view-toggle-btn');
+const recentSection = document.getElementById('recent-section');
+const recentGrid = document.getElementById('recent-grid');
+const installBanner = document.getElementById('install-banner');
+const installBtn = document.getElementById('install-btn');
+const installDismiss = document.getElementById('install-dismiss');
 
 
 const settingsBtn = document.getElementById('settings-btn');
@@ -67,6 +79,9 @@ const faviconLink = document.querySelector('link[rel="icon"]');
 let games = [];
 let currentGame = null;
 let currentMode = 'direct';
+let currentSort = 'name-asc';
+let showFavoritesOnly = false;
+let deferredPrompt = null;
 // ── Background Canvas ──
 const bgCanvas = document.getElementById('bg-canvas');
 const ctx = bgCanvas.getContext('2d');
@@ -1185,6 +1200,50 @@ importFileInput.addEventListener('change', e => {
 
 applySettings();
 
+// ── Favorites ──
+function getFavorites() {
+  try { return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || []; } catch { return []; }
+}
+function setFavorites(favs) { localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs)); }
+function isFavorite(url) { return getFavorites().includes(url); }
+function toggleFavorite(url) {
+  const favs = getFavorites();
+  const idx = favs.indexOf(url);
+  if (idx > -1) favs.splice(idx, 1); else favs.push(url);
+  setFavorites(favs);
+  return idx === -1;
+}
+
+// ── Recently Played ──
+function addRecent(game) {
+  const recent = getRecent();
+  const filtered = recent.filter(g => g.url !== game.url);
+  filtered.unshift({ url: game.url, name: game.name, image: game.image || '', category: game.category });
+  if (filtered.length > 10) filtered.length = 10;
+  localStorage.setItem(RECENT_KEY, JSON.stringify(filtered));
+}
+function getRecent() {
+  try { return JSON.parse(localStorage.getItem(RECENT_KEY)) || []; } catch { return []; }
+}
+
+// ── PWA Install Prompt ──
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBanner.classList.remove('hidden');
+});
+installBtn.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const result = await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  installBanner.classList.add('hidden');
+});
+installDismiss.addEventListener('click', () => {
+  installBanner.classList.add('hidden');
+  deferredPrompt = null;
+});
+
 // ── Render ──
 const iconCache = {};
 function gameIcon(name) {
@@ -1199,8 +1258,6 @@ function renderGames(filtered) {
   const s = getSettings();
   const animate = s.anim !== false;
 
-  const palette = ['#14b8a6','#f97316','#fbbf24','#a855f7','#f472b6','#34d399','#38bdf8','#fb923c','#818cf8','#2dd4bf'];
-
   filtered.forEach((game, i) => {
     const card = document.createElement('div');
     card.className = 'game-card';
@@ -1212,14 +1269,24 @@ function renderGames(filtered) {
     const colorIdx = game.category.length % palette.length;
     const iconBg = palette[colorIdx];
     const hasImg = !!game.image;
+    const fav = isFavorite(game.url);
     card.innerHTML = `
       <div class="thumb"${hasImg ? ` style="background-image:url('${game.image}')"` : ''}>
         ${hasImg ? '' : '<span class="game-icon" style="background:' + iconBg + '">' + icon + '</span>'}
         <div class="play-overlay">&#x25B6;</div>
       </div>
+      <button class="fav-star${fav ? ' on' : ''}" data-url="${game.url}">${fav ? '\u2605' : '\u2606'}</button>
       <div class="name">${game.name}</div>
       <div class="category">${game.category}</div>
     `;
+    const star = card.querySelector('.fav-star');
+    star.addEventListener('click', e => {
+      e.stopPropagation();
+      const on = toggleFavorite(game.url);
+      star.textContent = on ? '\u2605' : '\u2606';
+      star.classList.toggle('on', on);
+      if (showFavoritesOnly) filterGames();
+    });
     card.addEventListener('click', () => openGame(game));
     gameGrid.appendChild(card);
 
@@ -1246,6 +1313,17 @@ function filterGames() {
   }
   if (query) {
     filtered = filtered.filter(g => g.name.toLowerCase().includes(query));
+  }
+  if (showFavoritesOnly) {
+    const favs = getFavorites();
+    filtered = filtered.filter(g => favs.includes(g.url));
+  }
+  if (currentSort === 'name-asc') {
+    filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
+  } else if (currentSort === 'name-desc') {
+    filtered = [...filtered].sort((a, b) => b.name.localeCompare(a.name));
+  } else if (currentSort === 'category') {
+    filtered = [...filtered].sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
   }
   renderGames(filtered);
   const container = document.getElementById('dl-container');
@@ -1309,6 +1387,8 @@ async function resolveCdnGameUrl(url) {
 
 async function openGame(game) {
   currentGame = game;
+  addRecent(game);
+  renderRecent();
   modalTitle.textContent = game.name;
   overlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
@@ -1367,6 +1447,65 @@ function updateCounts() {
     footerCount.textContent = total + ' games';
   }
 }
+
+function renderRecent() {
+  const recent = getRecent();
+  if (!recent.length) { recentSection.classList.add('hidden'); return; }
+  recentSection.classList.remove('hidden');
+  recentGrid.innerHTML = '';
+  recent.forEach(game => {
+    const g = games.find(gg => gg.url === game.url);
+    if (!g) return;
+    const icon = gameIcon(g.name);
+    const card = document.createElement('div');
+    card.className = 'recent-card';
+    const hasImg = !!g.image;
+    card.innerHTML = `
+      <div class="thumb"${hasImg ? ` style="background-image:url('${g.image}')"` : ''}>
+        ${hasImg ? '' : '<span class="game-icon" style="background:' + (palette || ['#14b8a6'])[g.category.length % 10] + '">' + icon + '</span>'}
+      </div>
+      <div class="name">${g.name}</div>
+    `;
+    card.addEventListener('click', () => openGame(g));
+    recentGrid.appendChild(card);
+  });
+}
+
+function toggleView() {
+  const isList = document.documentElement.getAttribute('data-view') === 'list';
+  document.documentElement.setAttribute('data-view', isList ? 'grid' : 'list');
+  viewToggleBtn.classList.toggle('active', !isList);
+}
+
+function toggleFavFilter() {
+  showFavoritesOnly = !showFavoritesOnly;
+  favFilterBtn.classList.toggle('active', showFavoritesOnly);
+  favFilterBtn.textContent = showFavoritesOnly ? '\u2605' : '\u2606';
+  filterGames();
+  updateCounts();
+}
+
+favFilterBtn.addEventListener('click', toggleFavFilter);
+
+sortBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  sortMenu.classList.toggle('hidden');
+});
+sortMenu.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    sortMenu.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentSort = btn.dataset.sort;
+    sortMenu.classList.add('hidden');
+    filterGames();
+    updateCounts();
+  });
+});
+document.addEventListener('click', () => { sortMenu.classList.add('hidden'); });
+
+viewToggleBtn.addEventListener('click', toggleView);
+
+const palette = ['#14b8a6','#f97316','#fbbf24','#a855f7','#f472b6','#34d399','#38bdf8','#fb923c','#818cf8','#2dd4bf'];
 
 async function downloadSite() {
   const btn = document.getElementById('download-site-btn');
@@ -1574,6 +1713,7 @@ fetch(GAMES_JSON)
     games = data;
     populateCategories();
     renderGames(games);
+    renderRecent();
     updateCounts();
   })
   .catch(err => {
