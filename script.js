@@ -1266,20 +1266,8 @@ function filterGames() {
   }
 }
 
-function isCDNUrl(url) {
-  return url.includes('jsdelivr.net') || url.includes('genizymath.github.io');
-}
-
 function isItchClassic(url) {
   return url.includes('html-classic.itch.zone');
-}
-
-function isNoahstutoringUrl(url) {
-  return url.includes('noahstutoring.academy');
-}
-
-function stripInlineScripts(html) {
-  return html.replace(/<script>(?!<\/script>)[\s\S]*?<\/script>/gi, '');
 }
 
 async function fetchWithRetry(url, retries = 2) {
@@ -1305,11 +1293,14 @@ async function fetchItchClassic(url) {
   return html;
 }
 
-async function fetchNoahstutoring(url) {
-  const resp = await fetchWithRetry(url);
-  let html = await resp.text();
-  html = stripInlineScripts(html);
-  return html;
+async function resolveCdnGameUrl(url) {
+  try {
+    const resp = await fetchWithRetry(url);
+    const html = await resp.text();
+    const m = html.match(/<base\s+href=["']([^"']+)/i);
+    if (m) return m[1].replace(/\/?$/, '/') + 'index.html';
+  } catch {}
+  return url;
 }
 
 async function openGame(game) {
@@ -1322,16 +1313,12 @@ async function openGame(game) {
   gameFrame.removeAttribute('srcdoc');
   gameFrame.src = '';
   try {
-    if (isCDNUrl(game.url)) {
-      currentMode = 'srcdoc';
-      const resp = await fetchWithRetry(game.url);
-      gameFrame.srcdoc = await resp.text();
-    } else if (isItchClassic(game.url)) {
+    if (isItchClassic(game.url)) {
       currentMode = 'srcdoc';
       gameFrame.srcdoc = await fetchItchClassic(game.url);
-    } else if (isNoahstutoringUrl(game.url)) {
-      currentMode = 'srcdoc';
-      gameFrame.srcdoc = await fetchNoahstutoring(game.url);
+    } else if (game.url.includes('genizymath.github.io')) {
+      currentMode = 'direct';
+      gameFrame.src = await resolveCdnGameUrl(game.url);
     } else {
       currentMode = 'direct';
       gameFrame.src = game.url;
@@ -1357,20 +1344,9 @@ function closeGame() {
 
 function reloadGame() {
   if (!currentGame) return;
-  if (currentMode === 'srcdoc') {
-    gameFrame.srcdoc = '';
-    fetchWithRetry(currentGame.url).then(r => r.text()).then(html => {
-      if (isNoahstutoringUrl(currentGame.url)) html = stripInlineScripts(html);
-      gameFrame.srcdoc = html;
-    }).catch(() => {
-      currentMode = 'direct';
-      gameFrame.src = currentGame.url;
-    });
-  } else {
-    gameFrame.removeAttribute('srcdoc');
-    gameFrame.src = '';
-    setTimeout(() => { gameFrame.src = currentGame.url; }, 100);
-  }
+  gameFrame.removeAttribute('srcdoc');
+  gameFrame.src = '';
+  setTimeout(() => { gameFrame.src = currentGame.url; }, 100);
 }
 
 function populateCategories() {
