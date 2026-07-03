@@ -1333,11 +1333,6 @@ async function openGame(game) {
     currentMode = 'direct';
     gameFrame.src = game.url;
   }
-  setTimeout(() => {
-    if (!document.fullscreenElement) {
-      gameModal.requestFullscreen().catch(() => {});
-    }
-  }, 500);
 }
 
 function closeGame() {
@@ -1461,6 +1456,7 @@ gameFrame.addEventListener('click', () => {
     gameModal.requestFullscreen().catch(() => {});
   }
 });
+
 openBtn.addEventListener('click', () => {
   if (currentGame) window.open(currentGame.url, '_blank');
 });
