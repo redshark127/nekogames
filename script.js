@@ -1536,15 +1536,16 @@ let autoRetryTimer;
 let retryCount = 0;
 gameFrame.addEventListener('load', () => {
   clearTimeout(autoRetryTimer);
-  retryCount++;
   autoRetryTimer = setTimeout(() => {
-    if (retryCount > 3) return;
+    if (retryCount >= 3) return;
     try {
       const doc = gameFrame.contentDocument || gameFrame.contentWindow?.document;
-      if (doc && doc.body.innerHTML.trim() === '') throw new Error('empty body');
-      const err = doc.querySelector('h1:contains("404"), h1:contains("Not Found"), h1:contains("Error")');
-      if (err) throw new Error('error page');
+      if (!doc) throw new Error('no document');
+      const text = doc.body?.textContent || '';
+      if (text.trim() === '') throw new Error('empty body');
+      if (/404|not found|error|failed to load/i.test(text)) throw new Error('error page');
     } catch {
+      retryCount++;
       const delay = Math.min(1000 * Math.pow(2, retryCount - 1), 8000);
       const indicator = document.getElementById('modal-title');
       indicator.textContent = (indicator.textContent || '').replace(/ \([0-9]+\)$/, '') + ' (retry ' + retryCount + ')';
