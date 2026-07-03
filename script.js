@@ -22,6 +22,7 @@ const downloadBtn = document.getElementById('download-btn');
 const gameModal = document.getElementById('game-modal');
 const panicOverlay = document.getElementById('panic-overlay');
 const abBtn = document.getElementById('ab-btn');
+const randomBtn = document.getElementById('random-btn');
 const gameCount = document.getElementById('game-count');
 const footerCount = document.getElementById('footer-count');
 
@@ -1213,19 +1214,14 @@ function renderGames(filtered) {
     const colorIdx = game.category.length % palette.length;
     const iconBg = palette[colorIdx];
     const hasImg = !!game.image;
-    if (hasImg) {
-      card.innerHTML = `
-        <div class="thumb" style="background-image:url('${game.image}')"></div>
-        <div class="name">${game.name}</div>
-        <div class="category">${game.category}</div>
-      `;
-    } else {
-      card.innerHTML = `
-        <div class="thumb"><span class="game-icon" style="background:${iconBg}">${icon}</span></div>
-        <div class="name">${game.name}</div>
-        <div class="category">${game.category}</div>
-      `;
-    }
+    card.innerHTML = `
+      <div class="thumb"${hasImg ? ` style="background-image:url('${game.image}')"` : ''}>
+        ${hasImg ? '' : '<span class="game-icon" style="background:' + iconBg + '">' + icon + '</span>'}
+        <div class="play-overlay">&#x25B6;</div>
+      </div>
+      <div class="name">${game.name}</div>
+      <div class="category">${game.category}</div>
+    `;
     card.addEventListener('click', () => openGame(game));
     gameGrid.appendChild(card);
 
@@ -1255,15 +1251,25 @@ function filterGames() {
   }
   renderGames(filtered);
   const container = document.getElementById('dl-container');
-  if (query === 'cocoloco' && !document.getElementById('download-site-btn')) {
+  if (!document.getElementById('download-site-btn')) {
     const btn = document.createElement('button');
     btn.id = 'download-site-btn';
-    btn.textContent = '\u2193 Download All Games (452 KB)';
+    btn.textContent = '\u2193 Download All Games';
     btn.addEventListener('click', downloadSite);
     container.appendChild(btn);
-  } else if (query !== 'cocoloco') {
-    container.innerHTML = '';
+    updateDownloadSize();
   }
+}
+
+async function updateDownloadSize() {
+  try {
+    const resp = await fetch('games.json');
+    const data = await resp.json();
+    const size = new Blob([JSON.stringify(data)]).size;
+    const kb = Math.round(size / 1024);
+    const btn = document.getElementById('download-site-btn');
+    if (btn) btn.textContent = '\u2193 Download All Games (' + kb + ' KB)';
+  } catch {}
 }
 
 function isItchClassic(url) {
@@ -1372,12 +1378,68 @@ function updateCounts() {
 }
 
 function downloadSite() {
+  const btn = document.getElementById('download-site-btn');
+  btn.textContent = '\u23F3 Generating...';
+  const html = generateGameCatalog();
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = 'nekogames-full.zip';
-  a.download = 'nekogames-full.zip';
+  a.href = url;
+  a.download = 'nekogames-catalog.html';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  updateDownloadSize();
+}
+
+function generateGameCatalog() {
+  const bg = getSettings().bgColor || '#0f0d0b';
+  const accent = getSettings().accentColor || '#14b8a6';
+  const rows = games.map((g, i) => {
+    const img = g.image ? `<img src="${g.image.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}" alt="">` : '<div class="noimg">' + g.name[0].toUpperCase() + '</div>';
+    return `<a href="${g.url.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}" target="_blank" class="card">
+      <div class="thumb">${img}</div>
+      <div class="info">
+        <div class="name">${g.name.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+        <div class="cat">${g.category.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+      </div>
+    </a>`;
+  }).join('\n      ');
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nekogames Catalog</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:${bg};color:#e8e2dc;min-height:100vh}
+header{background:rgba(18,15,13,.92);backdrop-filter:blur(20px);border-bottom:1px solid ${accent}18;padding:16px 24px;position:sticky;top:0;z-index:100;text-align:center}
+h1{font-size:20px;background:linear-gradient(135deg,${accent},#f97316,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+header p{font-size:13px;color:rgba(232,226,220,.45);margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;padding:24px;max-width:1280px;margin:0 auto}
+.card{background:#181512;border:1px solid rgba(255,255,255,.04);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 32px -8px rgba(0,0,0,.4)}
+.thumb{width:100%;aspect-ratio:16/9;background:#12100d;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.noimg{width:40px;height:40px;border-radius:10px;background:${accent};display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:rgba(0,0,0,.6)}
+.info{padding:10px 10px 12px}
+.name{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cat{font-size:10px;color:${accent};opacity:.5;text-transform:uppercase;letter-spacing:.8px;margin-top:4px;font-weight:500}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr);gap:10px;padding:14px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>&#x1F431; Nekogames Catalog</h1>
+  <p>${games.length} games &middot; Generated ${new Date().toLocaleDateString()}</p>
+</header>
+<div class="grid">
+      ${rows}
+</div>
+</body>
+</html>`;
 }
 
 searchInput.addEventListener('input', () => { filterGames(); updateCounts(); });
@@ -1392,6 +1454,11 @@ fullscreenBtn.addEventListener('click', () => {
     document.exitFullscreen();
   } else {
     gameModal.requestFullscreen();
+  }
+});
+gameFrame.addEventListener('click', () => {
+  if (!document.fullscreenElement) {
+    gameModal.requestFullscreen().catch(() => {});
   }
 });
 openBtn.addEventListener('click', () => {
@@ -1433,6 +1500,12 @@ downloadBtn.addEventListener('click', async () => {
   downloadBtn.textContent = '\u2B07';
 });
 
+randomBtn.addEventListener('click', () => {
+  if (!games.length) return;
+  const game = games[Math.floor(Math.random() * games.length)];
+  openGame(game);
+});
+
 abBtn.addEventListener('click', async () => {
   try {
     const res = await fetch(baseHref);
@@ -1464,19 +1537,28 @@ document.querySelector('#request-btn').addEventListener('click', e => {
 });
 
 let autoRetryTimer;
+let retryCount = 0;
 gameFrame.addEventListener('load', () => {
-  if (currentMode !== 'direct') return;
   clearTimeout(autoRetryTimer);
+  retryCount++;
   autoRetryTimer = setTimeout(() => {
-    if (autoRetried) return;
+    if (retryCount > 3) return;
     try {
       const doc = gameFrame.contentDocument || gameFrame.contentWindow?.document;
       if (doc && doc.body.innerHTML.trim() === '') throw new Error('empty body');
+      const err = doc.querySelector('h1:contains("404"), h1:contains("Not Found"), h1:contains("Error")');
+      if (err) throw new Error('error page');
     } catch {
-      autoRetried = true;
-      reloadGame();
+      const delay = Math.min(1000 * Math.pow(2, retryCount - 1), 8000);
+      const indicator = document.getElementById('modal-title');
+      indicator.textContent = (indicator.textContent || '').replace(/ \([0-9]+\)$/, '') + ' (retry ' + retryCount + ')';
+      setTimeout(() => {
+        gameFrame.removeAttribute('srcdoc');
+        gameFrame.src = '';
+        setTimeout(() => { gameFrame.src = currentGame.url; }, 200);
+      }, delay);
     }
-  }, 8000);
+  }, 5000);
 });
 
 overlay.addEventListener('click', e => {
