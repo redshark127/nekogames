@@ -3129,13 +3129,6 @@
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/62.png"
   },
   {
-    "id": 457,
-    "name": "Baldi's Basics",
-    "url": "https://gametreexp.github.io/html/baldis-basics/game/index.html",
-    "category": "Action",
-    "image": "https://gametreexp.github.io/img/baldis-basics.webp"
-  },
-  {
     "id": 458,
     "name": "Big NEON Tower Tiny Square",
     "url": "https://genizymath.github.io/iframe/68.html",
@@ -3253,13 +3246,6 @@
     "url": "https://gametreexp.github.io/strongdog2/html/Fireboy%20and%20Watergirl%203/game/index.html",
     "category": "Action",
     "image": "https://gametreexp.github.io/img/Fireboy and Watergirl 3.jfif"
-  },
-  {
-    "id": 475,
-    "name": "Gunspin",
-    "url": "https://gametreexp.github.io/strongdog2/html/gunspin/game/index.html",
-    "category": "Shooter",
-    "image": "https://gametreexp.github.io/img/gunspin.jpg"
   },
   {
     "id": 476,
@@ -3687,13 +3673,6 @@
     "url": "https://genizymath.github.io/iframe/202.html",
     "category": "Racing",
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/202.png"
-  },
-  {
-    "id": 537,
-    "name": "Five Nights at Winston's",
-    "url": "https://gametreexp.github.io/strongdog3/html/five%20nights%20at%20winstons/game/index.html",
-    "category": "Horror",
-    "image": "https://gametreexp.github.io/img/five nights at winstons.jpg"
   },
   {
     "id": 538,
@@ -6433,13 +6412,6 @@
     "image": "https://cdn.jsdelivr.net/gh/freebuisness/covers@main/743.png"
   },
   {
-    "id": 929,
-    "name": "Tetris",
-    "url": "https://gametreexp.github.io/html/tetris%20advanced/game/index.html",
-    "category": "Puzzle",
-    "image": "https://gametreexp.github.io/img/tetris.jpeg"
-  },
-  {
     "id": 930,
     "name": "Fundamental Paper Novel",
     "url": "https://genizymath.github.io/iframe/746.html",
@@ -6935,13 +6907,6 @@
     "url": "https://s.cobb-can-move.com/games/cobb-can-move/index.html",
     "category": "Horror",
     "image": "https://img.itch.zone/aW1nLzIxNTEyMDc4LnBuZw==/original/DQ%2BmuI.png"
-  },
-  {
-    "id": 1001,
-    "name": "Bit Planes",
-    "url": "https://gametreexp.github.io/strongdog3/html/bit%20planes/game/index.html",
-    "category": "Action",
-    "image": "https://gametreexp.github.io/img/bit planes.jpg"
   },
   {
     "id": 1002,
