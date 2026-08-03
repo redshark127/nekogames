@@ -48,6 +48,12 @@ async function proxyGame(request) {
   }
 }
 
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'ping-proxy') {
+    if (event.ports && event.ports[0]) event.ports[0].postMessage('pong');
+  }
+});
+
 self.addEventListener('fetch', event => {
   const reqUrl = new URL(event.request.url);
   if (reqUrl.pathname.startsWith('/nekogames/gp/')) {
