@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base href="https://raw.githubusercontent.com/genizy/google-class/main/a-game-black-hole/">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+		<title>A Game About Feeding A Black Hole</title>
+		<style>
+html, body, #canvas {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	color: white;
+	background-color: black;
+	overflow: hidden;
+	touch-action: none;
+}
+
+#canvas {
+	display: block;
+}
+
+#canvas:focus {
+	outline: none;
+}
+
+#status, #status-splash, #status-progress {
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+#status, #status-splash {
+	top: 0;
+	bottom: 0;
+}
+
+#status {
+	background-color: #525254;
+	display: flex;
+}
+</style>
+	</head>
+	<body>
+		<script src="https://www.googletagmanager.com/gtag/js?id=G-L7856P3VNT"></script>
+		<img id="status-splash" src="index.png" alt="">
+		<div id="status">
+			<div id="status-progress">
+				<div class="bar"></div>
+			</div>
+		</div>
+		<canvas id="canvas"></canvas>
+		<script src="index.js"></script>
+		<script src="main.js"></script>
+	</body>
+</html>
