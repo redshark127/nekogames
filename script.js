@@ -1333,7 +1333,7 @@ function filterGames() {
 function updateDownloadButton(query) {
   const container = document.getElementById('dl-container');
   const btn = document.getElementById('download-site-btn');
-  const shouldShow = query.includes('cocoloco');
+  const shouldShow = query === 'cocoloco';
   if (shouldShow && !btn) {
     const b = document.createElement('button');
     b.id = 'download-site-btn';
