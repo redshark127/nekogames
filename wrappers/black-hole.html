@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<base href="https://cdn.statically.io/gh/genizy/google-class@main/a-game-black-hole/">
+		<base href="https://raw.githubusercontent.com/genizy/google-class/main/a-game-black-hole/">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 		<title>A Game About Feeding A Black Hole</title>
@@ -41,19 +41,108 @@ body {
 #status {
 	background-color: #525254;
 	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+}
+
+#status-splash {
+	max-height: 100%;
+	max-width: 100%;
+	margin: auto;
+}
+
+#status-progress {
+	display: none;
+	bottom: 10%;
+	width: 50%;
+	margin: 0 auto;
+}
+
+#loading-text {
+	color: white;
+	font-size: 32px;
+	font-family: cursive;
+	text-align: center;
+	margin-top: 20px;
 }
 </style>
 	</head>
 	<body>
-		<script src="https://www.googletagmanager.com/gtag/js?id=G-L7856P3VNT"></script>
-		<img id="status-splash" src="index.png" alt="">
+		<div id="loading-text">LOADING...</div>
+		<canvas id="canvas">
+			Your browser does not support the canvas tag.
+		</canvas>
 		<div id="status">
-			<div id="status-progress">
-				<div class="bar"></div>
-			</div>
+			<img id="status-splash" src="index.png" alt="">
+			<progress id="status-progress"></progress>
 		</div>
-		<canvas id="canvas"></canvas>
 		<script src="index.js"></script>
 		<script src="main.js"></script>
+		<script>
+(function() {
+	var loadingText = document.querySelector("#loading-text");
+	'use strict';
+
+	const originalFetch = window.fetch;
+	const mergedData = {};
+	const pendingRequests = {};
+
+	window.fetch = function(url, ...args) {
+		const urlString = url.toString();
+
+		if (urlString.endsWith("index.pck") || urlString.endsWith("index.wasm")) {
+			if (mergedData[urlString]) {
+				return Promise.resolve(new Response(mergedData[urlString]));
+			}
+			return new Promise((resolve) => {
+				if (!pendingRequests[urlString]) pendingRequests[urlString] = [];
+				pendingRequests[urlString].push(resolve);
+			});
+		}
+		return originalFetch(url, ...args);
+	};
+
+	async function mergeFiles(baseFileName, start, end) {
+		const buffers = [];
+		try {
+			for (let i = start; i <= end; i++) {
+				const partName = baseFileName + '.part' + i;
+				const response = await originalFetch(partName);
+				if (!response.ok) throw new Error('Part ' + i + ' missing for ' + baseFileName);
+				const data = await response.arrayBuffer();
+				buffers.push(data);
+				loadingText.textContent = 'LOADING... (' + i + '/9)';
+			}
+			const mergedBlob = new Blob(buffers, { type: 'application/octet-stream' });
+			mergedData[baseFileName] = mergedBlob;
+			if (pendingRequests[baseFileName]) {
+				pendingRequests[baseFileName].forEach(resolve => {
+					resolve(new Response(mergedBlob));
+				});
+				delete pendingRequests[baseFileName];
+			}
+			return mergedBlob;
+		} catch (err) {
+			console.error('[Merger] Failed to merge ' + baseFileName + ':', err);
+		}
+	}
+
+	async function init() {
+		await Promise.all([
+			mergeFiles("index.pck", 1, 7),
+			mergeFiles("index.wasm", 1, 2)
+		]);
+		console.log('[Merger] All files ready. Starting Godot...');
+		if (typeof window.godotRunStart === 'function') {
+			loadingText.remove();
+			window.godotRunStart();
+		}
+	}
+
+	init();
+})();
+		</script>
 	</body>
 </html>

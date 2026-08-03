@@ -21,6 +21,7 @@ const closeBtn = document.getElementById('close-btn');
 const fullscreenBtn = document.getElementById('fullscreen-btn');
 const reloadBtn = document.getElementById('reload-btn');
 const downloadBtn = document.getElementById('download-btn');
+const muteBtn = document.getElementById('mute-btn');
 const gameModal = document.getElementById('game-modal');
 const panicOverlay = document.getElementById('panic-overlay');
 const abBtn = document.getElementById('ab-btn');
@@ -79,6 +80,7 @@ let currentGame = null;
 let currentMode = 'direct';
 let currentSort = 'name-asc';
 let showFavoritesOnly = false;
+let muted = false;
 // ── Background Canvas ──
 const bgCanvas = document.getElementById('bg-canvas');
 const ctx = bgCanvas.getContext('2d');
@@ -1594,7 +1596,11 @@ async function openGame(game) {
   fitGame();
 }
 
-gameFrame.addEventListener('load', fitGame);
+gameFrame.addEventListener('load', () => {
+  fitGame();
+  installAudioHooks();
+  applyMute(muted);
+});
 
 function closeGame() {
   overlay.classList.add('hidden');
@@ -1638,6 +1644,55 @@ function reloadGame() {
   gameFrame.removeAttribute('srcdoc');
   gameFrame.src = '';
   setTimeout(() => { gameFrame.src = gameSrcFor(currentGame.url); }, 100);
+}
+
+function applyMute(m) {
+  gameFrame.muted = m;
+  try {
+    const win = gameFrame.contentWindow;
+    if (!win || !win.document) return;
+    win.document.querySelectorAll('audio, video').forEach(el => { el.muted = m; });
+    if (Array.isArray(win.__nekogamesCtxs)) {
+      win.__nekogamesCtxs.forEach(ctx => {
+        if (!ctx || ctx.state === 'closed') return;
+        if (m && ctx.state === 'running') ctx.suspend().catch(() => {});
+        else if (!m && ctx.state === 'suspended') ctx.resume().catch(() => {});
+      });
+    }
+  } catch {}
+}
+
+function installAudioHooks() {
+  try {
+    const win = gameFrame.contentWindow;
+    if (!win || win.__nekogamesHooked) return;
+    win.__nekogamesHooked = true;
+    win.__nekogamesCtxs = [];
+    const Ctor = win.AudioContext || win.webkitAudioContext;
+    if (!Ctor) return;
+    const patched = function (...args) {
+      const ctx = new Ctor(...args);
+      win.__nekogamesCtxs.push(ctx);
+      if (muted) ctx.suspend().catch(() => {});
+      return ctx;
+    };
+    patched.prototype = Ctor.prototype;
+    try { win.AudioContext = patched; } catch {}
+    try { win.webkitAudioContext = patched; } catch {}
+    if (win.MutationObserver) {
+      new win.MutationObserver(() => {
+        if (!muted) return;
+        win.document.querySelectorAll('audio, video').forEach(el => { el.muted = true; });
+      }).observe(win.document, { childList: true, subtree: true });
+    }
+  } catch {}
+}
+
+function toggleMute() {
+  muted = !muted;
+  muteBtn.classList.toggle('active', muted);
+  muteBtn.title = muted ? 'Unmute' : 'Mute';
+  applyMute(muted);
 }
 
 function populateCategories() {
@@ -1747,6 +1802,7 @@ categoryFilter.addEventListener('change', () => {
 });
 closeBtn.addEventListener('click', closeGame);
 reloadBtn.addEventListener('click', reloadGame);
+muteBtn.addEventListener('click', toggleMute);
 fullscreenBtn.addEventListener('click', () => {
   if (document.fullscreenElement) {
     document.exitFullscreen();
