@@ -1267,7 +1267,12 @@ footer::before {
 .fav-star.on { opacity: 1; color: #fbbf24; text-shadow: 0 0 8px rgba(251,191,36,0.6); }
 
 /* ── Fav Filter Button ── */
-#fav-filter-btn.active { color: #fbbf24; border-color: #fbbf24; }
+#fav-filter-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(20, 184, 166, 0.1);
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.15);
+}
 
 /* ── Sort Button ── */
 #sort-btn { position: relative; }
@@ -1305,7 +1310,12 @@ footer::before {
 #sort-menu button.active { color: var(--accent); background: rgba(20,184,166,0.1); }
 
 /* ── View Toggle ── */
-#view-toggle-btn.active { color: var(--accent); border-color: var(--accent); }
+#view-toggle-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(20, 184, 166, 0.1);
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.15);
+}
 
 /* ── List View ── */
 [data-view="list"] #game-grid {
