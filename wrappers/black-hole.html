@@ -250,7 +250,8 @@ body {
 		const jobs = [];
 		for (let i = f.start; i <= f.end; i++) jobs.push(downloadPart(f, i));
 		return Promise.all(jobs).then((blobs) => {
-			const merged = new Blob(blobs, { type: 'application/octet-stream' });
+			const type = f.name === 'index.wasm' ? 'application/wasm' : 'application/octet-stream';
+			const merged = new Blob(blobs, { type: type });
 			mergedData[f.name] = merged;
 			if (pendingRequests[f.name]) {
 				pendingRequests[f.name].forEach((res) => res(new Response(merged)));
@@ -259,22 +260,65 @@ body {
 		});
 	}
 
+	function showFailure(title, msg) {
+		loadingText.textContent = title;
+		loadingSub.textContent = msg;
+		loadingBar.style.display = 'none';
+		retryBtn.style.display = 'block';
+	}
+
+	function finishLoadingUi() {
+		loadingText.remove();
+		loadingSub.remove();
+		if (loadingBar.parentElement) loadingBar.parentElement.remove();
+		retryBtn.remove();
+	}
+
+	function watchEngine(startedAt) {
+		const status = document.getElementById('status');
+		if (!status || !status.isConnected) { finishLoadingUi(); return; }
+		const notice = document.getElementById('status-notice');
+		if (notice && notice.textContent.trim()) {
+			showFailure('FAILED TO START', notice.textContent.trim());
+			return;
+		}
+		const prog = document.getElementById('status-progress');
+		if (prog && prog.value > 0 && prog.max > 0) {
+			const pct = Math.min(100, Math.round(prog.value / prog.max * 100));
+			loadingSub.textContent = 'Loading game data ' + pct + '%';
+		}
+		const elapsed = Date.now() - startedAt;
+		if (elapsed > 600000) {
+			showFailure('STILL LOADING', 'The engine did not finish starting. Press Retry to try again.');
+			return;
+		}
+		if (elapsed > 300000) {
+			loadingSub.textContent = 'Still loading? The engine can take a while on slower devices - keep waiting or press Retry.';
+			loadingBar.style.display = 'none';
+		}
+		setTimeout(() => watchEngine(startedAt), 250);
+	}
+
 	function init() {
 		Promise.all(PARTS.map(downloadFile)).then(() => {
 			console.log('[Merger] All files ready. Starting Godot...');
 			if (typeof window.godotRunStart === 'function') {
-				loadingText.remove();
-				loadingSub.remove();
-				loadingBar.parentElement.remove();
-				retryBtn.remove();
-				window.godotRunStart();
+				loadingText.textContent = 'STARTING...';
+				loadingSub.textContent = 'Starting the engine - this can take a minute on slower devices';
+				loadingBar.style.width = '100%';
+				try {
+					window.godotRunStart();
+				} catch (e) {
+					showFailure('FAILED TO START', String(e && e.message || e));
+					return;
+				}
+				watchEngine(Date.now());
+			} else {
+				showFailure('FAILED TO START', 'The game engine could not be found.');
 			}
 		}).catch((err) => {
 			console.error('[Merger] Failed to load game:', err);
-			loadingText.textContent = 'FAILED TO LOAD';
-			loadingSub.textContent = 'The game files could not be downloaded. Check your connection.';
-			loadingBar.style.display = 'none';
-			retryBtn.style.display = 'block';
+			showFailure('FAILED TO LOAD', 'The game files could not be downloaded. Check your connection.');
 		});
 	}
 
