@@ -807,9 +807,9 @@ function saveSettings(settings) {
 
 function applyCloak() {
   const s = getSettings();
-  const activeTitle = s.cloakActiveTitle || 'Google Docs';
-  const inactiveTitle = s.cloakInactiveTitle || 'Google Docs - Home';
-  const faviconUrl = s.cloakFavicon || 'https://www.google.com/favicon.ico';
+  const activeTitle = s.cloakActiveTitle || 'Nekogames';
+  const inactiveTitle = s.cloakInactiveTitle || 'Nekogames - Home';
+  const faviconUrl = s.cloakFavicon || 'favicon.ico';
   if (faviconLink) faviconLink.href = faviconUrl;
   document.title = document.hidden ? inactiveTitle : activeTitle;
 }
@@ -932,9 +932,9 @@ function syncSettingsUI() {
   if (gridGapVal) gridGapVal.textContent = (s.gridGap || 16) + 'px';
 
   const s2 = getSettings();
-  cloakActiveTitle.value = s2.cloakActiveTitle || 'Google Docs';
-  cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Google Docs - Home';
-  cloakFavicon.value = s2.cloakFavicon || 'https://www.google.com/favicon.ico';
+  cloakActiveTitle.value = s2.cloakActiveTitle || 'Nekogames';
+  cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Nekogames - Home';
+  cloakFavicon.value = s2.cloakFavicon || 'favicon.ico';
 }
 
 themeOptions.addEventListener('click', e => {
