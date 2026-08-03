@@ -8,7 +8,7 @@ const baseHref = window.location.pathname.replace(/\/?$/, '/');
 const baseEl = document.createElement('base');
 baseEl.href = baseHref;
 document.head.prepend(baseEl);
-try { history.replaceState(null, '', '/'); } catch (e) {}
+history.replaceState(null, '', '/');
 
 const gameGrid = document.getElementById('game-grid');
 const searchInput = document.getElementById('search');
@@ -35,9 +35,6 @@ const sortMenu = document.getElementById('sort-menu');
 const viewToggleBtn = document.getElementById('view-toggle-btn');
 const recentSection = document.getElementById('recent-section');
 const recentGrid = document.getElementById('recent-grid');
-const installBanner = document.getElementById('install-banner');
-const installBtn = document.getElementById('install-btn');
-const installDismiss = document.getElementById('install-dismiss');
 
 
 const settingsBtn = document.getElementById('settings-btn');
@@ -82,7 +79,6 @@ let currentGame = null;
 let currentMode = 'direct';
 let currentSort = 'name-asc';
 let showFavoritesOnly = false;
-let deferredPrompt = null;
 // ── Background Canvas ──
 const bgCanvas = document.getElementById('bg-canvas');
 const ctx = bgCanvas.getContext('2d');
@@ -808,7 +804,7 @@ function saveSettings(settings) {
 function applyCloak() {
   const s = getSettings();
   const activeTitle = s.cloakActiveTitle || 'Nekogames';
-  const inactiveTitle = s.cloakInactiveTitle || 'Nekogames';
+  const inactiveTitle = s.cloakInactiveTitle || 'Nekogames - Home';
   const faviconUrl = s.cloakFavicon || 'favicon.ico';
   if (faviconLink) faviconLink.href = faviconUrl;
   document.title = document.hidden ? inactiveTitle : activeTitle;
@@ -933,7 +929,7 @@ function syncSettingsUI() {
 
   const s2 = getSettings();
   cloakActiveTitle.value = s2.cloakActiveTitle || 'Nekogames';
-  cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Nekogames';
+  cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Nekogames - Home';
   cloakFavicon.value = s2.cloakFavicon || 'favicon.ico';
 }
 
@@ -1227,24 +1223,6 @@ function getRecent() {
   try { return JSON.parse(localStorage.getItem(RECENT_KEY)) || []; } catch { return []; }
 }
 
-// ── PWA Install Prompt ──
-window.addEventListener('beforeinstallprompt', e => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installBanner.classList.remove('hidden');
-});
-installBtn.addEventListener('click', async () => {
-  if (!deferredPrompt) return;
-  deferredPrompt.prompt();
-  const result = await deferredPrompt.userChoice;
-  deferredPrompt = null;
-  installBanner.classList.add('hidden');
-});
-installDismiss.addEventListener('click', () => {
-  installBanner.classList.add('hidden');
-  deferredPrompt = null;
-});
-
 // ── Render ──
 const iconCache = {};
 function gameIcon(name) {
@@ -1416,7 +1394,7 @@ async function openGame(game) {
       gameFrame.src = await resolveCdnGameUrl(game.url);
     } else {
       currentMode = 'direct';
-      try { gameFrame.src = new URL(game.url, window.location.href).href; } catch (e) { gameFrame.src = game.url; }
+      gameFrame.src = game.url;
     }
   } catch (e) {
     currentMode = 'direct';
@@ -1535,6 +1513,7 @@ favFilterBtn.addEventListener('click', toggleFavFilter);
 sortBtn.addEventListener('click', e => {
   e.stopPropagation();
   sortMenu.classList.toggle('hidden');
+  sortBtn.classList.toggle('active');
 });
 sortMenu.querySelectorAll('button').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -1542,11 +1521,15 @@ sortMenu.querySelectorAll('button').forEach(btn => {
     btn.classList.add('active');
     currentSort = btn.dataset.sort;
     sortMenu.classList.add('hidden');
+    sortBtn.classList.remove('active');
     filterGames();
     updateCounts();
   });
 });
-document.addEventListener('click', () => { sortMenu.classList.add('hidden'); });
+document.addEventListener('click', () => {
+  sortMenu.classList.add('hidden');
+  sortBtn.classList.remove('active');
+});
 
 viewToggleBtn.addEventListener('click', toggleView);
 
@@ -1697,25 +1680,16 @@ document.querySelectorAll('.setting-section-hdr').forEach(hdr => {
 
 createCursorElements();
 
-const EMBEDDED_GAMES = (typeof window.__GAMES__ !== 'undefined' && window.__GAMES__) ? window.__GAMES__ : null;
-if (EMBEDDED_GAMES) {
-  games = EMBEDDED_GAMES;
-  populateCategories();
-  renderGames(games);
-  renderRecent();
-  updateCounts();
-} else {
-  fetch(GAMES_JSON)
-    .then(r => r.json())
-    .then(data => {
-      games = data;
-      populateCategories();
-      renderGames(games);
-      renderRecent();
-      updateCounts();
-    })
-    .catch(err => {
-      gameGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#888;">Failed to load games.</p>';
-      console.error(err);
-    });
-}
+fetch(GAMES_JSON)
+  .then(r => r.json())
+  .then(data => {
+    games = data;
+    populateCategories();
+    renderGames(games);
+    renderRecent();
+    updateCounts();
+  })
+  .catch(err => {
+    gameGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#888;">Failed to load games.</p>';
+    console.error(err);
+  });
