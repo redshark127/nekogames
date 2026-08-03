@@ -264,6 +264,15 @@
           </div>
           <div class="setting-section-body">
             <div class="setting-group">
+              <label class="setting-label">Save Game Data</label>
+              <p class="setting-hint">Run games through a same-origin proxy so their saves stay on this site and can be exported</p>
+              <div class="setting-toggle" id="save-data-toggle">
+                <span>On</span>
+                <div class="toggle-track"><div class="toggle-thumb"></div></div>
+                <span>Off</span>
+              </div>
+            </div>
+            <div class="setting-group">
               <p class="setting-hint">Export/import settings &amp; saves (only games hosted on this site keep saves)</p>
               <div class="setting-actions">
                 <button id="export-data-btn" class="setting-action-btn">&#x2B07; Export</button>
@@ -331,6 +340,6 @@
       navigator.serviceWorker.register('sw.js');
     }
   </script>
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>

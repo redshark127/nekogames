@@ -45,7 +45,7 @@ offline = re.sub(
     offline)
 
 with zipfile.ZipFile(OUTPUT, 'w', zipfile.ZIP_DEFLATED) as z:
-    site_files = ['index.html', 'style.css', 'script.js', 'games.json']
+    site_files = ['index.html', 'style.css', 'script.js', 'games.json', 'sw.js']
     for sf in site_files:
         path = os.path.join(BASE, sf)
         if os.path.exists(path):

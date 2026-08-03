@@ -48,6 +48,7 @@ const fontOptions = document.getElementById('font-options');
 const animToggle = document.getElementById('anim-toggle');
 const cardPulseToggle = document.getElementById('card-pulse-toggle');
 const particlesToggle = document.getElementById('particles-toggle');
+const saveDataToggle = document.getElementById('save-data-toggle');
 const bgOptions = document.getElementById('bg-options');
 const cursorOptions = document.getElementById('cursor-options');
 const cursorColorInput = document.getElementById('cursor-color');
@@ -905,6 +906,7 @@ function syncSettingsUI() {
   animToggle.querySelector('.toggle-track').classList.toggle('active', anim);
   cardPulseToggle.querySelector('.toggle-track').classList.toggle('active', cardPulse);
   if (particlesToggle) particlesToggle.querySelector('.toggle-track').classList.toggle('active', particles);
+  if (saveDataToggle) saveDataToggle.querySelector('.toggle-track').classList.toggle('active', s.saveData !== false);
   bgOptions.querySelectorAll('.setting-option, .bg-opt').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.bg === bg);
   });
@@ -971,6 +973,15 @@ if (particlesToggle) {
     const on = !track.classList.contains('active');
     saveSettings({ particles: on });
     applySettings();
+    syncSettingsUI();
+  });
+}
+
+if (saveDataToggle) {
+  saveDataToggle.addEventListener('click', () => {
+    const track = saveDataToggle.querySelector('.toggle-track');
+    const on = !track.classList.contains('active');
+    saveSettings({ saveData: on });
     syncSettingsUI();
   });
 }
@@ -1550,6 +1561,13 @@ async function resolveCdnGameUrl(url) {
   return url;
 }
 
+function gameSrcFor(url) {
+  if (getSettings().saveData !== false && /^https?:\/\//i.test(url)) {
+    return '/nekogames/gp/?u=' + encodeURIComponent(url);
+  }
+  return url;
+}
+
 async function openGame(game) {
   currentGame = game;
   addRecent(game);
@@ -1565,14 +1583,14 @@ async function openGame(game) {
       gameFrame.srcdoc = await fetchItchClassic(game.url);
     } else if (game.url.includes('genizymath.github.io')) {
       currentMode = 'direct';
-      gameFrame.src = await resolveCdnGameUrl(game.url);
+      gameFrame.src = gameSrcFor(await resolveCdnGameUrl(game.url));
     } else {
       currentMode = 'direct';
-      gameFrame.src = game.url;
+      gameFrame.src = gameSrcFor(game.url);
     }
   } catch (e) {
     currentMode = 'direct';
-    gameFrame.src = game.url;
+    gameFrame.src = gameSrcFor(game.url);
   }
   fitGame();
 }
@@ -1620,7 +1638,7 @@ function reloadGame() {
   if (!currentGame) return;
   gameFrame.removeAttribute('srcdoc');
   gameFrame.src = '';
-  setTimeout(() => { gameFrame.src = currentGame.url; }, 100);
+  setTimeout(() => { gameFrame.src = gameSrcFor(currentGame.url); }, 100);
 }
 
 function populateCategories() {
