@@ -8870,5 +8870,12 @@
     "url": "https://noahstutoring.academy/games/12.html",
     "image": "https://noahstutoring.academy/images/18.jpg",
     "category": "Simulation"
+  },
+  {
+    "id": 1256,
+    "name": "Sheriff Looper",
+    "url": "games/sheriff-looper/index.html",
+    "image": "https://img.itch.zone/aW1nLzI0NjA3OTcxLnBuZw==/original/uKhSsb.png",
+    "category": "Action"
   }
 ]
