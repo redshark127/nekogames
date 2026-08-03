@@ -50,10 +50,21 @@ with zipfile.ZipFile(OUTPUT, 'w', zipfile.ZIP_DEFLATED) as z:
         name = g['name'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
         if g['url'].startswith('games/'):
             src = './' + g['url'][len('games/'):]
+            wrapper = f'''<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{name}</title><style>body{{margin:0;overflow:hidden;background:#000}}iframe{{width:100vw;height:100vh;border:none}}</style></head><body><iframe src="{src}" allowfullscreen></iframe></body></html>'''
+            z.writestr(f'games/{g["id"]}.html', wrapper)
+        elif g['url'].startswith('./wrappers/'):
+            wrapper_path = os.path.join(BASE, g['url'][2:])
+            if os.path.exists(wrapper_path):
+                with open(wrapper_path, 'r', encoding='utf-8') as wf:
+                    z.writestr(f'games/{g["id"]}.html', wf.read())
+            else:
+                src = g['url']
+                wrapper = f'''<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{name}</title><style>body{{margin:0;overflow:hidden;background:#000}}iframe{{width:100vw;height:100vh;border:none}}</style></head><body><iframe src="{src}" allowfullscreen></iframe></body></html>'''
+                z.writestr(f'games/{g["id"]}.html', wrapper)
         else:
             src = g['url']
-        wrapper = f'''<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{name}</title><style>body{{margin:0;overflow:hidden;background:#000}}iframe{{width:100vw;height:100vh;border:none}}</style></head><body><iframe src="{src}" allowfullscreen></iframe></body></html>'''
-        z.writestr(f'games/{g["id"]}.html', wrapper)
+            wrapper = f'''<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{name}</title><style>body{{margin:0;overflow:hidden;background:#000}}iframe{{width:100vw;height:100vh;border:none}}</style></head><body><iframe src="{src}" allowfullscreen></iframe></body></html>'''
+            z.writestr(f'games/{g["id"]}.html', wrapper)
     if os.path.isdir(os.path.join(BASE, 'games', 'sheriff-looper')):
         for fname in os.listdir(os.path.join(BASE, 'games', 'sheriff-looper')):
             z.write(os.path.join(BASE, 'games', 'sheriff-looper', fname), f'games/sheriff-looper/{fname}')
