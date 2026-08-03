@@ -7,7 +7,7 @@
 /* ── Theme Variables ── */
 :root, [data-theme="default"] {
   --bg: #0f0d0b;
-  --bg-header: rgba(18, 15, 13, 0.92);
+  --bg-header: rgba(18, 15, 13, 0.98);
   --bg-card: #181512;
   --bg-card-alt: #12100d;
   --bg-modal: #181512;
@@ -37,7 +37,7 @@
 
 [data-theme="midnight"] {
   --bg: #0c0e14;
-  --bg-header: rgba(12, 14, 22, 0.94);
+  --bg-header: rgba(12, 14, 22, 0.98);
   --bg-card: #14182a;
   --bg-card-alt: #0f1220;
   --bg-modal: #14182a;
@@ -63,7 +63,7 @@
 
 [data-theme="light"] {
   --bg: #f5f3f0;
-  --bg-header: rgba(255, 255, 255, 0.95);
+  --bg-header: rgba(255, 255, 255, 1);
   --bg-card: #ffffff;
   --bg-card-alt: #f0eee9;
   --bg-modal: #ffffff;
