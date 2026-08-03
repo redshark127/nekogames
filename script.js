@@ -35,9 +35,6 @@ const sortMenu = document.getElementById('sort-menu');
 const viewToggleBtn = document.getElementById('view-toggle-btn');
 const recentSection = document.getElementById('recent-section');
 const recentGrid = document.getElementById('recent-grid');
-const installBanner = document.getElementById('install-banner');
-const installBtn = document.getElementById('install-btn');
-const installDismiss = document.getElementById('install-dismiss');
 
 
 const settingsBtn = document.getElementById('settings-btn');
@@ -82,7 +79,6 @@ let currentGame = null;
 let currentMode = 'direct';
 let currentSort = 'name-asc';
 let showFavoritesOnly = false;
-let deferredPrompt = null;
 // ── Background Canvas ──
 const bgCanvas = document.getElementById('bg-canvas');
 const ctx = bgCanvas.getContext('2d');
@@ -1226,24 +1222,6 @@ function addRecent(game) {
 function getRecent() {
   try { return JSON.parse(localStorage.getItem(RECENT_KEY)) || []; } catch { return []; }
 }
-
-// ── PWA Install Prompt ──
-window.addEventListener('beforeinstallprompt', e => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installBanner.classList.remove('hidden');
-});
-installBtn.addEventListener('click', async () => {
-  if (!deferredPrompt) return;
-  deferredPrompt.prompt();
-  const result = await deferredPrompt.userChoice;
-  deferredPrompt = null;
-  installBanner.classList.add('hidden');
-});
-installDismiss.addEventListener('click', () => {
-  installBanner.classList.add('hidden');
-  deferredPrompt = null;
-});
 
 // ── Render ──
 const iconCache = {};
