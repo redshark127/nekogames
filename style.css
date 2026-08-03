@@ -979,8 +979,8 @@ header::after {
   border: 1px solid rgba(102, 126, 234, 0.12);
   border-radius: 16px;
   width: 100%;
-  max-width: 1000px;
-  height: 90vh;
+  max-width: 1400px;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
