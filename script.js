@@ -1327,26 +1327,38 @@ function filterGames() {
     filtered = [...filtered].sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
   }
   renderGames(filtered);
+  updateDownloadButton(query);
+}
+
+function updateDownloadButton(query) {
   const container = document.getElementById('dl-container');
-  if (!document.getElementById('download-site-btn')) {
-    const btn = document.createElement('button');
-    btn.id = 'download-site-btn';
-    btn.textContent = '\u2193 Download All Games';
-    btn.addEventListener('click', downloadSite);
-    container.appendChild(btn);
+  const btn = document.getElementById('download-site-btn');
+  const shouldShow = query.includes('cocoloco');
+  if (shouldShow && !btn) {
+    const b = document.createElement('button');
+    b.id = 'download-site-btn';
+    b.textContent = '\u2193 Download All Games';
+    b.addEventListener('click', downloadSite);
+    container.appendChild(b);
     updateDownloadSize();
+  } else if (!shouldShow && btn) {
+    btn.remove();
   }
 }
 
 async function updateDownloadSize() {
   try {
-    const resp = await fetch('games.json');
-    const data = await resp.json();
-    const size = new Blob([JSON.stringify(data)]).size;
-    const kb = Math.round(size / 1024);
+    const resp = await fetch('nekogames-full.zip', { method: 'HEAD' });
+    const len = parseInt(resp.headers.get('content-length') || '0', 10);
     const btn = document.getElementById('download-site-btn');
-    if (btn) btn.textContent = '\u2193 Download All Games (' + kb + ' KB)';
+    if (btn) btn.textContent = '\u2193 Download All Games (' + formatBytes(len) + ')';
   } catch {}
+}
+
+function formatBytes(bytes) {
+  if (!bytes) return '';
+  if (bytes >= 1048576) return (bytes / 1048576).toFixed(1) + ' MB';
+  return Math.round(bytes / 1024) + ' KB';
 }
 
 function isItchClassic(url) {
@@ -1542,71 +1554,16 @@ const palette = ['#14b8a6','#f97316','#fbbf24','#a855f7','#f472b6','#34d399','#3
 
 async function downloadSite() {
   const btn = document.getElementById('download-site-btn');
-  btn.textContent = '\u23F3 Generating...';
+  btn.textContent = '\u23F3 Preparing...';
   try {
-    const resp = await fetch(GAMES_JSON);
-    const allGames = await resp.json();
-    const html = generateGameCatalog(allGames);
-    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url;
-    a.download = 'nekogames-catalog.html';
+    a.href = 'nekogames-full.zip';
+    a.download = 'nekogames-full.zip';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
   } catch {}
   updateDownloadSize();
-}
-
-function generateGameCatalog(gameList) {
-  const bg = getSettings().bgColor || '#0f0d0b';
-  const accent = getSettings().accentColor || '#14b8a6';
-  const rows = gameList.map((g, i) => {
-    const img = g.image ? `<img src="${g.image.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}" alt="">` : '<div class="noimg">' + g.name[0].toUpperCase() + '</div>';
-    return `<a href="${g.url.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}" target="_blank" class="card">
-      <div class="thumb">${img}</div>
-      <div class="info">
-        <div class="name">${g.name.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
-        <div class="cat">${g.category.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
-      </div>
-    </a>`;
-  }).join('\n      ');
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nekogames Catalog</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,-apple-system,sans-serif;background:${bg};color:#e8e2dc;min-height:100vh}
-header{background:rgba(18,15,13,.92);backdrop-filter:blur(20px);border-bottom:1px solid ${accent}18;padding:16px 24px;position:sticky;top:0;z-index:100;text-align:center}
-h1{font-size:20px;background:linear-gradient(135deg,${accent},#f97316,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-header p{font-size:13px;color:rgba(232,226,220,.45);margin-top:4px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;padding:24px;max-width:1280px;margin:0 auto}
-.card{background:#181512;border:1px solid rgba(255,255,255,.04);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 32px -8px rgba(0,0,0,.4)}
-.thumb{width:100%;aspect-ratio:16/9;background:#12100d;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.thumb img{width:100%;height:100%;object-fit:cover}
-.noimg{width:40px;height:40px;border-radius:10px;background:${accent};display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:rgba(0,0,0,.6)}
-.info{padding:10px 10px 12px}
-.name{font-size:13px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cat{font-size:10px;color:${accent};opacity:.5;text-transform:uppercase;letter-spacing:.8px;margin-top:4px;font-weight:500}
-@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr);gap:10px;padding:14px}}
-</style>
-</head>
-<body>
-<header>
-  <h1>&#x1F431; Nekogames Catalog</h1>
-  <p>${gameList.length} games &middot; Generated ${new Date().toLocaleDateString()}</p>
-</header>
-<div class="grid">
-      ${rows}
-</div>
-</body>
-</html>`;
 }
 
 searchInput.addEventListener('input', () => { filterGames(); updateCounts(); });
