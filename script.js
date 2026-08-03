@@ -1119,13 +1119,95 @@ document.addEventListener('keydown', e => {
 });
 
 // ── Export / Import ──
-function collectAllData() {
+function listIndexedDB() {
+  if (window.indexedDB && indexedDB.databases) {
+    return indexedDB.databases().catch(() => []);
+  }
+  return Promise.resolve([]);
+}
+
+function dumpObjectStore(db, storeName) {
+  return new Promise((resolve) => {
+    let tx;
+    try {
+      tx = db.transaction(storeName, 'readonly');
+    } catch {
+      resolve({ keyPath: null, autoIncrement: false, records: [] });
+      return;
+    }
+    const store = tx.objectStore(storeName);
+    const keysReq = store.getAllKeys();
+    const valsReq = store.getAll();
+    keysReq.onerror = () => resolve({ keyPath: null, autoIncrement: false, records: [] });
+    valsReq.onerror = () => resolve({ keyPath: null, autoIncrement: false, records: [] });
+    keysReq.onsuccess = () => {
+      valsReq.onsuccess = () => {
+        const keys = keysReq.result || [];
+        const vals = valsReq.result || [];
+        const records = keys.map((k, i) => ({ key: k, value: vals[i] }));
+        resolve({
+          keyPath: store.keyPath || null,
+          autoIncrement: !!store.autoIncrement,
+          records: records
+        });
+      };
+    };
+  });
+}
+
+function dumpDatabase(name) {
+  return new Promise((resolve) => {
+    let req;
+    try {
+      req = indexedDB.open(name);
+    } catch {
+      resolve(null);
+      return;
+    }
+    req.onsuccess = () => {
+      const db = req.result;
+      const storeNames = Array.from(db.objectStoreNames);
+      const stores = {};
+      let pending = storeNames.length;
+      if (pending === 0) {
+        db.close();
+        resolve({ name: name, version: db.version, stores: stores });
+        return;
+      }
+      storeNames.forEach((storeName) => {
+        dumpObjectStore(db, storeName).then((dumped) => {
+          stores[storeName] = dumped;
+          pending--;
+          if (pending === 0) {
+            db.close();
+            resolve({ name: name, version: db.version, stores: stores });
+          }
+        });
+      });
+    };
+    req.onerror = () => resolve(null);
+    req.onblocked = () => resolve(null);
+  });
+}
+
+async function collectIndexedDB() {
+  const names = await listIndexedDB();
+  const dbs = [];
+  for (const info of names) {
+    const dumped = await dumpDatabase(info.name);
+    if (dumped) dbs.push(dumped);
+  }
+  return dbs;
+}
+
+async function collectAllData() {
   const data = {
-    version: 1,
+    version: 2,
     exportedAt: new Date().toISOString(),
     localStorage: {},
     sessionStorage: {},
-    cookies: document.cookie
+    cookies: document.cookie,
+    indexedDB: []
   };
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
@@ -1137,26 +1219,112 @@ function collectAllData() {
       data.sessionStorage[key] = sessionStorage.getItem(key);
     }
   } catch {}
+  data.indexedDB = await collectIndexedDB();
   return data;
 }
 
-function exportSiteData() {
-  const data = collectAllData();
-  const json = JSON.stringify(data, null, 2);
-  const blob = new Blob([json], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'nekogames-backup-' + new Date().toISOString().slice(0, 10) + '.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+function restoreObjectStore(db, storeName, dumped) {
+  return new Promise((resolve) => {
+    let tx;
+    try {
+      tx = db.transaction(storeName, 'readwrite');
+    } catch {
+      resolve();
+      return;
+    }
+    const store = tx.objectStore(storeName);
+    store.clear();
+    (dumped.records || []).forEach((rec) => {
+      try {
+        store.put(rec.value, rec.key);
+      } catch {}
+    });
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => resolve();
+    tx.onabort = () => resolve();
+  });
 }
 
-function importSiteData(file) {
+function restoreDatabase(dumped) {
+  return new Promise((resolve) => {
+    let req;
+    try {
+      req = indexedDB.open(dumped.name, dumped.version);
+    } catch {
+      resolve();
+      return;
+    }
+    req.onupgradeneeded = (ev) => {
+      const db = req.result;
+      const existing = Array.from(db.objectStoreNames);
+      Object.keys(dumped.stores || {}).forEach((storeName) => {
+        if (existing.indexOf(storeName) === -1) {
+          const meta = dumped.stores[storeName];
+          const opts = {};
+          if (meta.keyPath) opts.keyPath = meta.keyPath;
+          if (meta.autoIncrement) opts.autoIncrement = true;
+          try {
+            db.createObjectStore(storeName, opts);
+          } catch {}
+        }
+      });
+    };
+    req.onsuccess = () => {
+      const db = req.result;
+      const storeNames = Object.keys(dumped.stores || {});
+      let pending = storeNames.length;
+      if (pending === 0) {
+        db.close();
+        resolve();
+        return;
+      }
+      storeNames.forEach((storeName) => {
+        restoreObjectStore(db, storeName, dumped.stores[storeName]).then(() => {
+          pending--;
+          if (pending === 0) {
+            db.close();
+            resolve();
+          }
+        });
+      });
+    };
+    req.onerror = () => resolve();
+    req.onblocked = () => resolve();
+  });
+}
+
+async function importIndexedDB(dbs) {
+  for (const dumped of dbs) {
+    await restoreDatabase(dumped);
+  }
+}
+
+async function exportSiteData() {
+  exportBtn.disabled = true;
+  exportBtn.textContent = 'Exporting...';
+  try {
+    const data = await collectAllData();
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'nekogames-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } finally {
+    exportBtn.disabled = false;
+    exportBtn.innerHTML = '&#x2B07; Export';
+  }
+}
+
+async function importSiteData(file) {
   const reader = new FileReader();
-  reader.onload = function(e) {
+  reader.onload = async function(e) {
+    importBtn.disabled = true;
+    importBtn.textContent = 'Importing...';
     try {
       const data = JSON.parse(e.target.result);
       if (!data.version) throw new Error('Invalid backup format');
@@ -1171,12 +1339,18 @@ function importSiteData(file) {
       if (data.cookies) {
         document.cookie = data.cookies;
       }
+      if (Array.isArray(data.indexedDB)) {
+        await importIndexedDB(data.indexedDB);
+      }
       applySettings();
       syncSettingsUI();
       filterGames();
-      alert('Import complete! All settings and saves have been restored.');
+      alert('Import complete! Settings and same-origin saves have been restored.');
     } catch (err) {
       alert('Failed to import: ' + err.message);
+    } finally {
+      importBtn.disabled = false;
+      importBtn.innerHTML = '&#x2B06; Import';
     }
   };
   reader.readAsText(file);

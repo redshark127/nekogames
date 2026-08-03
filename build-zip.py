@@ -1,4 +1,4 @@
-import json, os, zipfile
+import json, os, re, zipfile
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 OUTPUT = os.path.join(BASE, 'nekogames-full.zip')
@@ -35,9 +35,14 @@ offline = offline.replace(
   </script>''')
 
 games_json = json.dumps(games, separators=(',', ':'), ensure_ascii=False)
-offline = offline.replace(
-    '<script src="script.js?v=5"></script>',
-    '<script>window.__GAMES__ = ' + games_json + ';</script>\n<script>\n' + script_js + '\n</script>')
+
+def inline_games(match):
+    return '<script>window.__GAMES__ = ' + games_json + ';</script>\n<script>\n' + script_js + '\n</script>'
+
+offline = re.sub(
+    r'<script src="script\.js\?v=\d+"></script>',
+    inline_games,
+    offline)
 
 with zipfile.ZipFile(OUTPUT, 'w', zipfile.ZIP_DEFLATED) as z:
     site_files = ['index.html', 'style.css', 'script.js', 'games.json']

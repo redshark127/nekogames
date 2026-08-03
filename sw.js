@@ -1,4 +1,4 @@
-const CACHE = 'nekogames-v1';
+const CACHE = 'nekogames-v2';
 const PRECACHE = [
   '/',
   '/index.html',
