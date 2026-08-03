@@ -62,15 +62,55 @@ body {
 
 #loading-text {
 	color: white;
-	font-size: 32px;
+	font-size: 28px;
 	font-family: cursive;
 	text-align: center;
 	margin-top: 20px;
+}
+
+#loading-sub {
+	color: #aaa;
+	font-size: 15px;
+	font-family: sans-serif;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#loading-bar {
+	width: 60%;
+	max-width: 480px;
+	height: 12px;
+	margin: 18px auto 0;
+	background: #333;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+#loading-bar > div {
+	height: 100%;
+	width: 0%;
+	background: linear-gradient(90deg, #4ade80, #22d3ee);
+	transition: width 0.2s;
+}
+
+#retry-btn {
+	display: none;
+	margin: 18px auto 0;
+	padding: 10px 24px;
+	font-size: 15px;
+	cursor: pointer;
+	border: none;
+	border-radius: 8px;
+	background: #ef4444;
+	color: #fff;
 }
 </style>
 	</head>
 	<body>
 		<div id="loading-text">LOADING...</div>
+		<div id="loading-sub">Preparing game files</div>
+		<div id="loading-bar"><div></div></div>
+		<button id="retry-btn">Retry</button>
 		<canvas id="canvas">
 			Your browser does not support the canvas tag.
 		</canvas>
@@ -82,8 +122,12 @@ body {
 		<script src="main.js"></script>
 		<script>
 (function() {
-	var loadingText = document.querySelector("#loading-text");
 	'use strict';
+
+	const loadingText = document.querySelector('#loading-text');
+	const loadingSub = document.querySelector('#loading-sub');
+	const loadingBar = document.querySelector('#loading-bar > div');
+	const retryBtn = document.querySelector('#retry-btn');
 
 	const originalFetch = window.fetch;
 	const mergedData = {};
@@ -91,56 +135,150 @@ body {
 
 	window.fetch = function(url, ...args) {
 		const urlString = url.toString();
-
-		if (urlString.endsWith("index.pck") || urlString.endsWith("index.wasm")) {
-			if (mergedData[urlString]) {
-				return Promise.resolve(new Response(mergedData[urlString]));
+		const baseName = urlString.slice(urlString.lastIndexOf('/') + 1);
+		if (baseName === 'index.pck' || baseName === 'index.wasm') {
+			if (mergedData[baseName]) {
+				return Promise.resolve(new Response(mergedData[baseName]));
 			}
 			return new Promise((resolve) => {
-				if (!pendingRequests[urlString]) pendingRequests[urlString] = [];
-				pendingRequests[urlString].push(resolve);
+				if (!pendingRequests[baseName]) pendingRequests[baseName] = [];
+				pendingRequests[baseName].push(resolve);
 			});
 		}
 		return originalFetch(url, ...args);
 	};
 
-	async function mergeFiles(baseFileName, start, end) {
-		const buffers = [];
-		try {
-			for (let i = start; i <= end; i++) {
-				const partName = baseFileName + '.part' + i;
-				const response = await originalFetch(partName);
-				if (!response.ok) throw new Error('Part ' + i + ' missing for ' + baseFileName);
-				const data = await response.arrayBuffer();
-				buffers.push(data);
-				loadingText.textContent = 'LOADING... (' + i + '/9)';
-			}
-			const mergedBlob = new Blob(buffers, { type: 'application/octet-stream' });
-			mergedData[baseFileName] = mergedBlob;
-			if (pendingRequests[baseFileName]) {
-				pendingRequests[baseFileName].forEach(resolve => {
-					resolve(new Response(mergedBlob));
+	const PARTS = [
+		{ name: 'index.pck', start: 1, end: 7 },
+		{ name: 'index.wasm', start: 1, end: 2 }
+	];
+	const IDLE_TIMEOUT = 20000;
+	const TRIES_PER_SOURCE = 2;
+	const SOURCES = [
+		'',
+		'https://gh-proxy.com/https://raw.githubusercontent.com/genizy/google-class/main/a-game-black-hole/',
+		'https://ghproxy.net/https://raw.githubusercontent.com/genizy/google-class/main/a-game-black-hole/'
+	];
+
+	const totalParts = PARTS.reduce((n, f) => n + (f.end - f.start + 1), 0);
+	let partsDone = 0;
+	let loadedBytes = 0;
+	let knownBytes = 0;
+
+	function partName(f, i) { return f.name + '.part' + i; }
+
+	function sourceUrl(part, srcIdx) {
+		return srcIdx === 0 ? part : SOURCES[srcIdx] + part;
+	}
+
+	function updateProgress() {
+		const pct = knownBytes > 0 ? Math.min(100, Math.round(loadedBytes / knownBytes * 100)) : 0;
+		loadingBar.style.width = pct + '%';
+		loadingSub.textContent = 'Preparing game files - ' + partsDone + '/' + totalParts + ' parts (' + pct + '%)';
+	}
+
+	function downloadPart(f, i) {
+		const name = partName(f, i);
+		let offset = 0;
+		let chunks = [];
+		let fullSize = 0;
+		let startedSize = false;
+
+		function tryOnce(srcIdx) {
+			const ctrl = new AbortController();
+			let idleTimer = null;
+			const headers = offset > 0 ? { Range: 'bytes=' + offset + '-' } : {};
+			const url = sourceUrl(name, srcIdx);
+			const arm = () => {
+				clearTimeout(idleTimer);
+				idleTimer = setTimeout(() => ctrl.abort(), IDLE_TIMEOUT);
+			};
+			arm();
+			return originalFetch(url, { headers, signal: ctrl.signal }).then((resp) => {
+				if (resp.status === 200 && offset > 0) { offset = 0; chunks = []; }
+				if (resp.status !== 200 && resp.status !== 206) throw new Error('HTTP ' + resp.status);
+				if (!startedSize) {
+					const cl = Number(resp.headers.get('content-length') || 0);
+					fullSize = cl || 0;
+					startedSize = true;
+					knownBytes += fullSize;
+				}
+				const reader = resp.body.getReader();
+				return new Promise((resolve, reject) => {
+					function pump() {
+						reader.read().then((r) => {
+							if (r.done) { resolve(); return; }
+							chunks.push(r.value);
+							offset += r.value.byteLength;
+							loadedBytes += r.value.byteLength;
+							updateProgress();
+							arm();
+							pump();
+						}, reject);
+					}
+					pump();
 				});
-				delete pendingRequests[baseFileName];
+			}).then(() => clearTimeout(idleTimer), (err) => { clearTimeout(idleTimer); throw err; });
+		}
+
+		let srcIdx = 0;
+		const run = () => {
+			if (srcIdx >= SOURCES.length) return Promise.reject(new Error('Failed: ' + name));
+			let tries = 0;
+			const attempt = () => {
+				tries++;
+				return tryOnce(srcIdx).then(
+					() => new Blob(chunks, { type: 'application/octet-stream' }),
+					() => {
+						if (tries < TRIES_PER_SOURCE) return attempt();
+						srcIdx++;
+						return run();
+					}
+				);
+			};
+			return attempt();
+		};
+
+		return run().then((blob) => {
+			partsDone++;
+			updateProgress();
+			return blob;
+		});
+	}
+
+	function downloadFile(f) {
+		const jobs = [];
+		for (let i = f.start; i <= f.end; i++) jobs.push(downloadPart(f, i));
+		return Promise.all(jobs).then((blobs) => {
+			const merged = new Blob(blobs, { type: 'application/octet-stream' });
+			mergedData[f.name] = merged;
+			if (pendingRequests[f.name]) {
+				pendingRequests[f.name].forEach((res) => res(new Response(merged)));
+				delete pendingRequests[f.name];
 			}
-			return mergedBlob;
-		} catch (err) {
-			console.error('[Merger] Failed to merge ' + baseFileName + ':', err);
-		}
+		});
 	}
 
-	async function init() {
-		await Promise.all([
-			mergeFiles("index.pck", 1, 7),
-			mergeFiles("index.wasm", 1, 2)
-		]);
-		console.log('[Merger] All files ready. Starting Godot...');
-		if (typeof window.godotRunStart === 'function') {
-			loadingText.remove();
-			window.godotRunStart();
-		}
+	function init() {
+		Promise.all(PARTS.map(downloadFile)).then(() => {
+			console.log('[Merger] All files ready. Starting Godot...');
+			if (typeof window.godotRunStart === 'function') {
+				loadingText.remove();
+				loadingSub.remove();
+				loadingBar.parentElement.remove();
+				retryBtn.remove();
+				window.godotRunStart();
+			}
+		}).catch((err) => {
+			console.error('[Merger] Failed to load game:', err);
+			loadingText.textContent = 'FAILED TO LOAD';
+			loadingSub.textContent = 'The game files could not be downloaded. Check your connection.';
+			loadingBar.style.display = 'none';
+			retryBtn.style.display = 'block';
+		});
 	}
 
+	retryBtn.addEventListener('click', () => location.reload());
 	init();
 })();
 		</script>
