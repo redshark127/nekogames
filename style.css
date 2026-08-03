@@ -255,11 +255,17 @@ header::after {
   flex-shrink: 0;
 }
 
-.logo-img {
-  height: 36px;
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.2));
+.logo-text {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  background: var(--accent-gradient, linear-gradient(135deg, #14b8a6, #f97316, #fbbf24));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--text);
+  user-select: none;
 }
 
 /* ── Controls ── */
@@ -1191,7 +1197,7 @@ footer::before {
   #settings-drawer { width: 280px; }
   #save-slots { flex-direction: column; }
   #save-slots-bar { flex-direction: column; align-items: stretch; }
-  .logo-img { height: 28px; }
+  .logo-text { font-size: 20px; }
 }
 @media (max-width: 450px) {
   #game-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px; }

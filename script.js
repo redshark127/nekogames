@@ -8,7 +8,7 @@ const baseHref = window.location.pathname.replace(/\/?$/, '/');
 const baseEl = document.createElement('base');
 baseEl.href = baseHref;
 document.head.prepend(baseEl);
-history.replaceState(null, '', '/');
+try { history.replaceState(null, '', '/'); } catch (e) {}
 
 const gameGrid = document.getElementById('game-grid');
 const searchInput = document.getElementById('search');
@@ -807,9 +807,9 @@ function saveSettings(settings) {
 
 function applyCloak() {
   const s = getSettings();
-  const activeTitle = s.cloakActiveTitle || 'Google Docs';
-  const inactiveTitle = s.cloakInactiveTitle || 'Google Docs - Home';
-  const faviconUrl = s.cloakFavicon || 'https://www.google.com/favicon.ico';
+  const activeTitle = s.cloakActiveTitle || 'Nekogames';
+  const inactiveTitle = s.cloakInactiveTitle || 'Nekogames';
+  const faviconUrl = s.cloakFavicon || 'favicon.ico';
   if (faviconLink) faviconLink.href = faviconUrl;
   document.title = document.hidden ? inactiveTitle : activeTitle;
 }
@@ -932,9 +932,9 @@ function syncSettingsUI() {
   if (gridGapVal) gridGapVal.textContent = (s.gridGap || 16) + 'px';
 
   const s2 = getSettings();
-  cloakActiveTitle.value = s2.cloakActiveTitle || 'Google Docs';
-  cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Google Docs - Home';
-  cloakFavicon.value = s2.cloakFavicon || 'https://www.google.com/favicon.ico';
+  cloakActiveTitle.value = s2.cloakActiveTitle || 'Nekogames';
+  cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Nekogames';
+  cloakFavicon.value = s2.cloakFavicon || 'favicon.ico';
 }
 
 themeOptions.addEventListener('click', e => {
@@ -1416,7 +1416,7 @@ async function openGame(game) {
       gameFrame.src = await resolveCdnGameUrl(game.url);
     } else {
       currentMode = 'direct';
-      gameFrame.src = game.url;
+      try { gameFrame.src = new URL(game.url, window.location.href).href; } catch (e) { gameFrame.src = game.url; }
     }
   } catch (e) {
     currentMode = 'direct';
@@ -1697,16 +1697,25 @@ document.querySelectorAll('.setting-section-hdr').forEach(hdr => {
 
 createCursorElements();
 
-fetch(GAMES_JSON)
-  .then(r => r.json())
-  .then(data => {
-    games = data;
-    populateCategories();
-    renderGames(games);
-    renderRecent();
-    updateCounts();
-  })
-  .catch(err => {
-    gameGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#888;">Failed to load games.</p>';
-    console.error(err);
-  });
+const EMBEDDED_GAMES = (typeof window.__GAMES__ !== 'undefined' && window.__GAMES__) ? window.__GAMES__ : null;
+if (EMBEDDED_GAMES) {
+  games = EMBEDDED_GAMES;
+  populateCategories();
+  renderGames(games);
+  renderRecent();
+  updateCounts();
+} else {
+  fetch(GAMES_JSON)
+    .then(r => r.json())
+    .then(data => {
+      games = data;
+      populateCategories();
+      renderGames(games);
+      renderRecent();
+      updateCounts();
+    })
+    .catch(err => {
+      gameGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#888;">Failed to load games.</p>';
+      console.error(err);
+    });
+}
