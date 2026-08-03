@@ -1040,7 +1040,26 @@ header::after {
   opacity: 1; background: rgba(255,255,255,0.08);
 }
 
-#game-frame { flex: 1; width: 100%; border: none; display: block; background: #000; }
+#game-stage {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 0;
+  background: #000;
+}
+
+#game-frame {
+  border: none;
+  display: block;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  flex-shrink: 0;
+}
 
 /* ── Panic Overlay ── */
 #panic-overlay {

@@ -15,6 +15,7 @@ const searchInput = document.getElementById('search');
 const categoryFilter = document.getElementById('category-filter');
 const overlay = document.getElementById('overlay');
 const gameFrame = document.getElementById('game-frame');
+const gameStage = document.getElementById('game-stage');
 const modalTitle = document.getElementById('modal-title');
 const closeBtn = document.getElementById('close-btn');
 const fullscreenBtn = document.getElementById('fullscreen-btn');
@@ -1409,7 +1410,10 @@ async function openGame(game) {
     currentMode = 'direct';
     gameFrame.src = game.url;
   }
+  fitGame();
 }
+
+gameFrame.addEventListener('load', fitGame);
 
 function closeGame() {
   overlay.classList.add('hidden');
@@ -1417,7 +1421,36 @@ function closeGame() {
   gameFrame.src = '';
   currentGame = null;
   document.body.style.overflow = '';
+  resetFit();
 }
+
+function resetFit() {
+  gameFrame.style.width = '';
+  gameFrame.style.height = '';
+  gameFrame.style.transform = '';
+}
+
+function fitGame() {
+  if (!currentGame || !gameStage) return;
+  const stageW = gameStage.clientWidth;
+  const stageH = gameStage.clientHeight;
+  const w = currentGame.w;
+  const h = currentGame.h;
+  if (!w || !h || !currentGame.fit) {
+    resetFit();
+    return;
+  }
+  const scale = Math.min(stageW / w, stageH / h);
+  gameFrame.style.width = w + 'px';
+  gameFrame.style.height = h + 'px';
+  gameFrame.style.transform = 'scale(' + scale + ')';
+}
+
+if (window.ResizeObserver) {
+  new ResizeObserver(fitGame).observe(gameStage);
+}
+window.addEventListener('resize', fitGame);
+document.addEventListener('fullscreenchange', fitGame);
 
 function reloadGame() {
   if (!currentGame) return;
