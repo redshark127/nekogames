@@ -1521,7 +1521,7 @@ sortMenu.querySelectorAll('button').forEach(btn => {
     btn.classList.add('active');
     currentSort = btn.dataset.sort;
     sortMenu.classList.add('hidden');
-    sortBtn.classList.add('active');
+    sortBtn.classList.remove('active');
     filterGames();
     updateCounts();
   });
