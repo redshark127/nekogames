@@ -20,7 +20,6 @@ const modalTitle = document.getElementById('modal-title');
 const closeBtn = document.getElementById('close-btn');
 const fullscreenBtn = document.getElementById('fullscreen-btn');
 const reloadBtn = document.getElementById('reload-btn');
-const openBtn = document.getElementById('open-btn');
 const downloadBtn = document.getElementById('download-btn');
 const gameModal = document.getElementById('game-modal');
 const panicOverlay = document.getElementById('panic-overlay');
@@ -1761,9 +1760,6 @@ gameFrame.addEventListener('click', () => {
   }
 });
 
-openBtn.addEventListener('click', () => {
-  if (currentGame) window.open(currentGame.url, '_blank');
-});
 downloadBtn.addEventListener('click', async () => {
   if (!currentGame) return;
   downloadBtn.textContent = '\u23F3';

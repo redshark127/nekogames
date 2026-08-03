@@ -1067,7 +1067,7 @@ header::after {
 }
 #close-btn:hover { opacity: 1; background: rgba(255,255,255,0.08); }
 
-#fullscreen-btn, #reload-btn, #open-btn, #download-btn {
+#fullscreen-btn, #reload-btn, #download-btn {
   background: none; border: none;
   color: var(--text); font-size: 18px;
   cursor: pointer; line-height: 1;
@@ -1075,7 +1075,7 @@ header::after {
   transition: all 0.2s; border-radius: 6px;
   position: relative;
 }
-#fullscreen-btn:hover, #reload-btn:hover, #open-btn:hover, #download-btn:hover {
+#fullscreen-btn:hover, #reload-btn:hover, #download-btn:hover {
   opacity: 1; background: rgba(255,255,255,0.08);
 }
 
