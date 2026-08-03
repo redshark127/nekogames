@@ -1354,7 +1354,6 @@ async function importSiteData(file) {
         await importIndexedDB(data.indexedDB);
       }
 applySettings();
-initProxyCheck();
       syncSettingsUI();
       filterGames();
       alert('Import complete! Settings and same-origin saves have been restored.');
@@ -1562,23 +1561,9 @@ async function resolveCdnGameUrl(url) {
   return url;
 }
 
-let proxyReady = false;
-
-function initProxyCheck() {
-  if (!navigator.serviceWorker || !navigator.serviceWorker.controller) return;
-  const port = new MessageChannel();
-  const t = setTimeout(() => { proxyReady = false; }, 300);
-  port.port1.onmessage = () => { clearTimeout(t); proxyReady = true; };
-  navigator.serviceWorker.controller.postMessage({ type: 'ping-proxy' }, [port.port2]);
-}
-
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.addEventListener('controllerchange', initProxyCheck);
-}
-
 function gameSrcFor(url) {
-  if (proxyReady && getSettings().saveData !== false && /^https?:\/\//i.test(url)) {
-    return '/nekogames/gp/?u=' + encodeURIComponent(url);
+  if (getSettings().saveData !== false && /^https?:\/\//i.test(url)) {
+    return 'gp/?u=' + encodeURIComponent(url);
   }
   return url;
 }

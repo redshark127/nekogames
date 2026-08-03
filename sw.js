@@ -1,4 +1,4 @@
-const CACHE = 'nekogames-v3';
+const CACHE = 'nekogames-v4';
 const PRECACHE = [
   '/',
   '/index.html',
@@ -17,6 +17,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      .then(() => self.clients.claim())
   );
 });
 
@@ -48,15 +49,9 @@ async function proxyGame(request) {
   }
 }
 
-self.addEventListener('message', event => {
-  if (event.data && event.data.type === 'ping-proxy') {
-    if (event.ports && event.ports[0]) event.ports[0].postMessage('pong');
-  }
-});
-
 self.addEventListener('fetch', event => {
   const reqUrl = new URL(event.request.url);
-  if (reqUrl.pathname.startsWith('/nekogames/gp/')) {
+  if (reqUrl.pathname.endsWith('/gp/')) {
     event.respondWith(proxyGame(event.request));
     return;
   }

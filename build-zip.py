@@ -50,6 +50,9 @@ with zipfile.ZipFile(OUTPUT, 'w', zipfile.ZIP_DEFLATED) as z:
         path = os.path.join(BASE, sf)
         if os.path.exists(path):
             z.write(path, sf)
+    gp_index = os.path.join(BASE, 'gp', 'index.html')
+    if os.path.exists(gp_index):
+        z.write(gp_index, 'gp/index.html')
     z.writestr('nekogames-offline.html', offline)
     for g in games:
         name = g['name'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')

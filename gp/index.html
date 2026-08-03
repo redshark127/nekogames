@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nekogames</title><style>html,body{margin:0;height:100%;overflow:hidden;background:#000}iframe{width:100vw;height:100vh;border:none}</style></head><body><iframe id="f" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe><script>
+(function(){
+  var u = new URLSearchParams(location.search).get('u') || '';
+  var f = document.getElementById('f');
+  if (u) {
+    f.src = u;
+    try { document.title = decodeURIComponent(u.replace(/^https?:\/\//,'')).slice(0,60); } catch (e) {}
+  } else {
+    document.body.innerHTML = '<p style="color:#fff;font-family:sans-serif;text-align:center;margin-top:20vh">Missing game URL</p>';
+  }
+})();
+</script></body></html>
