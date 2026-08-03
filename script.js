@@ -1513,6 +1513,7 @@ favFilterBtn.addEventListener('click', toggleFavFilter);
 sortBtn.addEventListener('click', e => {
   e.stopPropagation();
   sortMenu.classList.toggle('hidden');
+  sortBtn.classList.toggle('active');
 });
 sortMenu.querySelectorAll('button').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -1520,11 +1521,15 @@ sortMenu.querySelectorAll('button').forEach(btn => {
     btn.classList.add('active');
     currentSort = btn.dataset.sort;
     sortMenu.classList.add('hidden');
+    sortBtn.classList.add('active');
     filterGames();
     updateCounts();
   });
 });
-document.addEventListener('click', () => { sortMenu.classList.add('hidden'); });
+document.addEventListener('click', () => {
+  sortMenu.classList.add('hidden');
+  sortBtn.classList.remove('active');
+});
 
 viewToggleBtn.addEventListener('click', toggleView);
 
