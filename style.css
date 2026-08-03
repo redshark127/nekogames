@@ -369,8 +369,8 @@ header::after {
 .ctrl-btn.active {
   color: var(--accent);
   border-color: var(--accent);
-  background: rgba(20, 184, 166, 0.1);
-  box-shadow: 0 0 12px rgba(20, 184, 166, 0.15);
+  background: rgba(20, 184, 166, 0.15);
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.2);
 }
 
 #random-btn { font-size: 16px; padding: 7px 10px; }
@@ -1270,8 +1270,8 @@ footer::before {
 #fav-filter-btn.active {
   color: var(--accent);
   border-color: var(--accent);
-  background: rgba(20, 184, 166, 0.1);
-  box-shadow: 0 0 12px rgba(20, 184, 166, 0.15);
+  background: rgba(20, 184, 166, 0.15);
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.2);
 }
 
 /* ── Sort Button ── */
@@ -1307,14 +1307,14 @@ footer::before {
   transition: background 0.15s;
 }
 #sort-menu button:hover { background: rgba(255,255,255,0.06); }
-#sort-menu button.active { color: var(--accent); background: rgba(20,184,166,0.1); }
+#sort-menu button.active { color: var(--accent); background: rgba(20,184,166,0.15); }
 
 /* ── View Toggle ── */
 #view-toggle-btn.active {
   color: var(--accent);
   border-color: var(--accent);
-  background: rgba(20, 184, 166, 0.1);
-  box-shadow: 0 0 12px rgba(20, 184, 166, 0.15);
+  background: rgba(20, 184, 166, 0.15);
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.2);
 }
 
 /* ── List View ── */
