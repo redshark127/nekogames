@@ -803,8 +803,8 @@ function saveSettings(settings) {
 
 function applyCloak() {
   const s = getSettings();
-  const activeTitle = s.cloakActiveTitle || 'Conroe ISD SSO';
-  const inactiveTitle = s.cloakInactiveTitle || 'Conroe ISD SSO';
+  const activeTitle = s.cloakActiveTitle || '';
+  const inactiveTitle = s.cloakInactiveTitle || '';
   const faviconUrl = s.cloakFavicon || 'favicon.png';
   if (faviconLink) faviconLink.href = faviconUrl;
   document.title = document.hidden ? inactiveTitle : activeTitle;
@@ -929,8 +929,8 @@ function syncSettingsUI() {
   if (gridGapVal) gridGapVal.textContent = (s.gridGap || 16) + 'px';
 
   const s2 = getSettings();
-  cloakActiveTitle.value = s2.cloakActiveTitle || 'Conroe ISD SSO';
-  cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Conroe ISD SSO';
+  cloakActiveTitle.value = s2.cloakActiveTitle || '';
+  cloakInactiveTitle.value = s2.cloakInactiveTitle || '';
   cloakFavicon.value = s2.cloakFavicon || 'favicon.png';
 }
 

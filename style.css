@@ -259,6 +259,7 @@ header::after {
   height: 56px;
   width: auto;
   display: block;
+  opacity: 0;
   filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.2));
 }
 
