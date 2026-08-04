@@ -1,4 +1,4 @@
-const CACHE = 'nekogames-v5';
+const CACHE = 'nekogames-v6';
 const PRECACHE = [
   '/',
   '/index.html',
@@ -72,6 +72,16 @@ self.addEventListener('fetch', event => {
   }
   if (event.request.url.includes('games.json')) {
     event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
+    return;
+  }
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).then(resp => {
+        const copy = resp.clone();
+        caches.open(CACHE).then(c => c.put(event.request, copy));
+        return resp;
+      }).catch(() => caches.match(event.request))
+    );
     return;
   }
   event.respondWith(

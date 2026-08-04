@@ -27,10 +27,26 @@
 		var appUrl = new URL('home.html', location.href).href;
 
 		(function cloak() {
+			var ok = false;
 			try {
 				history.replaceState(null, '', 'about:blank');
-			} catch (e) {
-				document.title = 'about:blank';
+				ok = true;
+			} catch (e) {}
+			if (!ok) {
+				var win = window.open('about:blank', '_blank');
+				if (win) {
+					try {
+						win.document.title = 'Conroe ISD SSO';
+						win.document.body.style.margin = '0';
+						win.document.body.style.overflow = 'hidden';
+						var f = win.document.createElement('iframe');
+						f.style.width = '100%';
+						f.style.height = '100%';
+						f.style.border = 'none';
+						f.src = appUrl;
+						win.document.body.appendChild(f);
+					} catch (e2) {}
+				}
 			}
 			document.title = 'Conroe ISD SSO';
 			document.getElementById('frame').src = appUrl;
