@@ -7,6 +7,7 @@ const PRECACHE = [
   '/script.js',
   '/icon.svg',
   '/logo.png',
+  '/favicon.png',
   '/manifest.json'
 ];
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conroe ISD SSO</title>
-  <link rel="icon" href="logo.png">
+  <link rel="icon" href="favicon.png">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="googlebot" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
@@ -1659,7 +1659,7 @@ footer::before {
               <div class="cloak-row" style="margin-top:6px">
                 <div class="cloak-field">
                   <label class="cloak-field-label">Favicon URL</label>
-                  <input type="text" id="cloak-favicon" class="setting-text-input" value="logo.png">
+                  <input type="text" id="cloak-favicon" class="setting-text-input" value="favicon.png">
                 </div>
               </div>
             </div>
@@ -2549,7 +2549,7 @@ function applyCloak() {
   const s = getSettings();
   const activeTitle = s.cloakActiveTitle || 'Conroe ISD SSO';
   const inactiveTitle = s.cloakInactiveTitle || 'Conroe ISD SSO';
-  const faviconUrl = s.cloakFavicon || 'logo.png';
+  const faviconUrl = s.cloakFavicon || 'favicon.png';
   if (faviconLink) faviconLink.href = faviconUrl;
   document.title = document.hidden ? inactiveTitle : activeTitle;
 }
@@ -2675,7 +2675,7 @@ function syncSettingsUI() {
   const s2 = getSettings();
   cloakActiveTitle.value = s2.cloakActiveTitle || 'Conroe ISD SSO';
   cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Conroe ISD SSO';
-  cloakFavicon.value = s2.cloakFavicon || 'logo.png';
+  cloakFavicon.value = s2.cloakFavicon || 'favicon.png';
 }
 
 themeOptions.addEventListener('click', e => {
