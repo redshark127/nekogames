@@ -1,0 +1,10 @@
+#!/bin/sh
+# Rebuild nekogames-full.zip before every commit so the downloadable
+# offline bundle always matches the committed source.
+set -e
+cd "$(git rev-parse --show-toplevel)"
+python3 build-zip.py || {
+  echo "pre-commit: build-zip.py failed; commit aborted." >&2
+  exit 1
+}
+git add nekogames-full.zip

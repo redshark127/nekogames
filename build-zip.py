@@ -44,38 +44,49 @@ offline = re.sub(
     inline_games,
     offline)
 
-with zipfile.ZipFile(OUTPUT, 'w', zipfile.ZIP_DEFLATED) as z:
+FIXED_TIME = (2020, 1, 1, 0, 0, 0)
+
+def zinfo(name):
+    zi = zipfile.ZipInfo(name, date_time=FIXED_TIME)
+    zi.compress_type = zipfile.ZIP_DEFLATED
+    return zi
+
+with zipfile.ZipFile(OUTPUT, 'w') as z:
+    def add_file(path, arcname):
+        with open(path, 'rb') as f:
+            z.writestr(zinfo(arcname), f.read())
+
     site_files = ['index.html', 'style.css', 'script.js', 'games.json', 'sw.js']
     for sf in site_files:
         path = os.path.join(BASE, sf)
         if os.path.exists(path):
-            z.write(path, sf)
+            add_file(path, sf)
     gp_index = os.path.join(BASE, 'gp', 'index.html')
     if os.path.exists(gp_index):
-        z.write(gp_index, 'gp/index.html')
-    z.writestr('nekogames-offline.html', offline)
+        add_file(gp_index, 'gp/index.html')
+    z.writestr(zinfo('nekogames-offline.html'), offline)
     for g in games:
         name = g['name'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
         if g['url'].startswith('games/'):
             src = './' + g['url'][len('games/'):]
             wrapper = f'''<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{name}</title><style>body{{margin:0;overflow:hidden;background:#000}}iframe{{width:100vw;height:100vh;border:none}}</style></head><body><iframe src="{src}" allowfullscreen></iframe></body></html>'''
-            z.writestr(f'games/{g["id"]}.html', wrapper)
+            z.writestr(zinfo(f'games/{g["id"]}.html'), wrapper)
         elif g['url'].startswith('./wrappers/'):
             wrapper_path = os.path.join(BASE, g['url'][2:])
             if os.path.exists(wrapper_path):
                 with open(wrapper_path, 'r', encoding='utf-8') as wf:
-                    z.writestr(f'games/{g["id"]}.html', wf.read())
+                    z.writestr(zinfo(f'games/{g["id"]}.html'), wf.read())
             else:
                 src = g['url']
                 wrapper = f'''<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{name}</title><style>body{{margin:0;overflow:hidden;background:#000}}iframe{{width:100vw;height:100vh;border:none}}</style></head><body><iframe src="{src}" allowfullscreen></iframe></body></html>'''
-                z.writestr(f'games/{g["id"]}.html', wrapper)
+                z.writestr(zinfo(f'games/{g["id"]}.html'), wrapper)
         else:
             src = g['url']
             wrapper = f'''<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{name}</title><style>body{{margin:0;overflow:hidden;background:#000}}iframe{{width:100vw;height:100vh;border:none}}</style></head><body><iframe src="{src}" allowfullscreen></iframe></body></html>'''
-            z.writestr(f'games/{g["id"]}.html', wrapper)
+            z.writestr(zinfo(f'games/{g["id"]}.html'), wrapper)
     if os.path.isdir(os.path.join(BASE, 'games', 'sheriff-looper')):
         for fname in os.listdir(os.path.join(BASE, 'games', 'sheriff-looper')):
-            z.write(os.path.join(BASE, 'games', 'sheriff-looper', fname), f'games/sheriff-looper/{fname}')
+            add_file(os.path.join(BASE, 'games', 'sheriff-looper', fname), f'games/sheriff-looper/{fname}')
 
 size = os.path.getsize(OUTPUT)
 print(f'Updated {OUTPUT} ({len(games)} games, {size/1024:.0f} KB, offline {len(offline)/1024:.0f} KB)')
