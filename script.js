@@ -803,10 +803,20 @@ function saveSettings(settings) {
 
 function applyCloak() {
   const s = getSettings();
-  const activeTitle = s.cloakActiveTitle || '';
-  const inactiveTitle = s.cloakInactiveTitle || '';
-  const faviconUrl = s.cloakFavicon || 'favicon.png';
-  if (faviconLink) faviconLink.href = faviconUrl;
+  const activeTitle = s.cloakActiveTitle || '\u200E';
+  const inactiveTitle = s.cloakInactiveTitle || '\u200E';
+  const faviconUrl = s.cloakFavicon || '';
+  let link = faviconLink;
+  if (faviconUrl) {
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+    }
+    link.href = faviconUrl;
+  } else if (link) {
+    link.remove();
+  }
   document.title = document.hidden ? inactiveTitle : activeTitle;
 }
 
@@ -929,8 +939,8 @@ function syncSettingsUI() {
   if (gridGapVal) gridGapVal.textContent = (s.gridGap || 16) + 'px';
 
   const s2 = getSettings();
-  cloakActiveTitle.value = s2.cloakActiveTitle || '';
-  cloakInactiveTitle.value = s2.cloakInactiveTitle || '';
+  cloakActiveTitle.value = s2.cloakActiveTitle || '\u200E';
+  cloakInactiveTitle.value = s2.cloakInactiveTitle || '\u200E';
   cloakFavicon.value = s2.cloakFavicon || 'favicon.png';
 }
 
