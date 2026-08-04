@@ -1131,6 +1131,84 @@ document.addEventListener('keydown', e => {
 });
 
 // ── Export / Import ──
+function binaryToBase64(buf) {
+  const bytes = new Uint8Array(buf);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) {
+    bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  }
+  return btoa(bin);
+}
+function base64ToBinary(b64) {
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return bytes.buffer;
+}
+async function encodeValue(value) {
+  if (value === undefined) return { __t: 'undefined' };
+  if (value === null) return null;
+  if (typeof value === 'number') {
+    if (Number.isNaN(value)) return { __t: 'nan' };
+    if (value === Infinity) return { __t: 'inf' };
+    if (value === -Infinity) return { __t: '-inf' };
+    if (Object.is(value, -0)) return { __t: '-0' };
+    return value;
+  }
+  if (typeof value === 'string' || typeof value === 'boolean') return value;
+  if (typeof value === 'bigint') return { __t: 'bigint', v: value.toString() };
+  if (value instanceof Date) return { __t: 'date', v: value.toISOString() };
+  if (value instanceof Blob) {
+    const buf = await value.arrayBuffer();
+    return { __t: 'blob', type: value.type || '', v: binaryToBase64(buf) };
+  }
+  if (value instanceof ArrayBuffer) return { __t: 'ab', v: binaryToBase64(value) };
+  if (ArrayBuffer.isView(value)) {
+    const ctor = value.constructor.name;
+    const slice = value.buffer.slice(value.byteOffset, value.byteOffset + value.byteLength);
+    return { __t: 'view', c: ctor, v: binaryToBase64(slice) };
+  }
+  if (Array.isArray(value)) {
+    const out = new Array(value.length);
+    for (let i = 0; i < value.length; i++) out[i] = await encodeValue(value[i]);
+    return out;
+  }
+  if (typeof value === 'object') {
+    const out = {};
+    for (const k of Object.keys(value)) out[k] = await encodeValue(value[k]);
+    return out;
+  }
+  return { __t: 'x', v: String(value) };
+}
+function decodeValue(value) {
+  if (value === null || typeof value !== 'object') return value;
+  if (value.__t === 'undefined') return undefined;
+  if (value.__t === 'nan') return NaN;
+  if (value.__t === 'inf') return Infinity;
+  if (value.__t === '-inf') return -Infinity;
+  if (value.__t === '-0') return -0;
+  if (value.__t === 'bigint') return BigInt(value.v);
+  if (value.__t === 'date') return new Date(value.v);
+  if (value.__t === 'blob') return new Blob([base64ToBinary(value.v)], { type: value.type });
+  if (value.__t === 'ab') return base64ToBinary(value.v);
+  if (value.__t === 'view') {
+    const buf = base64ToBinary(value.v);
+    if (value.c === 'Uint8Array') return new Uint8Array(buf);
+    if (value.c === 'Uint8ClampedArray') return new Uint8ClampedArray(buf);
+    if (value.c === 'Int8Array') return new Int8Array(buf);
+    if (value.c === 'Uint16Array') return new Uint16Array(buf);
+    if (value.c === 'Int16Array') return new Int16Array(buf);
+    if (value.c === 'Uint32Array') return new Uint32Array(buf);
+    if (value.c === 'Int32Array') return new Int32Array(buf);
+    if (value.c === 'Float32Array') return new Float32Array(buf);
+    if (value.c === 'Float64Array') return new Float64Array(buf);
+    return new Uint8Array(buf);
+  }
+  if (Array.isArray(value)) return value.map(decodeValue);
+  const out = {};
+  for (const k of Object.keys(value)) out[k] = decodeValue(value[k]);
+  return out;
+}
 function listIndexedDB() {
   if (window.indexedDB && indexedDB.databases) {
     return indexedDB.databases().catch(() => []);
@@ -1153,10 +1231,15 @@ function dumpObjectStore(db, storeName) {
     keysReq.onerror = () => resolve({ keyPath: null, autoIncrement: false, records: [] });
     valsReq.onerror = () => resolve({ keyPath: null, autoIncrement: false, records: [] });
     keysReq.onsuccess = () => {
-      valsReq.onsuccess = () => {
+      valsReq.onsuccess = async () => {
         const keys = keysReq.result || [];
         const vals = valsReq.result || [];
-        const records = keys.map((k, i) => ({ key: k, value: vals[i] }));
+        const records = [];
+        for (let i = 0; i < keys.length; i++) {
+          let value;
+          try { value = await encodeValue(vals[i]); } catch { value = { __t: 'undumpable' }; }
+          records.push({ key: keys[i], value: value });
+        }
         resolve({
           keyPath: store.keyPath || null,
           autoIncrement: !!store.autoIncrement,
@@ -1214,7 +1297,7 @@ async function collectIndexedDB() {
 
 async function collectAllData() {
   const data = {
-    version: 2,
+    version: 3,
     exportedAt: new Date().toISOString(),
     localStorage: {},
     sessionStorage: {},
@@ -1247,8 +1330,10 @@ function restoreObjectStore(db, storeName, dumped) {
     const store = tx.objectStore(storeName);
     store.clear();
     (dumped.records || []).forEach((rec) => {
+      let decoded;
+      try { decoded = decodeValue(rec.value); } catch { return; }
       try {
-        store.put(rec.value, rec.key);
+        store.put(decoded, rec.key);
       } catch {}
     });
     tx.oncomplete = () => resolve();
@@ -1349,15 +1434,22 @@ async function importSiteData(file) {
         }
       } catch {}
       if (data.cookies) {
-        document.cookie = data.cookies;
+        data.cookies.split(';').forEach((c) => {
+          const idx = c.indexOf('=');
+          if (idx <= 0) return;
+          const name = c.slice(0, idx).trim();
+          const val = c.slice(idx + 1).trim();
+          if (!name) return;
+          document.cookie = name + '=' + val + '; path=/';
+        });
       }
       if (Array.isArray(data.indexedDB)) {
         await importIndexedDB(data.indexedDB);
       }
-applySettings();
+      applySettings();
       syncSettingsUI();
       filterGames();
-      alert('Import complete! Settings and same-origin saves have been restored.');
+      alert('Import complete! Settings, game saves, and data have been restored. Games that save to this site (e.g. via the Save Game Data proxy) transfer fully; cross-origin iframe saves cannot be read by any website.');
     } catch (err) {
       alert('Failed to import: ' + err.message);
     } finally {
