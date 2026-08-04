@@ -1,4 +1,4 @@
-const CACHE = 'nekogames-v11';
+const CACHE = 'nekogames-v12';
 const PRECACHE = [
   '/',
   '/index.html',
@@ -74,6 +74,17 @@ self.addEventListener('fetch', event => {
   const reqUrl = new URL(event.request.url);
   if (reqUrl.pathname.endsWith('/gp/')) {
     event.respondWith(proxyGame(event.request));
+    return;
+  }
+  if (/\.gz$/i.test(reqUrl.pathname) && event.request.mode === 'no-cors') {
+    event.respondWith(
+      fetch(event.request.url, { mode: 'cors' }).then(resp => {
+        if (!resp.ok || !resp.body || typeof DecompressionStream === 'undefined') return resp;
+        const headers = new Headers();
+        headers.set('content-type', 'application/javascript; charset=utf-8');
+        return new Response(resp.body.pipeThrough(new DecompressionStream('gzip')), { status: resp.status, headers });
+      }).catch(() => caches.match(event.request))
+    );
     return;
   }
   if (event.request.url.includes('games.json')) {
