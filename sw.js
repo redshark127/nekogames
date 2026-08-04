@@ -2,6 +2,7 @@ const CACHE = 'nekogames-v5';
 const PRECACHE = [
   '/',
   '/index.html',
+  '/home.html',
   '/style.css',
   '/script.js',
   '/icon.svg',
