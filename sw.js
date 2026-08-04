@@ -52,6 +52,14 @@ async function proxyGame(request) {
     } else {
       html = '<base href="' + base + '">' + html;
     }
+    const shim = '<script>(function(){var _c={},_r=false,_q=[];function _ok(){_r=true;_q.forEach(function(f){f()});_q=[]}window.addEventListener("message",function(e){if(e.data&&e.data.type==="ng-s-init"){_c=e.data.d||{};_ok()}});parent.postMessage({type:"ng-s-req"},'*');var _h={getItem:function(k){return _c[k]!==undefined?_c[k]:null},setItem:function(k,v){_c[k]=String(v);parent.postMessage({type:"ng-s-set",k:k,v:String(v)},'*')},removeItem:function(k){delete _c[k];parent.postMessage({type:"ng-s-del",k:k},'*')},clear:function(){_c={};parent.postMessage({type:"ng-s-clr"},'*')},get length(){return Object.keys(_c).length},key:function(i){return Object.keys(_c)[i]||null}};Object.defineProperty(window,"localStorage",{get:function(){return _h},configurable:true})})();<\/script>';
+    if (/<\/head>/i.test(html)) {
+      html = html.replace(/<\/head>/i, shim + '</head>');
+    } else if (/<\/body>/i.test(html)) {
+      html = html.replace(/<\/body>/i, shim + '</body>');
+    } else {
+      html += shim;
+    }
     const headers = new Headers(resp.headers);
     headers.set('content-type', 'text/html; charset=utf-8');
     headers.delete('x-frame-options');
