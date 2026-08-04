@@ -2,11 +2,26 @@
 (function(){
   var u = new URLSearchParams(location.search).get('u') || '';
   var f = document.getElementById('f');
-  if (u) {
-    f.src = u;
-    try { document.title = decodeURIComponent(u.replace(/^https?:\/\//,'')).slice(0,60); } catch (e) {}
-  } else {
-    document.body.innerHTML = '<p style="color:#fff;font-family:sans-serif;text-align:center;margin-top:20vh">Missing game URL</p>';
-  }
+  function setTitle(){ try { document.title = decodeURIComponent(u.replace(/^https?:\/\//,'')).slice(0,60); } catch (e) {} }
+  if (!u) { document.body.innerHTML = '<p style="color:#fff;font-family:sans-serif;text-align:center;margin-top:20vh">Missing game URL</p>'; return; }
+  var host = '';
+  try { host = new URL(u).host; } catch (e) {}
+  var needsRebase = /^(cdn\.jsdelivr\.net|raw\.githubusercontent\.com)$/i.test(host);
+  if (!needsRebase) { f.src = u; setTitle(); return; }
+  fetch(u).then(function(resp){
+    var ct = resp.headers.get('content-type') || '';
+    if (!/text\/(html|plain)/i.test(ct)) throw new Error('not text');
+    return resp.text().then(function(html){
+      if (/<(?:!doctype|html|head|body|script|base)[\s>]/i.test(html.slice(0,2000))) return html;
+      throw new Error('not html');
+    });
+  }).then(function(html){
+    html = html.replace(/<meta[^>]*http-equiv=["']content-security-policy["'][^>]*>/gi, '');
+    var base = u.substring(0, u.lastIndexOf('/') + 1);
+    if (/<head[^>]*>/i.test(html)) html = html.replace(/<head([^>]*)>/i, '<head$1><base href="' + base + '">');
+    else html = '<base href="' + base + '">' + html;
+    f.srcdoc = html;
+    setTitle();
+  }).catch(function(){ f.src = u; setTitle(); });
 })();
 </script></body></html>
