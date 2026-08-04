@@ -3755,6 +3755,26 @@ fetch(GAMES_JSON)
     console.error(err);
   });
 
+// ── Storage shim handler (proxied game iframes) ──
+window.addEventListener('message', function(e) {
+  if (!e.data || !e.source) return;
+  var t = e.data.type;
+  if (t === 'ng-s-req') {
+    var d = {};
+    for (var i = 0; i < localStorage.length; i++) {
+      var k = localStorage.key(i);
+      d[k] = localStorage.getItem(k);
+    }
+    e.source.postMessage({type: 'ng-s-init', d: d}, '*');
+  } else if (t === 'ng-s-set') {
+    localStorage.setItem(e.data.k, e.data.v);
+  } else if (t === 'ng-s-del') {
+    localStorage.removeItem(e.data.k);
+  } else if (t === 'ng-s-clr') {
+    localStorage.clear();
+  }
+});
+
 </script>
 </body>
 </html>
