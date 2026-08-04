@@ -10,7 +10,7 @@ def read(p):
     with open(os.path.join(BASE, p), 'r', encoding='utf-8') as f:
         return f.read()
 
-index_html = read('home.html')
+index_html = read('index.html')
 css = read('style.css')
 script_js = read('script.js')
 
@@ -61,7 +61,7 @@ with zipfile.ZipFile(OUTPUT, 'w') as z:
         with open(path, 'rb') as f:
             z.writestr(zinfo(arcname), f.read())
 
-    site_files = ['index.html', 'home.html', 'style.css', 'script.js', 'games.json', 'sw.js', 'logo.png', 'favicon.png', 'icon-192.png', 'icon-512.png']
+    site_files = ['index.html', 'style.css', 'script.js', 'games.json', 'sw.js', 'logo.png', 'favicon.png', 'icon-192.png', 'icon-512.png']
     for sf in site_files:
         path = os.path.join(BASE, sf)
         if os.path.exists(path):

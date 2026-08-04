@@ -23,7 +23,6 @@ const reloadBtn = document.getElementById('reload-btn');
 const downloadBtn = document.getElementById('download-btn');
 const muteBtn = document.getElementById('mute-btn');
 const gameModal = document.getElementById('game-modal');
-const abBtn = document.getElementById('ab-btn');
 const randomBtn = document.getElementById('random-btn');
 const gameCount = document.getElementById('game-count');
 const footerCount = document.getElementById('footer-count');
@@ -1951,29 +1950,6 @@ randomBtn.addEventListener('click', () => {
   openGame(game);
 });
 
-abBtn.addEventListener('click', async () => {
-  try {
-    const res = await fetch(baseHref);
-    let html = await res.text();
-    html = html.replace('<head>', '<head><base href="' + baseHref + '">');
-    var w = window.open('about:blank');
-    if (!w) {
-      alert('Popup blocked. Allow popups for this site and try again.');
-      return;
-    }
-    try {
-      w.document.open();
-      w.document.write(html);
-      w.document.close();
-    } catch (e) {
-      alert('Failed to write to about:blank: ' + e.message);
-      return;
-    }
-  } catch(e) {
-    alert('Could not open about:blank: ' + e.message);
-  }
-});
-
 document.querySelector('#request-btn').addEventListener('click', e => {
   if (REQUEST_FORM_URL === '#') {
     e.preventDefault();
@@ -2026,10 +2002,3 @@ fetch(GAMES_JSON)
     gameGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#888;">Failed to load games.</p>';
     console.error(err);
   });
-
-document.addEventListener('keydown', e => {
-  if (e.key === '~' || e.key === '`') {
-    e.preventDefault();
-    window.location.href = 'about:blank';
-  }
-});
