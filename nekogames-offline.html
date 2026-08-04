@@ -1120,30 +1120,6 @@ header::after {
   flex-shrink: 0;
 }
 
-/* ── Panic Overlay ── */
-#panic-overlay {
-  position: fixed; inset: 0; z-index: 2000;
-  background: #fff; color: #000;
-  display: flex; flex-direction: column;
-  font-family: Arial, sans-serif;
-}
-#panic-overlay.hidden { display: none; }
-
-.panic-bar {
-  background: #e8eaed; padding: 8px 16px;
-  display: flex; align-items: center;
-  gap: 20px; font-size: 13px; color: #444;
-}
-.panic-actions { display: flex; gap: 14px; font-size: 13px; color: #555; cursor: default; }
-.panic-content { flex: 1; display: flex; justify-content: center; padding: 40px; background: #f8f9fa; }
-.panic-paper {
-  background: #fff; width: 100%;
-  max-width: 700px; padding: 60px 80px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12); min-height: 500px;
-}
-.panic-paper h2 { font-size: 22px; font-weight: 500; margin-bottom: 24px; color: #222; }
-.panic-paper p { font-size: 14px; line-height: 1.6; color: #444; }
-
 /* ── Footer ── */
 footer {
   border-top: 1px solid var(--border);
@@ -1754,19 +1730,6 @@ footer::before {
       </div>
       <div id="game-stage">
         <iframe id="game-frame" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div id="panic-overlay" class="hidden">
-    <div class="panic-bar">
-      <span>docs.google.com/document/d/1xK...</span>
-      <div class="panic-actions"><span>File</span><span>Edit</span><span>View</span><span>Help</span></div>
-    </div>
-    <div class="panic-content">
-      <div class="panic-paper">
-        <h2>Untitled document</h2>
-        <p>This looks like a school document. Nothing to see here.</p>
       </div>
     </div>
   </div>
