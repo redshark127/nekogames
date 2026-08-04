@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conroe ISD SSO</title>
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="logo.png">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="googlebot" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
@@ -1453,7 +1453,7 @@ footer::before {
 
   <header>
     <div class="header-inner">
-      <div class="logo logo-text">Conroe ISD SSO</div>
+      <div class="logo"><img class="logo-img" src="logo.png" alt="Conroe ISD SSO"></div>
       <form class="controls" autocomplete="off">
         <div class="search-wrap">
           <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.35-4.35"/></svg>
@@ -1683,7 +1683,7 @@ footer::before {
               <div class="cloak-row" style="margin-top:6px">
                 <div class="cloak-field">
                   <label class="cloak-field-label">Favicon URL</label>
-                  <input type="text" id="cloak-favicon" class="setting-text-input" value="favicon.ico">
+                  <input type="text" id="cloak-favicon" class="setting-text-input" value="logo.png">
                 </div>
               </div>
             </div>
@@ -2587,7 +2587,7 @@ function applyCloak() {
   const s = getSettings();
   const activeTitle = s.cloakActiveTitle || 'Conroe ISD SSO';
   const inactiveTitle = s.cloakInactiveTitle || 'Conroe ISD SSO';
-  const faviconUrl = s.cloakFavicon || 'favicon.ico';
+  const faviconUrl = s.cloakFavicon || 'logo.png';
   if (faviconLink) faviconLink.href = faviconUrl;
   document.title = document.hidden ? inactiveTitle : activeTitle;
 }
@@ -2713,7 +2713,7 @@ function syncSettingsUI() {
   const s2 = getSettings();
   cloakActiveTitle.value = s2.cloakActiveTitle || 'Conroe ISD SSO';
   cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Conroe ISD SSO';
-  cloakFavicon.value = s2.cloakFavicon || 'favicon.ico';
+  cloakFavicon.value = s2.cloakFavicon || 'logo.png';
 }
 
 themeOptions.addEventListener('click', e => {

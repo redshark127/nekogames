@@ -56,7 +56,7 @@ with zipfile.ZipFile(OUTPUT, 'w') as z:
         with open(path, 'rb') as f:
             z.writestr(zinfo(arcname), f.read())
 
-    site_files = ['index.html', 'style.css', 'script.js', 'games.json', 'sw.js']
+    site_files = ['index.html', 'style.css', 'script.js', 'games.json', 'sw.js', 'logo.png', 'icon-192.png', 'icon-512.png']
     for sf in site_files:
         path = os.path.join(BASE, sf)
         if os.path.exists(path):
