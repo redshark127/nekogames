@@ -76,13 +76,19 @@ self.addEventListener('fetch', event => {
     event.respondWith(proxyGame(event.request));
     return;
   }
-  if (/\.gz$/i.test(reqUrl.pathname) && event.request.mode === 'no-cors') {
+  const hostIsGitRaw = /^(raw\.githubusercontent\.com|rawcdn\.githack\.com|raw\.githack\.com)$/i.test(reqUrl.hostname);
+  const isWasm = /\.wasm(\.gz)?$/i.test(reqUrl.pathname);
+  if (hostIsGitRaw && (event.request.destination === 'script' || event.request.destination === 'style' || isWasm)) {
+    const ct = event.request.destination === 'style' ? 'text/css; charset=utf-8'
+      : isWasm ? 'application/wasm'
+      : 'application/javascript; charset=utf-8';
     event.respondWith(
       fetch(event.request.url, { mode: 'cors' }).then(resp => {
-        if (!resp.ok || !resp.body || typeof DecompressionStream === 'undefined') return resp;
-        const headers = new Headers();
-        headers.set('content-type', 'application/javascript; charset=utf-8');
-        return new Response(resp.body.pipeThrough(new DecompressionStream('gzip')), { status: resp.status, headers });
+        if (!resp.ok || !resp.body) return resp;
+        const headers = new Headers(resp.headers);
+        headers.set('content-type', ct);
+        headers.delete('content-encoding');
+        return new Response(resp.body, { status: resp.status, statusText: resp.statusText, headers });
       }).catch(() => caches.match(event.request))
     );
     return;
