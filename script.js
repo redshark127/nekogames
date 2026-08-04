@@ -805,8 +805,8 @@ function saveSettings(settings) {
 
 function applyCloak() {
   const s = getSettings();
-  const activeTitle = s.cloakActiveTitle || 'Nekogames';
-  const inactiveTitle = s.cloakInactiveTitle || 'Nekogames - Home';
+  const activeTitle = s.cloakActiveTitle || 'Conroe ISD SSO';
+  const inactiveTitle = s.cloakInactiveTitle || 'Conroe ISD SSO';
   const faviconUrl = s.cloakFavicon || 'favicon.ico';
   if (faviconLink) faviconLink.href = faviconUrl;
   document.title = document.hidden ? inactiveTitle : activeTitle;
@@ -931,8 +931,8 @@ function syncSettingsUI() {
   if (gridGapVal) gridGapVal.textContent = (s.gridGap || 16) + 'px';
 
   const s2 = getSettings();
-  cloakActiveTitle.value = s2.cloakActiveTitle || 'Nekogames';
-  cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Nekogames - Home';
+  cloakActiveTitle.value = s2.cloakActiveTitle || 'Conroe ISD SSO';
+  cloakInactiveTitle.value = s2.cloakInactiveTitle || 'Conroe ISD SSO';
   cloakFavicon.value = s2.cloakFavicon || 'favicon.ico';
 }
 

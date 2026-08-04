@@ -88,5 +88,8 @@ with zipfile.ZipFile(OUTPUT, 'w') as z:
         for fname in os.listdir(os.path.join(BASE, 'games', 'sheriff-looper')):
             add_file(os.path.join(BASE, 'games', 'sheriff-looper', fname), f'games/sheriff-looper/{fname}')
 
+with open(os.path.join(BASE, 'nekogames-offline.html'), 'w', encoding='utf-8') as f:
+    f.write(offline)
+
 size = os.path.getsize(OUTPUT)
 print(f'Updated {OUTPUT} ({len(games)} games, {size/1024:.0f} KB, offline {len(offline)/1024:.0f} KB)')
