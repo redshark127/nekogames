@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>.</title>
+  <style>
+    html,body{margin:0;padding:0;background:#121212;color:#fff;font-family:Arial,Helvetica,sans-serif}
+    #game{width:100vw;height:100vh}
+    #loading-progress{position:fixed;left:50%;top:50%;transform:translate(-50%,0);font-size:18px;padding:10px 16px;background:rgba(255,255,255,.1);border-radius:8px}
+    #loading-sub{position:fixed;left:50%;top:calc(50% + 50px);transform:translate(-50%,0);color:#aaa;font-size:14px}
+    #retry-btn{position:fixed;left:50%;top:calc(50% + 90px);transform:translateX(-50%);padding:8px 20px;font-size:15px;border:none;border-radius:8px;background:#ef4444;color:#fff;cursor:pointer}
+  </style>
+</head>
+
+<body>
+  <div id="game"></div>
+  <div id="loading-progress">Loading: 0/0</div>
+  <div id="loading-sub">Preparing game files</div>
+  <button id="retry-btn" style="display:none">Retry</button>
+  <script>
+    (function () {
+      'use strict';
+
+      const params = new URLSearchParams(location.search);
+      const CORE = params.get('core') || 'nds';
+      const GAME_NAME = params.get('name') || 'Game';
+      const ROM_BASE = params.get('rom') || '';
+      const PARTS = parseInt(params.get('parts') || '1', 10) || 1;
+
+      const CDN = 'https://cdn.emulatorjs.org/stable/data/';
+      window.EJS_pathtodata = CDN;
+      window.EJS_player = '#game';
+      window.EJS_core = CORE;
+      window.EJS_gameName = GAME_NAME;
+      window.EJS_color = '#0064ff';
+      window.EJS_startOnLoaded = true;
+
+      const loadingText = document.getElementById('loading-progress');
+      const loadingSub = document.getElementById('loading-sub');
+      const retryBtn = document.getElementById('retry-btn');
+
+      function showFailure(msg) {
+        loadingText.textContent = 'FAILED TO LOAD';
+        loadingSub.textContent = msg;
+        retryBtn.style.display = 'inline-block';
+        retryBtn.onclick = () => location.reload();
+      }
+
+      function partList() {
+        const list = [];
+        for (let i = 1; i <= PARTS; i++) list.push(encodeURI(ROM_BASE) + '.part' + i);
+        return list;
+      }
+
+      async function fetchPart(url, onByte) {
+        const r = await fetch(url);
+        if (!r.ok) throw new Error('HTTP ' + r.status + ' for ' + url);
+        const total = parseInt(r.headers.get('content-length') || '0', 10);
+        const reader = r.body.getReader();
+        const chunks = [];
+        let received = 0;
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value);
+          received += value.length;
+          if (onByte) onByte(value.length, total);
+        }
+        const buf = new Uint8Array(received);
+        let off = 0;
+        for (const c of chunks) { buf.set(c, off); off += c.length; }
+        return buf;
+      }
+
+      async function mergeGame(files, onProgress) {
+        let doneBytes = 0;
+        let totalBytes = 0;
+        const parts = await Promise.all(files.map(u => {
+          let len = 0;
+          return fetchPart(u, (chunkLen, total) => {
+            if (total) { totalBytes = totalBytes || 0; }
+            len += chunkLen;
+            doneBytes += chunkLen;
+            loadingText.textContent = 'Loading: ' + (doneBytes / 1048576).toFixed(1) + ' MB';
+          }).then(buf => buf);
+        }));
+        const blob = new Blob(parts, { type: 'application/octet-stream' });
+        loadingText.textContent = 'Loaded ' + files.length + '/' + files.length;
+        return URL.createObjectURL(blob);
+      }
+
+      const files = partList();
+      if (!files[0]) return showFailure('No ROM URL configured');
+
+      loadingText.textContent = 'Loading: 0/' + files.length;
+
+      mergeGame(files).then((gameUrl) => {
+        window.EJS_gameUrl = gameUrl;
+        loadingText.textContent = 'Starting...';
+        loadingSub.textContent = 'Initializing emulator';
+        const script = document.createElement('script');
+        script.src = CDN + 'loader.js';
+        script.onerror = () => showFailure('Emulator failed to load');
+        document.body.appendChild(script);
+      }).catch((err) => {
+        console.error(err);
+        showFailure('Error loading game files');
+      });
+    })();
+  </script>
+</body>
+
+</html>

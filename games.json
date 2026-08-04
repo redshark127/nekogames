@@ -5684,14 +5684,14 @@
   {
     "id": 802,
     "name": "FIFA 11",
-    "url": "https://genizymath.github.io/iframe/685.html",
+    "url": "wrappers/ejs-game.html?core=nds&name=FIFA+11&parts=2&rom=https%3A%2F%2Fraw.githubusercontent.com%2Fbubbls%2Fugss%2Facf87526e35a0c37ab4dd73c987b7a01713fa88b%2FFIFA+Soccer+11+%28USA%29+%28En%2CFr%2CDe%2CEs%2CIt%29+%28NDSi+Enhanced%29%2FFIFA+Soccer+11+%28USA%29+%28En%2CFr%2CDe%2CEs%2CIt%29+%28NDSi+Enhanced%29.nds",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/685.png",
     "category": "Action"
   },
   {
     "id": 803,
     "name": "FIFA 10",
-    "url": "https://genizymath.github.io/iframe/686.html",
+    "url": "wrappers/ejs-game.html?core=nds&name=FIFA+10&parts=2&rom=https%3A%2F%2Fraw.githubusercontent.com%2Fbubbls%2Fugss%2F8be6bff43ec227a82b1f0231b044d378efc4fb7e%2FFIFA+10+%28Europe%29+%28En%2CFr%2CDe%2CEs%2CIt%29%2FFIFA+10+%28Europe%29+%28En%2CFr%2CDe%2CEs%2CIt%29.nds",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/686.png",
     "category": "Action"
   },
