@@ -77,7 +77,7 @@ async function main() {
     check('games.json has category field', games.every(g => typeof g.category === 'string'));
     check('games.json has image field', games.every(g => typeof g.image === 'string'));
     const jsdelivr = games.filter(g => g.url.includes('cdn.jsdelivr.net'));
-    check('No direct jsDelivr URLs', jsdelivr.length === 0, `${jsdelivr.length} found`);
+    check('jsDelivr URLs avoid blocked genizy/gn-math users', jsdelivr.filter(g => /\/gh\/(?:genizy|gn-math)\//.test(g.url)).length === 0, `${jsdelivr.filter(g => /\/gh\/(?:genizy|gn-math)\//.test(g.url)).length} blocked`);
     const noah = games.filter(g => g.url.includes('noahstutoring.academy'));
     const geni = games.filter(g => g.url.includes('genizymath.github.io'));
     check('Has wrapper URLs', noah.length > 0 || geni.length > 0, `noahstutoring: ${noah.length}, genizymath: ${geni.length}`);

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base href="https://raw.githubusercontent.com/InsayneBoko/fih-port/main/port/">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+		<title>Fih</title>
+		<style>
+html, body, #canvas {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body {
+	color: white;
+	background-color: black;
+	overflow: hidden;
+	touch-action: none;
+}
+
+#canvas {
+	display: block;
+}
+
+#canvas:focus {
+	outline: none;
+}
+
+#status, #status-splash, #status-progress {
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+#status, #status-splash {
+	top: 0;
+	bottom: 0;
+}
+
+#status {
+	background-color: #525254;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+}
+
+#status-splash {
+	max-height: 100%;
+	max-width: 100%;
+	margin: auto;
+}
+
+#status-progress {
+	display: none;
+	bottom: 10%;
+	width: 50%;
+	margin: 0 auto;
+}
+
+#loading-text {
+	color: white;
+	font-size: 28px;
+	font-family: cursive;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#loading-sub {
+	color: #aaa;
+	font-size: 15px;
+	font-family: sans-serif;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#loading-bar {
+	width: 60%;
+	max-width: 480px;
+	height: 12px;
+	margin: 18px auto 0;
+	background: #333;
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+#loading-bar > div {
+	height: 100%;
+	width: 0%;
+	background: linear-gradient(90deg, #4ade80, #22d3ee);
+	transition: width 0.2s;
+}
+
+#retry-btn {
+	display: none;
+	margin: 18px auto 0;
+	padding: 10px 24px;
+	font-size: 15px;
+	cursor: pointer;
+	border: none;
+	border-radius: 8px;
+	background: #ef4444;
+	color: #fff;
+}
+</style>
+	</head>
+	<body>
+		<div id="loading-text">LOADING...</div>
+		<div id="loading-sub">Preparing game files</div>
+		<div id="loading-bar"><div></div></div>
+		<button id="retry-btn">Retry</button>
+		<canvas id="canvas">
+			Your browser does not support the canvas tag.
+		</canvas>
+		<div id="status">
+			<img id="status-splash" src="fih.png" alt="">
+			<progress id="status-progress"></progress>
+		</div>
+		<script src="fih.js"></script>
+		<script>
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"fih","experimentalVK":false,"fileSizes":{"fih.pck":25411476,"fih.wasm":37685705},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_THREADS_ENABLED = false;
+const engine = new Engine(GODOT_CONFIG);
+
+window.godotRunStart = function () {
+	const statusOverlay = document.getElementById('status');
+	const statusProgress = document.getElementById('status-progress');
+	const statusNotice = document.getElementById('status-notice');
+
+	let initializing = true;
+	let statusMode = '';
+
+	function setStatusMode(mode) {
+		if (statusMode === mode || !initializing) {
+			return;
+		}
+		if (mode === 'hidden') {
+			statusOverlay.remove();
+			initializing = false;
+			return;
+		}
+		statusOverlay.style.visibility = 'visible';
+		statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
+		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
+		statusMode = mode;
+	}
+
+	function setStatusNotice(text) {
+		while (statusNotice.lastChild) {
+			statusNotice.removeChild(statusNotice.lastChild);
+		}
+		const lines = text.split('\n');
+		lines.forEach((line) => {
+			statusNotice.appendChild(document.createTextNode(line));
+			statusNotice.appendChild(document.createElement('br'));
+		});
+	}
+
+	function displayFailureNotice(err) {
+		console.error(err);
+		if (err instanceof Error) {
+			setStatusNotice(err.message);
+		} else if (typeof err === 'string') {
+			setStatusNotice(err);
+		} else {
+			setStatusNotice('An unknown error occurred.');
+		}
+		setStatusMode('notice');
+		initializing = false;
+	}
+
+	const missing = Engine.getMissingFeatures({
+		threads: GODOT_THREADS_ENABLED,
+	});
+
+	if (missing.length !== 0) {
+		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
+			let serviceWorkerRegistrationPromise;
+			try {
+				serviceWorkerRegistrationPromise = navigator.serviceWorker.getRegistration();
+			} catch (err) {
+				serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
+			}
+			Promise.race([
+				serviceWorkerRegistrationPromise.then((registration) => {
+					if (registration != null) {
+						return Promise.reject(new Error('Service worker already exists.'));
+					}
+					return registration;
+				}).then(() => engine.installServiceWorker()),
+				new Promise((resolve) => {
+					setTimeout(() => resolve(), 2000);
+				}),
+			]).then(() => {
+				window.location.reload();
+			}).catch((err) => {
+				console.error('Error while registering service worker:', err);
+			});
+		} else {
+			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
+			displayFailureNotice(missingMsg + missing.join('\n'));
+		}
+	} else {
+		setStatusMode('progress');
+		engine.startGame({
+			'onProgress': function (current, total) {
+				if (current > 0 && total > 0) {
+					statusProgress.value = current;
+					statusProgress.max = total;
+				} else {
+					statusProgress.removeAttribute('value');
+					statusProgress.removeAttribute('max');
+				}
+			},
+		}).then(() => {
+			setStatusMode('hidden');
+		}, displayFailureNotice);
+	}
+};
+		</script>
+		<script>
+(function() {
+	'use strict';
+
+	const loadingText = document.querySelector('#loading-text');
+	const loadingSub = document.querySelector('#loading-sub');
+	const loadingBar = document.querySelector('#loading-bar > div');
+	const retryBtn = document.querySelector('#retry-btn');
+
+	const originalFetch = window.fetch;
+	const mergedData = {};
+	const pendingRequests = {};
+
+	window.fetch = function(url, ...args) {
+		const urlString = url.toString();
+		const baseName = urlString.slice(urlString.lastIndexOf('/') + 1);
+		if (baseName === 'fih.pck' || baseName === 'fih.wasm') {
+			if (mergedData[baseName]) {
+				return Promise.resolve(new Response(mergedData[baseName]));
+			}
+			return new Promise((resolve) => {
+				if (!pendingRequests[baseName]) pendingRequests[baseName] = [];
+				pendingRequests[baseName].push(resolve);
+			});
+		}
+		return originalFetch(url, ...args);
+	};
+
+	const PARTS = [
+		{ name: 'fih.pck', start: 1, end: 2 },
+		{ name: 'fih.wasm', start: 1, end: 2 }
+	];
+	const IDLE_TIMEOUT = 20000;
+	const TRIES_PER_SOURCE = 2;
+	const SOURCES = [
+		'',
+		'https://gh-proxy.com/https://raw.githubusercontent.com/InsayneBoko/fih-port/main/port/',
+		'https://ghproxy.net/https://raw.githubusercontent.com/InsayneBoko/fih-port/main/port/'
+	];
+
+	const totalParts = PARTS.reduce((n, f) => n + (f.end - f.start + 1), 0);
+	let partsDone = 0;
+	let loadedBytes = 0;
+	let knownBytes = 0;
+
+	function partName(f, i) { return f.name + '.part' + i; }
+
+	function sourceUrl(part, srcIdx) {
+		return srcIdx === 0 ? part : SOURCES[srcIdx] + part;
+	}
+
+	function updateProgress() {
+		const pct = knownBytes > 0 ? Math.min(100, Math.round(loadedBytes / knownBytes * 100)) : 0;
+		loadingBar.style.width = pct + '%';
+		loadingSub.textContent = 'Preparing game files - ' + partsDone + '/' + totalParts + ' parts (' + pct + '%)';
+	}
+
+	function downloadPart(f, i) {
+		const name = partName(f, i);
+		let offset = 0;
+		let chunks = [];
+		let fullSize = 0;
+		let startedSize = false;
+
+		function tryOnce(srcIdx) {
+			const ctrl = new AbortController();
+			let idleTimer = null;
+			const headers = offset > 0 ? { Range: 'bytes=' + offset + '-' } : {};
+			const url = sourceUrl(name, srcIdx);
+			const arm = () => {
+				clearTimeout(idleTimer);
+				idleTimer = setTimeout(() => ctrl.abort(), IDLE_TIMEOUT);
+			};
+			arm();
+			return originalFetch(url, { headers, signal: ctrl.signal }).then((resp) => {
+				if (resp.status === 200 && offset > 0) { offset = 0; chunks = []; }
+				if (resp.status !== 200 && resp.status !== 206) throw new Error('HTTP ' + resp.status);
+				if (!startedSize) {
+					const cl = Number(resp.headers.get('content-length') || 0);
+					fullSize = cl || 0;
+					startedSize = true;
+					knownBytes += fullSize;
+				}
+				const reader = resp.body.getReader();
+				return new Promise((resolve, reject) => {
+					function pump() {
+						reader.read().then((r) => {
+							if (r.done) { resolve(); return; }
+							chunks.push(r.value);
+							offset += r.value.byteLength;
+							loadedBytes += r.value.byteLength;
+							updateProgress();
+							arm();
+							pump();
+						}, reject);
+					}
+					pump();
+				});
+			}).then(() => clearTimeout(idleTimer), (err) => { clearTimeout(idleTimer); throw err; });
+		}
+
+		let srcIdx = 0;
+		const run = () => {
+			if (srcIdx >= SOURCES.length) return Promise.reject(new Error('Failed: ' + name));
+			let tries = 0;
+			const attempt = () => {
+				tries++;
+				return tryOnce(srcIdx).then(
+					() => new Blob(chunks, { type: 'application/octet-stream' }),
+					() => {
+						if (tries < TRIES_PER_SOURCE) return attempt();
+						srcIdx++;
+						return run();
+					}
+				);
+			};
+			return attempt();
+		};
+
+		return run().then((blob) => {
+			partsDone++;
+			updateProgress();
+			return blob;
+		});
+	}
+
+	function downloadFile(f) {
+		const jobs = [];
+		for (let i = f.start; i <= f.end; i++) jobs.push(downloadPart(f, i));
+		return Promise.all(jobs).then((blobs) => {
+			const type = f.name === 'fih.wasm' ? 'application/wasm' : 'application/octet-stream';
+			const merged = new Blob(blobs, { type: type });
+			mergedData[f.name] = merged;
+			if (pendingRequests[f.name]) {
+				pendingRequests[f.name].forEach((res) => res(new Response(merged)));
+				delete pendingRequests[f.name];
+			}
+		});
+	}
+
+	function showFailure(title, msg) {
+		loadingText.textContent = title;
+		loadingSub.textContent = msg;
+		loadingBar.style.display = 'none';
+		retryBtn.style.display = 'block';
+	}
+
+	function finishLoadingUi() {
+		loadingText.remove();
+		loadingSub.remove();
+		if (loadingBar.parentElement) loadingBar.parentElement.remove();
+		retryBtn.remove();
+	}
+
+	function watchEngine(startedAt) {
+		const status = document.getElementById('status');
+		if (!status || !status.isConnected) { finishLoadingUi(); return; }
+		const notice = document.getElementById('status-notice');
+		if (notice && notice.textContent.trim()) {
+			showFailure('FAILED TO START', notice.textContent.trim());
+			return;
+		}
+		const prog = document.getElementById('status-progress');
+		if (prog && prog.value > 0 && prog.max > 0) {
+			const pct = Math.min(100, Math.round(prog.value / prog.max * 100));
+			loadingSub.textContent = 'Loading game data ' + pct + '%';
+		}
+		const elapsed = Date.now() - startedAt;
+		if (elapsed > 600000) {
+			showFailure('STILL LOADING', 'The engine did not finish starting. Press Retry to try again.');
+			return;
+		}
+		if (elapsed > 300000) {
+			loadingSub.textContent = 'Still loading? The engine can take a while on slower devices - keep waiting or press Retry.';
+			loadingBar.style.display = 'none';
+		}
+		setTimeout(() => watchEngine(startedAt), 250);
+	}
+
+	function init() {
+		Promise.all(PARTS.map(downloadFile)).then(() => {
+			console.log('[Merger] All files ready. Starting Godot...');
+			if (typeof window.godotRunStart === 'function') {
+				loadingText.textContent = 'STARTING...';
+				loadingSub.textContent = 'Starting the engine - this can take a minute on slower devices';
+				loadingBar.style.width = '100%';
+				try {
+					window.godotRunStart();
+				} catch (e) {
+					showFailure('FAILED TO START', String(e && e.message || e));
+					return;
+				}
+				watchEngine(Date.now());
+			} else {
+				showFailure('FAILED TO START', 'The game engine could not be found.');
+			}
+		}).catch((err) => {
+			console.error('[Merger] Failed to load game:', err);
+			showFailure('FAILED TO LOAD', 'The game files could not be downloaded. Check your connection.');
+		});
+	}
+
+	retryBtn.addEventListener('click', () => location.reload());
+	init();
+})();
+		</script>
+	</body>
+</html>

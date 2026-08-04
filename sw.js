@@ -29,8 +29,20 @@ async function proxyGame(request) {
     const resp = await fetch(target, { mode: 'cors', credentials: 'omit' });
     if (!resp.ok) return Response.redirect(target, 302);
     const ct = resp.headers.get('content-type') || '';
-    if (!ct.includes('text/html')) return resp;
-    let html = await resp.text();
+    let html = null;
+    if (/text\/html/i.test(ct)) {
+      html = await resp.text();
+    } else if (/text\/plain/i.test(ct)) {
+      const text = await resp.text();
+      if (/<(?:!doctype|html|head|body|script|base)[\s>]/i.test(text.slice(0, 2000))) {
+        html = text;
+      } else {
+        const passHeaders = new Headers(resp.headers);
+        return new Response(text, { status: resp.status, statusText: resp.statusText, headers: passHeaders });
+      }
+    } else {
+      return resp;
+    }
     html = html.replace(/<meta[^>]*http-equiv=["']content-security-policy["'][^>]*>/gi, '');
     const u = new URL(target);
     const base = u.origin + u.pathname.slice(0, u.pathname.lastIndexOf('/') + 1);

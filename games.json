@@ -5907,7 +5907,7 @@
   {
     "id": 833,
     "name": "Bart Blast",
-    "url": "https://genizymath.github.io/iframe/740.html",
+    "url": "https://raw.githubusercontent.com/genizy/google-class/main/bart-blast/index.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/740.png",
     "category": "Puzzle"
   },
@@ -5977,28 +5977,28 @@
   {
     "id": 843,
     "name": "Minecraft Pocket Edition",
-    "url": "https://genizymath.github.io/iframe/754.html",
+    "url": "https://raw.githubusercontent.com/genizy/mcpeweb/main/index.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/754.png",
     "category": "Simulation"
   },
   {
     "id": 844,
     "name": "Brawl Simulator 3D",
-    "url": "https://genizymath.github.io/iframe/755.html",
+    "url": "https://raw.githubusercontent.com/genizy/google-class/main/brawl-3d/index.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/755.png",
     "category": "Simulation"
   },
   {
     "id": 845,
     "name": "Witch's Heart",
-    "url": "https://genizymath.github.io/iframe/756-f.html",
+    "url": "https://raw.githubusercontent.com/genizy/web-port/main/witch-heart/index.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/756.png",
     "category": "Action"
   },
   {
     "id": 846,
     "name": "Ultrapool",
-    "url": "https://genizymath.github.io/iframe/757.html",
+    "url": "https://raw.githubusercontent.com/genizy/ultrapoolwebport-nothreads/main/index.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/757.png",
     "category": "Action"
   },
@@ -6075,7 +6075,7 @@
   {
     "id": 857,
     "name": "Sam & Max Hit the Road",
-    "url": "https://genizymath.github.io/iframe/772.html",
+    "url": "https://cdn.jsdelivr.net/gh/bubbls/dosbox@main/sam.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/772.png",
     "category": "Racing"
   },
@@ -6152,7 +6152,7 @@
   {
     "id": 868,
     "name": "Fih",
-    "url": "https://genizymath.github.io/iframe/797.html",
+    "url": "./wrappers/fih.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/797.png",
     "category": "Action"
   },
@@ -8384,7 +8384,7 @@
   {
     "id": 1186,
     "name": "BlackJack",
-    "url": "https://genizymath.github.io/iframe/312.html",
+    "url": "https://cdn.jsdelivr.net/gh/Synic-dx/blackJack@main/blackJack.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/312.png",
     "category": "Puzzle"
   },
@@ -8594,7 +8594,7 @@
   {
     "id": 1216,
     "name": "Hammer 2: Reloaded",
-    "url": "https://genizymath.github.io/iframe/844.html",
+    "url": "https://raw.githubusercontent.com/genizy/cg-rip/main/hammer-2/index.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/844.png",
     "category": "Action"
   },
@@ -8650,7 +8650,7 @@
   {
     "id": 1224,
     "name": "Money Rush",
-    "url": "https://genizymath.github.io/iframe/400.html",
+    "url": "https://raw.githubusercontent.com/genizy/brainrot/main/money-rush/index.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/400.png",
     "category": "Action"
   },
@@ -8853,7 +8853,7 @@
   {
     "id": 1253,
     "name": "We Become What We Behold",
-    "url": "https://genizymath.github.io/iframe/671.html",
+    "url": "https://raw.githubusercontent.com/genizy/wbwwb/main/index.html",
     "image": "https://raw.githubusercontent.com/freebuisness/covers/main/671.png",
     "category": "Simulation"
   },

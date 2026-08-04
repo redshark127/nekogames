@@ -1563,7 +1563,9 @@ async function resolveCdnGameUrl(url) {
 }
 
 function gameSrcFor(url) {
-  if (getSettings().saveData !== false && /^https?:\/\//i.test(url)) {
+  const host = (() => { try { return new URL(url).host; } catch { return ''; } })();
+  const needsProxy = /^(cdn\.jsdelivr\.net|raw\.githubusercontent\.com)$/i.test(host);
+  if ((needsProxy || getSettings().saveData !== false) && /^https?:\/\//i.test(url)) {
     return 'gp/?u=' + encodeURIComponent(url);
   }
   return url;
