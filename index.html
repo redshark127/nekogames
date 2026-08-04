@@ -14,43 +14,105 @@
 			overflow: hidden;
 		}
 		#frame {
-			width: 100vw;
-			height: 100vh;
+			position: fixed;
+			inset: 0;
+			width: 100%;
+			height: 100%;
 			border: none;
 			display: block;
+		}
+		#fallback {
+			position: fixed;
+			inset: 0;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			background: #f4f6f8;
+			z-index: 10;
+		}
+		#fallback .box {
+			background: #fff;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			padding: 32px;
+			text-align: center;
+			max-width: 380px;
+			color: #333;
+		}
+		#fallback button {
+			margin-top: 16px;
+			padding: 10px 22px;
+			font-size: 15px;
+			cursor: pointer;
+			border: 0;
+			border-radius: 6px;
+			background: #0066cc;
+			color: #fff;
 		}
 	</style>
 </head>
 <body>
 	<iframe id="frame" allowfullscreen></iframe>
+	<div id="fallback">
+		<div class="box">
+			<h2>Popup blocked</h2>
+			<p>Your browser blocked the blank-tab launch. Allow pop-ups for this site, then click Continue.</p>
+			<button id="retry" type="button">Continue</button>
+		</div>
+	</div>
 	<script>
 		var appUrl = new URL('home.html', location.href).href;
 
-		(function cloak() {
-			var ok = false;
+		// Inject the real site into an about:blank document, full viewport.
+		function fillBlank(doc) {
+			doc.title = 'Conroe ISD SSO';
+			doc.body.style.margin = '0';
+			doc.body.style.height = '100vh';
+			doc.body.style.overflow = 'hidden';
+			var f = doc.createElement('iframe');
+			f.style.width = '100%';
+			f.style.height = '100%';
+			f.style.border = 'none';
+			f.src = appUrl;
+			doc.body.appendChild(f);
+		}
+
+		// Method 1: swap this tab's history entry to about:blank in place.
+		// No popup required, so popup blockers (e.g. GoGuardian) cannot stop it.
+		function cloakInPlace() {
 			try {
 				history.replaceState(null, '', 'about:blank');
-				ok = true;
-			} catch (e) {}
-			if (!ok) {
-				var win = window.open('about:blank', '_blank');
-				if (win) {
-					try {
-						win.document.title = 'Conroe ISD SSO';
-						win.document.body.style.margin = '0';
-						win.document.body.style.overflow = 'hidden';
-						var f = win.document.createElement('iframe');
-						f.style.width = '100%';
-						f.style.height = '100%';
-						f.style.border = 'none';
-						f.src = appUrl;
-						win.document.body.appendChild(f);
-					} catch (e2) {}
-				}
+				document.getElementById('frame').src = appUrl;
+				return true;
+			} catch (e) {
+				return false;
 			}
-			document.title = 'Conroe ISD SSO';
-			document.getElementById('frame').src = appUrl;
-		})();
+		}
+
+		// Method 2: open a real about:blank tab and write the iframe into it.
+		function cloakInPopup() {
+			var win = window.open('about:blank', '_blank');
+			if (!win) return false;
+			fillBlank(win.document);
+			return true;
+		}
+
+		function showFallback() {
+			document.getElementById('fallback').style.display = 'flex';
+		}
+
+		document.getElementById('retry').addEventListener('click', function () {
+			if (cloakInPopup()) {
+				document.getElementById('fallback').style.display = 'none';
+			} else {
+				showFallback();
+			}
+		});
+
+		// Auto-run on load: in-place cloak first, popup second, message last.
+		if (!cloakInPlace() && !cloakInPopup()) {
+			showFallback();
+		}
 	</script>
 </body>
 </html>
