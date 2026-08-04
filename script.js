@@ -2031,3 +2031,10 @@ fetch(GAMES_JSON)
     gameGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#888;">Failed to load games.</p>';
     console.error(err);
   });
+
+document.addEventListener('keydown', e => {
+  if (e.key === '~' || e.key === '`') {
+    e.preventDefault();
+    window.location.href = 'about:blank';
+  }
+});

@@ -3812,6 +3812,13 @@ fetch(GAMES_JSON)
     console.error(err);
   });
 
+document.addEventListener('keydown', e => {
+  if (e.key === '~' || e.key === '`') {
+    e.preventDefault();
+    window.location.href = 'about:blank';
+  }
+});
+
 </script>
 </body>
 </html>
