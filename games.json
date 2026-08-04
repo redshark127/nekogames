@@ -7,13 +7,6 @@
     "category": "Action"
   },
   {
-    "id": 2,
-    "name": "Geometry Dash",
-    "url": "https://cdn.jsdelivr.net/gh/web-dashers/web-dashers.github.io@f3bb02e0391681bf64068485838185984f0e4b99/",
-    "image": "https://noahstutoring.academy/images/417.jpg",
-    "category": "Rhythm"
-  },
-  {
     "id": 3,
     "name": "Plants Vs Zombies",
     "url": "https://noahstutoring.academy/games/467.html",
@@ -12411,6 +12404,13 @@
     "name": "FIFA 23 (Full Game)",
     "url": "https://turbowarp.org/732390141/embed",
     "image": "https://trampoline.turbowarp.org/thumbnails/732390141?width=480&height=360",
+    "category": "Sports"
+  },
+  {
+    "id": 1762,
+    "name": "Madden NFL 22",
+    "url": "https://turbowarp.org/557915649/embed",
+    "image": "https://trampoline.turbowarp.org/thumbnails/557915649?width=480&height=360",
     "category": "Sports"
   }
 ]
