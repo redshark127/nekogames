@@ -327,6 +327,11 @@
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js');
+      navigator.serviceWorker.ready.then(function (reg) {
+        if (reg.active) {
+          try { reg.update(); } catch (e) {}
+        }
+      });
     }
   </script>
   <script src="script.js?v=20"></script>

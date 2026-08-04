@@ -24,6 +24,11 @@ offline = offline.replace(
 sw_block = '''  <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js');
+      navigator.serviceWorker.ready.then(function (reg) {
+        if (reg.active) {
+          try { reg.update(); } catch (e) {}
+        }
+      });
     }
   </script>'''
 offline = offline.replace(
