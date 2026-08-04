@@ -23,7 +23,6 @@ const reloadBtn = document.getElementById('reload-btn');
 const downloadBtn = document.getElementById('download-btn');
 const muteBtn = document.getElementById('mute-btn');
 const gameModal = document.getElementById('game-modal');
-const panicOverlay = document.getElementById('panic-overlay');
 const abBtn = document.getElementById('ab-btn');
 const randomBtn = document.getElementById('random-btn');
 const gameCount = document.getElementById('game-count');
@@ -1997,10 +1996,6 @@ document.addEventListener('keydown', e => {
     } else {
       closeGame();
     }
-  }
-  if (e.key === '`') {
-    e.preventDefault();
-    panicOverlay.classList.toggle('hidden');
   }
 });
 
