@@ -803,8 +803,8 @@ function saveSettings(settings) {
 
 function applyCloak() {
   const s = getSettings();
-  const activeTitle = s.cloakActiveTitle || '\u200E';
-  const inactiveTitle = s.cloakInactiveTitle || '\u200E';
+  const activeTitle = s.cloakActiveTitle || '\u2800';
+  const inactiveTitle = s.cloakInactiveTitle || '\u2800';
   const faviconUrl = s.cloakFavicon || '';
   let link = faviconLink;
   if (faviconUrl) {
@@ -939,8 +939,8 @@ function syncSettingsUI() {
   if (gridGapVal) gridGapVal.textContent = (s.gridGap || 16) + 'px';
 
   const s2 = getSettings();
-  cloakActiveTitle.value = s2.cloakActiveTitle || '\u200E';
-  cloakInactiveTitle.value = s2.cloakInactiveTitle || '\u200E';
+  cloakActiveTitle.value = s2.cloakActiveTitle || '\u2800';
+  cloakInactiveTitle.value = s2.cloakInactiveTitle || '\u2800';
   cloakFavicon.value = s2.cloakFavicon || 'favicon.png';
 }
 
