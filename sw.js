@@ -76,6 +76,19 @@ self.addEventListener('fetch', event => {
     event.respondWith(proxyGame(event.request));
     return;
   }
+  if (/^raw\.githubusercontent\.com$/i.test(reqUrl.host) && /\.gz$/i.test(reqUrl.pathname)) {
+    event.respondWith(
+      fetch(new Request(reqUrl.href, { mode: 'cors', credentials: 'omit' })).then(resp => {
+        if (!resp.ok) return resp;
+        if (resp.headers.get('Content-Encoding')) return resp;
+        const headers = new Headers(resp.headers);
+        headers.set('Content-Encoding', 'gzip');
+        headers.delete('Content-Length');
+        return new Response(resp.body, { status: resp.status, statusText: resp.statusText, headers });
+      }).catch(() => fetch(event.request))
+    );
+    return;
+  }
   const hostIsGitRaw = /^(raw\.githubusercontent\.com|rawcdn\.githack\.com|raw\.githack\.com)$/i.test(reqUrl.hostname);
   const isWasm = /\.wasm(\.gz)?$/i.test(reqUrl.pathname);
   if (hostIsGitRaw && (event.request.destination === 'script' || event.request.destination === 'style' || isWasm)) {
